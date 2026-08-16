@@ -40,9 +40,8 @@
     return [
       '<header class="site-header" id="site-header" role="banner">',
       '  <div class="container header-inner">',
-      '    <a href="./index.html" class="logo" aria-label="' + esc(b.name) + ' – Startseite" style="display:flex;align-items:center;gap:10px;text-decoration:none">',
-      '      <img src="./img/logo-icon.png" class="logo-img" alt="PrepCenter Germany FBA" width="40" height="40" style="width:40px;height:40px">',
-      '      <span style="font-weight:800;font-size:1.12rem;letter-spacing:-.01em;color:#1a2744;white-space:nowrap">' + esc(b.name).replace(" FBA", "") + '&nbsp;<span style="color:#f4721e">FBA</span></span>',
+      '    <a href="./index.html" class="logo" aria-label="' + esc(b.name) + ' – Startseite" style="display:flex;align-items:center;text-decoration:none">',
+      '      <img src="./img/logo-full.png" class="logo-img" alt="PrepCenter Germany FBA" style="height:62px;width:auto;display:block">',
       '    </a>',
       '    <nav class="main-nav" role="navigation" aria-label="Hauptnavigation">',
       '      ' + navLinks,
