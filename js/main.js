@@ -40,10 +40,16 @@
 
     return [
       '<header class="site-header" id="site-header" role="banner">',
+      '  <style>',
+      '    .header-slogan{font-size:.8rem;font-style:italic;font-weight:500;color:#475569;margin-left:20px;white-space:nowrap;line-height:1.3}',
+      '    .header-slogan b{color:#f4721e;font-style:normal}',
+      '    @media(max-width:1350px){.header-slogan{display:none}}',
+      '  </style>',
       '  <div class="container header-inner">',
       '    <a href="./index.html" class="logo" aria-label="' + esc(b.name) + ' – Startseite" style="display:flex;align-items:center;text-decoration:none">',
-      '      <img src="./img/logo-full.png" class="logo-img" alt="PrepCenter Germany FBA" style="height:62px;width:auto;display:block">',
+      '      <img src="./img/logo-full.png" class="logo-img" alt="PrepCenter Germany FBA" style="height:86px;width:auto;display:block">',
       '    </a>',
+      '    <span class="header-slogan" aria-hidden="false">Built on <b>Trust</b>. Defined by <b>Integrity</b>. Backed by <b>Quality</b>.</span>',
       '    <nav class="main-nav" role="navigation" aria-label="Hauptnavigation">',
       '      ' + navLinks,
       '    </nav>',

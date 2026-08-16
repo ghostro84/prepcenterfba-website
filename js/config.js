@@ -12,7 +12,7 @@
     name:              "PrepCenter FBA",            // brand / trade name shown on the site
     legalName:         "MTZ World",                // legal company name (Impressum, footer, AGB)
     legalForm:         "",                         // add legal form here if applicable (GmbH / UG / e.K. …)
-    street:            "Linderstrasse 21",
+    street:            "Lindenstraße 21",
     zip:               "83395",
     city:              "Freilassing",
     country:           "Deutschland",
@@ -28,7 +28,7 @@
   // Set the number in international format WITHOUT "+" or spaces,
   // e.g. "4915112345678". While empty, all WhatsApp buttons stay hidden.
   const WHATSAPP = {
-    number:  "",
+    number:  "436769559138",
     message: "Hallo PrepCenter FBA! Ich interessiere mich für Ihre Prep-Services.",
   };
 
