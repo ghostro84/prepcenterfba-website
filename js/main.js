@@ -57,9 +57,9 @@
       '    .header-slogan{flex:1;min-width:0;overflow:hidden;text-align:center;white-space:nowrap;font-size:clamp(1rem,2.2vw,1.9rem);font-style:italic;font-weight:600;color:#475569;line-height:1.2}',
       '    .header-slogan b{color:#f4721e;font-style:normal}',
       '    .logo-img--header{height:172px;width:auto;display:block}',
-      '    .header-row2{display:flex;align-items:center;justify-content:center;gap:1.25rem;padding:0 0 12px;flex-wrap:wrap}',
+      '    .header-row2{display:flex;align-items:center;justify-content:flex-end;gap:1.25rem;padding:0 0 12px;flex-wrap:wrap}',
       '    .header-row2 .main-nav{flex:none;gap:.5rem}',
-      '    .header-row2 .nav-link{font-size:1.2rem;font-weight:600;padding:.45rem .9rem}',
+      '    .header-row2 .nav-link{font-size:1.35rem;font-weight:600;padding:.45rem .95rem}',
       '    .header-row2 .header-actions{margin-left:0}',
       '    .btn-wa-header{display:inline-flex;align-items:center;gap:.45rem;background:#25d366;color:#fff;font-weight:600;border-radius:999px;padding:.5rem 1rem;font-size:.9rem;text-decoration:none;transition:filter .15s}',
       '    .btn-wa-header:hover{filter:brightness(1.07);color:#fff}',
@@ -72,7 +72,7 @@
       '    <a href="./index.html" class="logo" aria-label="' + esc(b.name) + ' – Startseite" style="display:flex;align-items:center;text-decoration:none">',
       '      <img src="./img/logo-full.png" class="logo-img logo-img--header" alt="PrepCenter Germany FBA">',
       '    </a>',
-      '    <span class="header-slogan" aria-hidden="false">Built on <b>Trust</b>. Defined by <b>Integrity</b>. Backed by <b>Quality</b>.</span>',
+      '    <span class="header-slogan" aria-hidden="false">Built on <b>Trust</b>. Backed by <b>Quality</b>. Defined by <b>Integrity</b>.</span>',
       '    <button class="burger" id="burger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="main-nav-mobile">',
       '      <span></span><span></span><span></span>',
       '    </button>',
@@ -94,13 +94,13 @@
       '          <li role="option" data-lang="fr" class="lang-option">FR – Français</li>',
       '        </ul>',
       '      </div>',
-      '      <a href="#contact" class="btn btn--primary btn--sm" data-i18n="nav.cta">Jetzt anfragen</a>',
+      '      <a href="./kontakt.html" class="btn btn--primary btn--sm" data-i18n="nav.cta">Jetzt anfragen</a>',
       waHeaderBtn,
       '    </div>',
       '  </div>',
       '  <nav class="mobile-nav" id="main-nav-mobile" aria-label="Mobile Navigation" hidden>',
       '    ' + navLinks,
-      '    <a href="#contact" class="btn btn--primary" data-i18n="nav.cta">Jetzt anfragen</a>',
+      '    <a href="./kontakt.html" class="btn btn--primary" data-i18n="nav.cta">Jetzt anfragen</a>',
       waMobileBtn,
       '  </nav>',
       '</header>',
@@ -497,7 +497,7 @@
         "Nachricht:\n" + message;
 
       window.location.href =
-        "mailto:info@prepcenterfba.eu" +
+        "mailto:b2b@prepcenterfba.eu" +
         "?subject=" + encodeURIComponent(subject) +
         "&body="    + encodeURIComponent(body);
     });
