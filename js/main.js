@@ -38,28 +38,49 @@
       return '<a href="' + esc(p.href) + '" class="nav-link" data-i18n="' + esc(p.key) + '">' + esc(p.label) + '</a>';
     }).join("");
 
+    var waIcon = '<svg width="18" height="18" viewBox="0 0 32 32" aria-hidden="true"><path fill="#fff" d="M16 4a12 12 0 0 0-10.4 18l-1.5 5.4a1 1 0 0 0 1.2 1.2l5.5-1.4A12 12 0 1 0 16 4Zm0 2a10 10 0 1 1-5 18.7 1 1 0 0 0-.8-.1l-3.7 1 1-3.6a1 1 0 0 0-.1-.8A10 10 0 0 1 16 6Zm-3.6 4.9c-.3 0-.7.1-1 .5-.3.3-1.1 1.1-1.1 2.6s1.1 3 1.3 3.2c.2.2 2.2 3.5 5.4 4.8 2.7 1.1 3.2.9 3.8.8.6-.1 1.9-.8 2.2-1.6.3-.8.3-1.4.2-1.6-.1-.2-.3-.3-.7-.5l-2.4-1.1c-.3-.1-.6-.2-.8.1l-1 1.3c-.2.2-.4.3-.7.1a8.6 8.6 0 0 1-2.5-1.6 9.5 9.5 0 0 1-1.8-2.2c-.2-.3 0-.5.1-.7l.6-.7c.2-.2.2-.4.3-.6.1-.2 0-.5 0-.7l-1-2.5c-.3-.7-.6-.6-.9-.6h-.7Z"/></svg>';
+    var wa = PH_CONFIG.WHATSAPP || {};
+    var waHref = wa.number
+      ? "https://wa.me/" + encodeURIComponent(wa.number) + (wa.message ? "?text=" + encodeURIComponent(wa.message) : "")
+      : "";
+    var waHeaderBtn = waHref
+      ? '      <a href="' + waHref + '" class="btn-wa-header" target="_blank" rel="noopener" aria-label="WhatsApp">' + waIcon + 'WhatsApp</a>'
+      : "";
+    var waMobileBtn = waHref
+      ? '    <a href="' + waHref + '" class="btn-wa-header" target="_blank" rel="noopener" style="justify-content:center">' + waIcon + 'WhatsApp</a>'
+      : "";
+
     return [
       '<header class="site-header" id="site-header" role="banner">',
       '  <style>',
-      '    .site-header .header-inner{height:auto;padding:10px 0;gap:1.5rem}',
-      '    .header-mid{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:0}',
-      '    .header-slogan{font-size:clamp(1.15rem,2.1vw,2rem);font-style:italic;font-weight:600;color:#475569;text-align:center;line-height:1.25;margin:0}',
+      '    .header-row1{display:flex;align-items:center;gap:1.5rem;padding:8px 0 0}',
+      '    .header-slogan{flex:1;min-width:0;overflow:hidden;text-align:center;white-space:nowrap;font-size:clamp(1rem,2.2vw,1.9rem);font-style:italic;font-weight:600;color:#475569;line-height:1.2}',
       '    .header-slogan b{color:#f4721e;font-style:normal}',
-      '    .header-mid .main-nav{flex:none;justify-content:center;margin-top:6px}',
       '    .logo-img--header{height:172px;width:auto;display:block}',
+      '    .header-row2{display:flex;align-items:center;justify-content:center;gap:1.25rem;padding:0 0 12px;flex-wrap:wrap}',
+      '    .header-row2 .main-nav{flex:none;gap:.5rem}',
+      '    .header-row2 .nav-link{font-size:1.2rem;font-weight:600;padding:.45rem .9rem}',
+      '    .header-row2 .header-actions{margin-left:0}',
+      '    .btn-wa-header{display:inline-flex;align-items:center;gap:.45rem;background:#25d366;color:#fff;font-weight:600;border-radius:999px;padding:.5rem 1rem;font-size:.9rem;text-decoration:none;transition:filter .15s}',
+      '    .btn-wa-header:hover{filter:brightness(1.07);color:#fff}',
+      '    .header-row1 .burger{margin-left:auto}',
       '    @media(max-width:1100px){.logo-img--header{height:120px}}',
-      '    @media(max-width:767px){.logo-img--header{height:96px}.header-slogan{display:none}.header-mid{display:none}}',
+      '    @media(max-width:900px){.header-slogan{display:none}}',
+      '    @media(max-width:767px){.logo-img--header{height:96px}.header-row2{display:none}.header-row1{padding:8px 0}}',
       '  </style>',
-      '  <div class="container header-inner">',
+      '  <div class="container header-row1">',
       '    <a href="./index.html" class="logo" aria-label="' + esc(b.name) + ' – Startseite" style="display:flex;align-items:center;text-decoration:none">',
       '      <img src="./img/logo-full.png" class="logo-img logo-img--header" alt="PrepCenter Germany FBA">',
       '    </a>',
-      '    <div class="header-mid">',
-      '      <span class="header-slogan" aria-hidden="false">Built on <b>Trust</b>. Defined by <b>Integrity</b>. Backed by <b>Quality</b>.</span>',
-      '      <nav class="main-nav" role="navigation" aria-label="Hauptnavigation">',
-      '        ' + navLinks,
-      '      </nav>',
-      '    </div>',
+      '    <span class="header-slogan" aria-hidden="false">Built on <b>Trust</b>. Defined by <b>Integrity</b>. Backed by <b>Quality</b>.</span>',
+      '    <button class="burger" id="burger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="main-nav-mobile">',
+      '      <span></span><span></span><span></span>',
+      '    </button>',
+      '  </div>',
+      '  <div class="container header-row2">',
+      '    <nav class="main-nav" role="navigation" aria-label="Hauptnavigation">',
+      '      ' + navLinks,
+      '    </nav>',
       '    <div class="header-actions">',
       '      <div class="lang-dropdown" role="navigation" aria-label="Sprachauswahl">',
       '        <button class="lang-btn" aria-haspopup="listbox" aria-expanded="false" id="lang-btn" aria-label="Sprache wählen">',
@@ -74,14 +95,13 @@
       '        </ul>',
       '      </div>',
       '      <a href="#contact" class="btn btn--primary btn--sm" data-i18n="nav.cta">Jetzt anfragen</a>',
-      '      <button class="burger" id="burger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="main-nav-mobile">',
-      '        <span></span><span></span><span></span>',
-      '      </button>',
+      waHeaderBtn,
       '    </div>',
       '  </div>',
       '  <nav class="mobile-nav" id="main-nav-mobile" aria-label="Mobile Navigation" hidden>',
       '    ' + navLinks,
       '    <a href="#contact" class="btn btn--primary" data-i18n="nav.cta">Jetzt anfragen</a>',
+      waMobileBtn,
       '  </nav>',
       '</header>',
     ].join("\n");
