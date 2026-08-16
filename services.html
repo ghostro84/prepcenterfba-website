@@ -223,47 +223,47 @@
     <div class="contact-inner">
 
       <div class="contact-intro">
-        <span class="contact-intro__label">Kontakt</span>
-        <h2 id="svc-contact-heading">Leistung anfragen</h2>
-        <p>Senden Sie uns Ihre Produktliste und erhalten Sie innerhalb von 24 Stunden ein unverbindliches Angebot.</p>
+        <span class="contact-intro__label" data-i18n="ct.label">Kontakt</span>
+        <h2 id="svc-contact-heading" data-i18n="ct.title.svc">Leistung anfragen</h2>
+        <p data-i18n="ct.intro">Senden Sie uns Ihre Produktliste und erhalten Sie innerhalb von 24 Stunden ein unverbindliches Angebot.</p>
         <ul class="contact-trust-list" role="list">
-          <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="#60a5fa" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="#60a5fa" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg> Antwort innerhalb von 24 Stunden</li>
-          <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="#60a5fa" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="#60a5fa" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg> Unverbindlich &amp; kostenlos</li>
-          <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="#60a5fa" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="#60a5fa" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg> Feste Preise ab dem ersten Angebot</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="#60a5fa" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="#60a5fa" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg> <span data-i18n="ct.t1">Antwort innerhalb von 24 Stunden</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="#60a5fa" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="#60a5fa" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg> <span data-i18n="ct.t2">Unverbindlich &amp; kostenlos</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="#60a5fa" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="#60a5fa" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg> <span data-i18n="ct.t3">Feste Preise ab dem ersten Angebot</span></li>
         </ul>
       </div>
 
       <form class="contact-form" id="contact-form" novalidate>
         <div class="form-row">
           <div class="form-field">
-            <label for="cf-name">Name *</label>
+            <label for="cf-name" data-i18n="ct.name">Name *</label>
             <input type="text" id="cf-name" name="name" required placeholder="Max Mustermann" autocomplete="name">
           </div>
           <div class="form-field">
-            <label for="cf-email">E-Mail *</label>
+            <label for="cf-email" data-i18n="ct.email">E-Mail *</label>
             <input type="email" id="cf-email" name="email" required placeholder="max@beispiel.de" autocomplete="email">
           </div>
         </div>
         <div class="form-field">
-          <label for="cf-service">Gewünschte Leistungen</label>
+          <label for="cf-service" data-i18n="ct.services">Gewünschte Leistungen</label>
           <select id="cf-service" name="service">
-            <option value="">Bitte wählen …</option>
-            <option value="FBA Komplett-Prep">FBA Komplett-Prep</option>
-            <option value="FNSKU-Etikettierung">FNSKU-Etikettierung</option>
-            <option value="Qualitätskontrolle">Qualitätskontrolle</option>
-            <option value="Verpackung &amp; Prep">Verpackung &amp; Prep</option>
-            <option value="Bundling &amp; Sets">Bundling &amp; Sets</option>
-            <option value="Lagerung">Lagerung</option>
-            <option value="FBM-Versand">FBM-Versand</option>
-            <option value="Mehrere Leistungen">Mehrere Leistungen</option>
+            <option value="" data-i18n="ct.choose">Bitte wählen …</option>
+            <option value="FBA Komplett-Prep" data-i18n="ct.o1">FBA Komplett-Prep</option>
+            <option value="FNSKU-Etikettierung" data-i18n="ct.o2">FNSKU-Etikettierung</option>
+            <option value="Qualitätskontrolle" data-i18n="ct.o3">Qualitätskontrolle</option>
+            <option value="Verpackung &amp; Prep" data-i18n="ct.o4">Verpackung &amp; Prep</option>
+            <option value="Bundling &amp; Sets" data-i18n="ct.o5">Bundling &amp; Sets</option>
+            <option value="Lagerung" data-i18n="ct.o6">Lagerung</option>
+            <option value="FBM-Versand" data-i18n="ct.o7">FBM-Versand</option>
+            <option value="Mehrere Leistungen" data-i18n="ct.o8">Mehrere Leistungen</option>
           </select>
         </div>
         <div class="form-field">
-          <label for="cf-message">Nachricht *</label>
-          <textarea id="cf-message" name="message" required rows="4" placeholder="Beschreiben Sie kurz Ihre Produkte und Mengen …"></textarea>
+          <label for="cf-message" data-i18n="ct.message">Nachricht *</label>
+          <textarea id="cf-message" name="message" required rows="4" placeholder="Beschreiben Sie kurz Ihre Produkte und Mengen …" data-i18n="ct.msgph" data-i18n-attr="placeholder"></textarea>
         </div>
-        <button type="submit" class="btn btn--primary btn--lg contact-form__submit">Angebot anfragen →</button>
-        <p class="contact-form__note">* Pflichtfelder. Die Nachricht wird über Ihren E-Mail-Client gesendet.</p>
+        <button type="submit" class="btn btn--primary btn--lg contact-form__submit" data-i18n="ct.submit">Angebot anfragen →</button>
+        <p class="contact-form__note" data-i18n="ct.note">* Pflichtfelder. Die Nachricht wird über Ihren E-Mail-Client gesendet.</p>
       </form>
 
     </div>
