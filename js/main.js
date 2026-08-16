@@ -83,7 +83,7 @@
       '  <div class="container footer-grid">',
       '    <div class="footer-col footer-col--brand">',
       '      <div class="logo logo--light" style="display:inline-block;background:#fff;border-radius:12px;padding:10px 14px">',
-      '        <img src="./img/logo-full.png" class="logo-img logo-img--footer" alt="PrepCenter Germany FBA" style="height:88px;width:auto;display:block">',
+      '        <img src="./img/logo-full.png" class="logo-img" alt="PrepCenter Germany FBA" style="height:88px;width:auto;display:block;filter:none">',
       '      </div>',
       '      <p data-i18n="footer.tagline">Ihr zuverlässiger FBA Prep Partner in Deutschland. Schnell, transparent, zertifiziert.</p>',
       '      <address>',
