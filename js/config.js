@@ -9,18 +9,27 @@
 
   /* ─── Brand ──────────────────────────────────────────────────────────── */
   const BRAND = {
-    name:              "PrepCenter FBA",            // [PLACEHOLDER] legal trade name
-    legalForm:         "GmbH",                     // [PLACEHOLDER] GmbH / UG / GbR …
-    street:            "Musterstraße 1",           // [PLACEHOLDER]
+    name:              "PrepCenter FBA",            // brand / trade name shown on the site
+    legalName:         "MTZ World",                // legal company name (Impressum, footer, AGB)
+    legalForm:         "",                         // add legal form here if applicable (GmbH / UG / e.K. …)
+    street:            "Linderstrasse 21",
     zip:               "83395",
     city:              "Freilassing",
     country:           "Deutschland",
     email:             "info@prepcenterfba.eu",
     phone:             "+49 8654 000000",          // [PLACEHOLDER]
     vatId:             "DE000000000",              // [PLACEHOLDER] Umsatzsteuer-ID
-    registerCourt:     "Amtsgericht Traunstein",   // [PLACEHOLDER] Registergericht
-    registerNumber:    "HRB 00000",                // [PLACEHOLDER] Handelsregisternummer
-    geschaeftsfuehrer: "Max Mustermann",           // [PLACEHOLDER] Geschäftsführer
+    registerCourt:     "",                         // [PLACEHOLDER] Registergericht (falls eingetragen)
+    registerNumber:    "",                         // [PLACEHOLDER] Handelsregisternummer (falls eingetragen)
+    geschaeftsfuehrer: "",                         // [PLACEHOLDER] Inhaber / Geschäftsführer
+  };
+
+  /* ─── WhatsApp contact ───────────────────────────────────────────────── */
+  // Set the number in international format WITHOUT "+" or spaces,
+  // e.g. "4915112345678". While empty, all WhatsApp buttons stay hidden.
+  const WHATSAPP = {
+    number:  "",
+    message: "Hallo PrepCenter FBA! Ich interessiere mich für Ihre Prep-Services.",
   };
 
   /* ─── Default price list ─────────────────────────────────────────────── */
@@ -130,6 +139,7 @@
 
   global.PH_CONFIG = {
     BRAND,
+    WHATSAPP,
     DEFAULT_PRICES,
     VOLUME_TIERS,
     NEW_CUSTOMER_DISCOUNT,

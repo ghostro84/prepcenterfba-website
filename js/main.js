@@ -28,9 +28,10 @@
   function buildHeader() {
     var b = PH_CONFIG.BRAND;
     var pages = [
-      { href: "./index.html",    label: "Startseite",  key: "nav.home"     },
-      { href: "./services.html", label: "Leistungen",  key: "nav.services" },
-      { href: "./pricing.html",  label: "Preise",      key: "nav.pricing"  },
+      { href: "./index.html",      label: "Startseite",  key: "nav.home"       },
+      { href: "./services.html",   label: "Leistungen",  key: "nav.services"   },
+      { href: "./pricing.html",    label: "Preise",      key: "nav.pricing"    },
+      { href: "./kalkulator.html", label: "Kalkulator",  key: "nav.calculator" },
     ];
 
     var navLinks = pages.map(function (p) {
@@ -81,15 +82,17 @@
       '<footer class="site-footer" id="site-footer" role="contentinfo">',
       '  <div class="container footer-grid">',
       '    <div class="footer-col footer-col--brand">',
-      '      <div class="logo logo--light" style="display:flex;align-items:center;gap:10px">',
-      '        <img src="./img/logo-icon.png" class="logo-img logo-img--footer" alt="PrepCenter Germany FBA" width="40" height="40" style="width:40px;height:40px">',
-      '        <span style="font-weight:800;font-size:1.12rem;color:#fff;white-space:nowrap">' + esc(b.name).replace(" FBA", "") + '&nbsp;<span style="color:#f4721e">FBA</span></span>',
+      '      <div class="logo logo--light" style="display:inline-block;background:#fff;border-radius:12px;padding:10px 14px">',
+      '        <img src="./img/logo-full.png" class="logo-img logo-img--footer" alt="PrepCenter Germany FBA" style="height:88px;width:auto;display:block">',
       '      </div>',
       '      <p data-i18n="footer.tagline">Ihr zuverlässiger FBA Prep Partner in Deutschland. Schnell, transparent, zertifiziert.</p>',
       '      <address>',
       '        <span data-i18n="footer.address">' + esc(b.street) + ', ' + esc(b.zip) + ' ' + esc(b.city) + '</span><br>',
       '        <a href="mailto:' + esc(b.email) + '">' + esc(b.email) + '</a><br>',
       '        <a href="tel:' + esc(b.phone.replace(/\s/g, "")) + '">' + esc(b.phone) + '</a>',
+      '        ' + (PH_CONFIG.WHATSAPP && PH_CONFIG.WHATSAPP.number
+        ? '<br><a href="https://wa.me/' + esc(PH_CONFIG.WHATSAPP.number) + '?text=' + encodeURIComponent(PH_CONFIG.WHATSAPP.message || "") + '" target="_blank" rel="noopener" style="color:#25D366;font-weight:600" data-i18n="wa.footer">WhatsApp Chat</a>'
+        : ''),
       '      </address>',
       '    </div>',
       '    <div class="footer-col">',
@@ -98,6 +101,7 @@
       '        <li><a href="./index.html" data-i18n="nav.home">Startseite</a></li>',
       '        <li><a href="./services.html" data-i18n="nav.services">Leistungen</a></li>',
       '        <li><a href="./pricing.html" data-i18n="nav.pricing">Preise</a></li>',
+      '        <li><a href="./kalkulator.html" data-i18n="nav.calculator">Kalkulator</a></li>',
       '      </ul>',
       '    </div>',
       '    <div class="footer-col">',
@@ -123,7 +127,7 @@
       '  </div>',
       '  <div class="footer-bottom">',
       '    <div class="container">',
-      '      <span>&copy; ' + year + ' ' + esc(b.name) + ' ' + esc(b.legalForm) + ' · ' + esc(b.country) + '</span>',
+      '      <span>&copy; ' + year + ' ' + esc((b.legalName || b.name) + (b.legalForm ? " " + b.legalForm : "")) + ' · ' + esc(b.country) + '</span>',
       '    </div>',
       '  </div>',
       '</footer>',
@@ -466,6 +470,24 @@
     });
   }
 
+  /* ── Floating WhatsApp button ─────────────────────────────────────────── */
+  function initWhatsApp() {
+    var wa = PH_CONFIG.WHATSAPP;
+    if (!wa || !wa.number) return; // hidden until a number is configured
+    if (document.getElementById("wa-float")) return;
+    var a = document.createElement("a");
+    a.id = "wa-float";
+    a.href = "https://wa.me/" + encodeURIComponent(wa.number) + "?text=" + encodeURIComponent(wa.message || "");
+    a.target = "_blank";
+    a.rel = "noopener";
+    a.setAttribute("aria-label", "WhatsApp Chat");
+    a.style.cssText = "position:fixed;right:22px;bottom:22px;z-index:9999;width:58px;height:58px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.25);transition:transform .15s ease";
+    a.onmouseenter = function () { a.style.transform = "scale(1.08)"; };
+    a.onmouseleave = function () { a.style.transform = "scale(1)"; };
+    a.innerHTML = '<svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><path fill="#fff" d="M16 4a12 12 0 0 0-10.4 18l-1.5 5.4a1 1 0 0 0 1.2 1.2l5.5-1.4A12 12 0 1 0 16 4Zm0 2a10 10 0 1 1-5 18.7 1 1 0 0 0-.8-.1l-3.7 1 1-3.6a1 1 0 0 0-.1-.8A10 10 0 0 1 16 6Zm-3.6 4.9c-.3 0-.7.1-1 .5-.3.3-1.1 1.1-1.1 2.6s1.1 3 1.3 3.2c.2.2 2.2 3.5 5.4 4.8 2.7 1.1 3.2.9 3.8.8.6-.1 1.9-.8 2.2-1.6.3-.8.3-1.4.2-1.6-.1-.2-.3-.3-.7-.5l-2.4-1.1c-.3-.1-.6-.2-.8.1l-1 1.3c-.2.2-.4.3-.7.1a8.6 8.6 0 0 1-2.5-1.6 9.5 9.5 0 0 1-1.8-2.2c-.2-.3 0-.5.1-.7l.6-.7c.2-.2.2-.4.3-.6.1-.2 0-.5 0-.7l-1-2.5c-.3-.7-.6-.6-.9-.6h-.7Z"/></svg>';
+    document.body.appendChild(a);
+  }
+
   /* ── Init ──────────────────────────────────────────────────────────────── */
   function init() {
     injectChrome();
@@ -477,6 +499,7 @@
     initCalculator();
     initCookieBanner();
     initContactForm();
+    initWhatsApp();
     PH_I18N.apply();
   }
 
