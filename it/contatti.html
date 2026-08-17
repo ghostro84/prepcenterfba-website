@@ -86,6 +86,12 @@
 <strong>✅ <span data-i18n="kt.sent.t">Messaggio inviato!</span></strong>
 <span data-i18n="kt.sent.d">Grazie per la vostra richiesta. Vi ricontatteremo entro 24 ore nei giorni lavorativi.</span>
 </div>
+<div class="notice-box" hidden="" id="kt-error" role="alert" style="margin-bottom:1.5rem;border-color:#dc2626">
+<strong>⚠️ <span data-i18n="kt.err.t">Invio non riuscito</span></strong>
+<span data-i18n="kt.err.d">Non è stato possibile inviare la vostra richiesta. Scriveteci direttamente a</span>
+<a href="mailto:b2b@prepcenterfba.eu">b2b@prepcenterfba.eu</a> –
+      <span data-i18n="kt.err.d2">e ce ne occupiamo subito.</span>
+</div>
 <div class="contact-inner">
 <div class="contact-intro">
 <span class="contact-intro__label" data-i18n="ct.label">Contatto</span>
@@ -129,23 +135,19 @@
 <input autocomplete="email" data-i18n="ct.ph.email" data-i18n-attr="placeholder" id="cf-email" name="email" placeholder="mario@esempio.it" required="" type="email"/>
 </div>
 <div class="form-field">
-<label data-i18n="ct.lucid" for="cf-lucid">Numero di registrazione LUCID (se disponibile)</label>
-<input aria-describedby="cf-lucid-hint" id="cf-lucid" name="lucid" placeholder="DE1234567890123" type="text"/>
-<small data-i18n="ct.lucid.hint" id="cf-lucid-hint" style="color:#94a3b8;font-size:.78rem;line-height:1.5">Ai sensi del § 7 comma 7 VerpackG (legge tedesca sugli imballaggi) siamo tenuti a verificare, prima del primo ordine, se siete registrati nel registro degli imballaggi LUCID e se partecipate a un sistema duale. Potete comunicare il numero anche in un secondo momento.</small>
+<label data-i18n="ct.vat" for="cf-vat">Partita IVA / numero identificativo IVA (se disponibile)</label>
+<input aria-describedby="cf-vat-hint" autocomplete="off" data-i18n="ct.ph.vat" data-i18n-attr="placeholder" id="cf-vat" name="ust_id" placeholder="IT12345678901" type="text"/>
+<small data-i18n="ct.vat.hint" id="cf-vat-hint" style="color:#94a3b8;font-size:.78rem;line-height:1.5">Per i committenti con sede in un altro Paese UE fatturiamo con il meccanismo del reverse charge: per questo ci serve il vostro numero identificativo IVA. Senza partita IVA vi prepariamo comunque un'offerta.</small>
 </div>
 </div>
 <div class="form-field">
 <label data-i18n="ct.services" for="cf-service">Servizi richiesti</label>
 <select id="cf-service" name="service">
 <option data-i18n="ct.choose" value="">Selezionare …</option>
-<option data-i18n="ct.o1" value="FBA Komplett-Prep">Prep completo FBA</option>
-<option data-i18n="ct.o2" value="FNSKU-Etikettierung">Etichettatura FNSKU</option>
-<option data-i18n="ct.o3" value="Qualitätskontrolle">Controllo qualità</option>
-<option data-i18n="ct.o4" value="Verpackung &amp; Prep">Imballaggio e prep</option>
-<option data-i18n="ct.o5" value="Bundling &amp; Sets">Bundling e set</option>
-<option data-i18n="ct.o6" value="Lagerung">Stoccaggio</option>
-<option data-i18n="ct.o7" value="FBM-Versand">Spedizione FBM</option>
-<option data-i18n="ct.o8" value="Mehrere Leistungen">Più servizi</option>
+<option data-i18n="ct.o1" value="FBA Prep komplett">FBA prep completo</option>
+<option data-i18n="ct.o2" value="FBM Prep">FBM prep</option>
+<option data-i18n="ct.o3" value="Lagerung &amp; Warenprüfung">Stoccaggio e controllo merce</option>
+<option data-i18n="ct.o4" value="Andere Leistungen">Altri servizi</option>
 </select>
 </div>
 <div class="form-field">
@@ -181,11 +183,53 @@
 <script defer="" src="/js/i18n.js"></script>
 <script defer="" src="/js/lang/it.js"></script><script defer="" src="/js/main.js"></script>
 <script>
-  // Show success banner after FormSubmit redirect (?sent=1)
-  if (new URLSearchParams(location.search).get("sent") === "1") {
-    var el = document.getElementById("kt-success");
-    if (el) { el.hidden = false; el.scrollIntoView({ block: "center" }); }
-  }
+  (function () {
+    "use strict";
+    var FORM_ENDPOINT = "https://formsubmit.co/ajax/b2b@prepcenterfba.eu";
+
+    function show(id) {
+      var el = document.getElementById(id);
+      if (el) { el.hidden = false; el.scrollIntoView({ block: "center", behavior: "smooth" }); }
+    }
+
+    // Fallback ohne JavaScript: FormSubmit leitet auf ?sent=1 zurück
+    if (new URLSearchParams(location.search).get("sent") === "1") show("kt-success");
+
+    var form = document.getElementById("kontakt-form");
+    if (!form || !window.fetch) return;   // ohne fetch bleibt der klassische POST
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+
+      var btn = form.querySelector('button[type="submit"]');
+      var label = btn ? btn.textContent : "";
+      if (btn) { btn.disabled = true; btn.textContent = "…"; }
+
+      var data = new FormData(form);
+      data.append("_captcha", "false");   // beim AJAX-Versand nicht darstellbar
+
+      fetch(FORM_ENDPOINT, {
+        method: "POST",
+        body: data,
+        headers: { "Accept": "application/json" }
+      })
+        .then(function (r) { return r.json().catch(function () { return {}; }); })
+        .then(function (res) {
+          if (res && String(res.success) === "true") {
+            form.hidden = true;
+            show("kt-success");
+          } else {
+            if (btn) { btn.disabled = false; btn.textContent = label; }
+            show("kt-error");
+          }
+        })
+        .catch(function () {
+          if (btn) { btn.disabled = false; btn.textContent = label; }
+          show("kt-error");
+        });
+    });
+  }());
 </script>
 </body>
 </html>
