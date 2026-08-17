@@ -1,0 +1,112 @@
+# -*- coding: utf-8 -*-
+"""Übersetzte <title> und <meta description> je Seite und Sprache."""
+
+META = {
+"index.html": {
+ "en": ("FBA Prep Center Germany – Amazon Prep Services | PrepCenter FBA",
+        "PrepCenter FBA is your reliable FBA prep center in Germany. Receiving, FNSKU labelling, quality control and inbound shipping to Amazon FBA – fast, transparent and GDPR-compliant."),
+ "it": ("FBA Prep Center Germania – Servizi Amazon Prep | PrepCenter FBA",
+        "PrepCenter FBA è il vostro prep center FBA affidabile in Germania. Ricezione merce, etichettatura FNSKU, controllo qualità e invio ad Amazon FBA – rapido, trasparente e conforme al GDPR."),
+ "fr": ("FBA Prep Center Allemagne – Services Amazon Prep | PrepCenter FBA",
+        "PrepCenter FBA est votre prep center FBA fiable en Allemagne. Réception, étiquetage FNSKU, contrôle qualité et expédition vers Amazon FBA – rapide, transparent et conforme au RGPD."),
+},
+"services.html": {
+ "en": ("FBA Prep Services – Labelling, Packaging, Storage | PrepCenter FBA",
+        "All FBA prep services from PrepCenter FBA: receiving, FNSKU labelling, quality control, polybagging, bundling, storage, returns and FBM shipping. Amazon-compliant, transparently priced."),
+ "it": ("Servizi FBA Prep – Etichettatura, Imballaggio, Stoccaggio | PrepCenter FBA",
+        "Tutti i servizi FBA prep di PrepCenter FBA: ricezione merce, etichettatura FNSKU, controllo qualità, polybag, bundling, stoccaggio, resi e spedizione FBM. Conformi ad Amazon, prezzi trasparenti."),
+ "fr": ("Services FBA Prep – Étiquetage, Emballage, Stockage | PrepCenter FBA",
+        "Tous les services FBA prep de PrepCenter FBA : réception, étiquetage FNSKU, contrôle qualité, polybag, bundling, stockage, retours et expédition FBM. Conformes Amazon, prix transparents."),
+},
+"pricing.html": {
+ "en": ("FBA Prep Pricing & Cost Calculator | PrepCenter FBA",
+        "Transparent pricing for FBA prep services in Germany: FNSKU labelling €0.39, full FBA prep €0.79, receiving, storage, packaging. New-customer discount –10 %. Interactive cost calculator."),
+ "it": ("Prezzi FBA Prep e Calcolatore Costi | PrepCenter FBA",
+        "Prezzi trasparenti per i servizi FBA prep in Germania: etichettatura FNSKU 0,39 €, prep FBA completo 0,79 €, ricezione, stoccaggio, imballaggio. Sconto nuovi clienti –10 %. Calcolatore costi interattivo."),
+ "fr": ("Tarifs FBA Prep et Calculateur de Coûts | PrepCenter FBA",
+        "Tarifs transparents pour les services FBA prep en Allemagne : étiquetage FNSKU 0,39 €, prep FBA complet 0,79 €, réception, stockage, emballage. Remise nouveaux clients –10 %. Calculateur interactif."),
+},
+"fba-prep-center-deutschland.html": {
+ "en": ("FBA Prep Center Germany – Full Amazon Prep Service | PrepCenter FBA",
+        "FBA prep center in Germany: receiving, FNSKU labelling, quality control, polybagging, bundling, storage and inbound shipping to Amazon FBA. Fixed prices from €0.39, 24–48 hour turnaround."),
+ "it": ("FBA Prep Center Germania – Servizio Prep Completo | PrepCenter FBA",
+        "Prep center FBA in Germania: ricezione merce, etichettatura FNSKU, controllo qualità, polybag, bundling, stoccaggio e invio ad Amazon FBA. Prezzi fissi da 0,39 €, evasione in 24–48 ore."),
+ "fr": ("FBA Prep Center Allemagne – Service Prep Complet | PrepCenter FBA",
+        "Prep center FBA en Allemagne : réception, étiquetage FNSKU, contrôle qualité, polybag, bundling, stockage et expédition vers Amazon FBA. Prix fixes dès 0,39 €, traitement en 24–48 heures."),
+},
+"fnsku-etikettierung.html": {
+ "en": ("FNSKU Labeling for Amazon FBA – €0.39 per Unit | PrepCenter FBA",
+        "FNSKU labelling to Amazon specification: barcode verification, covering foreign barcodes, label printing and scan control. €0.39 per unit, processed within 24–48 hours."),
+ "it": ("Etichettatura FNSKU per Amazon FBA – 0,39 € a unità | PrepCenter FBA",
+        "Etichettatura FNSKU secondo le specifiche Amazon: verifica del codice a barre, copertura dei codici esterni, stampa etichette e controllo scanner. 0,39 € a unità, evasione in 24–48 ore."),
+ "fr": ("Étiquetage FNSKU pour Amazon FBA – 0,39 € par unité | PrepCenter FBA",
+        "Étiquetage FNSKU conforme aux exigences Amazon : vérification du code-barres, recouvrement des codes tiers, impression et contrôle au scanner. 0,39 € par unité, traitement en 24–48 heures."),
+},
+"fba-lagerung-deutschland.html": {
+ "en": ("FBA Storage Germany – Pre-Amazon Warehousing | PrepCenter FBA",
+        "Storage before Amazon inbound in Germany: 14 days free with booked prep, then €1.20 per carton and €19.00 per pallet per month. Release partial quantities on demand."),
+ "it": ("Stoccaggio FBA Germania – Magazzino Pre-Amazon | PrepCenter FBA",
+        "Stoccaggio prima dell'invio ad Amazon in Germania: 14 giorni gratuiti con prep prenotato, poi 1,20 € a cartone e 19,00 € a pallet al mese. Prelievo di quantità parziali su richiesta."),
+ "fr": ("Stockage FBA Allemagne – Entreposage avant Amazon | PrepCenter FBA",
+        "Stockage avant expédition vers Amazon en Allemagne : 14 jours offerts avec prep réservé, puis 1,20 € par carton et 19,00 € par palette et par mois. Sorties partielles à la demande."),
+},
+"versand-an-amazon.html": {
+ "en": ("Shipping to Amazon FBA from Germany | PrepCenter FBA",
+        "Inbound shipping to Amazon FBA from Germany: cartons and pallets prepared, labelled and handed to your carrier in line with Amazon requirements. €2.90 per carton, €18.00 per pallet."),
+ "it": ("Spedizione ad Amazon FBA dalla Germania | PrepCenter FBA",
+        "Invio ad Amazon FBA dalla Germania: cartoni e pallet preparati, etichettati e consegnati al corriere secondo i requisiti Amazon. 2,90 € a cartone, 18,00 € a pallet."),
+ "fr": ("Expédition vers Amazon FBA depuis l'Allemagne | PrepCenter FBA",
+        "Expédition vers Amazon FBA depuis l'Allemagne : cartons et palettes préparés, étiquetés et remis à votre transporteur selon les exigences Amazon. 2,90 € par carton, 18,00 € par palette."),
+},
+"amazon-retouren-deutschland.html": {
+ "en": ("Amazon Returns & Removal Orders Germany | PrepCenter FBA",
+        "Returns processing for Amazon sellers in Germany: receipt, condition inspection with report, refurbishment for re-inbound or compliant disposal. From €0.90 per unit."),
+ "it": ("Resi Amazon e Removal Order Germania | PrepCenter FBA",
+        "Gestione resi per venditori Amazon in Germania: ricezione, controllo delle condizioni con verbale, ricondizionamento per il reinvio o smaltimento conforme. Da 0,90 € a unità."),
+ "fr": ("Retours Amazon et Removal Orders Allemagne | PrepCenter FBA",
+        "Traitement des retours pour vendeurs Amazon en Allemagne : réception, contrôle de l'état avec rapport, remise en état pour réexpédition ou destruction conforme. Dès 0,90 € par unité."),
+},
+"fba-prep-center-bayern.html": {
+ "en": ("FBA Prep Center Bavaria – Freilassing near Salzburg | PrepCenter FBA",
+        "FBA prep center in Bavaria: located in Freilassing on the Salzburg border, short routes to Munich, Austria and northern Italy. Receiving, labelling, storage and FBA inbound."),
+ "it": ("FBA Prep Center Baviera – Freilassing vicino a Salisburgo | PrepCenter FBA",
+        "Prep center FBA in Baviera: sede a Freilassing al confine con Salisburgo, percorsi brevi verso Monaco, Austria e Nord Italia. Ricezione, etichettatura, stoccaggio e invio ad FBA."),
+ "fr": ("FBA Prep Center Bavière – Freilassing près de Salzbourg | PrepCenter FBA",
+        "Prep center FBA en Bavière : situé à Freilassing à la frontière de Salzbourg, trajets courts vers Munich, l'Autriche et le nord de l'Italie. Réception, étiquetage, stockage et expédition FBA."),
+},
+"kalkulator.html": {
+ "en": ("FBA Prep Cost Calculator | PrepCenter FBA",
+        "Work out your FBA prep costs in advance: enter units, cartons and pallets and see the price per service based on our published rate card. No registration required."),
+ "it": ("Calcolatore Costi FBA Prep | PrepCenter FBA",
+        "Calcolate in anticipo i costi del prep FBA: inserite unità, cartoni e pallet e vedete il prezzo per servizio in base al nostro listino pubblicato. Nessuna registrazione."),
+ "fr": ("Calculateur de Coûts FBA Prep | PrepCenter FBA",
+        "Estimez vos coûts de prep FBA à l'avance : saisissez unités, cartons et palettes et voyez le prix par prestation selon notre tarif publié. Sans inscription."),
+},
+"ueber-uns.html": {
+ "en": ("About Us – PrepCenter FBA | FBA Prep Center Freilassing",
+        "PrepCenter FBA is an owner-run FBA prep center in Freilassing near Salzburg. Fixed prices, 24–48 hour turnaround, one direct contact person."),
+ "it": ("Chi siamo – PrepCenter FBA | Prep Center FBA Freilassing",
+        "PrepCenter FBA è un prep center FBA a conduzione diretta con sede a Freilassing, vicino a Salisburgo. Prezzi fissi, evasione in 24–48 ore, un referente diretto."),
+ "fr": ("À propos – PrepCenter FBA | Prep Center FBA Freilassing",
+        "PrepCenter FBA est un prep center FBA géré par son propriétaire à Freilassing, près de Salzbourg. Prix fixes, traitement en 24–48 heures, un interlocuteur direct."),
+},
+"faq.html": {
+ "en": ("FAQ – Common Questions on FBA Prep | PrepCenter FBA",
+        "Answers to the most common questions about FBA prep: turnaround time, minimum order value, FNSKU labels, storage, returns, delivery and invoicing."),
+ "it": ("FAQ – Domande frequenti sul FBA Prep | PrepCenter FBA",
+        "Risposte alle domande più frequenti sul FBA prep: tempi di evasione, valore minimo d'ordine, etichette FNSKU, stoccaggio, resi, consegna e fatturazione."),
+ "fr": ("FAQ – Questions fréquentes sur le FBA Prep | PrepCenter FBA",
+        "Réponses aux questions les plus fréquentes sur le FBA prep : délais de traitement, valeur minimale de commande, étiquettes FNSKU, stockage, retours, livraison et facturation."),
+},
+"kontakt.html": {
+ "en": ("Contact – PrepCenter FBA | FBA Prep Center Freilassing",
+        "Contact PrepCenter FBA: address, email and delivery instructions for our FBA prep center in Freilassing. Enquiries answered within 24 hours."),
+ "it": ("Contatti – PrepCenter FBA | Prep Center FBA Freilassing",
+        "Contatti di PrepCenter FBA: indirizzo, e-mail e istruzioni per la consegna al nostro prep center FBA di Freilassing. Risposta alle richieste entro 24 ore."),
+ "fr": ("Contact – PrepCenter FBA | Prep Center FBA Freilassing",
+        "Contacter PrepCenter FBA : adresse, e-mail et consignes de livraison pour notre prep center FBA à Freilassing. Réponse aux demandes sous 24 heures."),
+},
+}
+
+# Sichtbare Beschriftungen, die nicht aus den Wörterbüchern kommen
+SKIP_LINK = {"en":"Skip to content","it":"Vai al contenuto","fr":"Aller au contenu"}
