@@ -1,5 +1,5 @@
 /**
- * js/main.js — PrepHub Germany core runtime.
+ * js/main.js — PrepCenter FBA core runtime.
  *
  * Responsibilities:
  *  - PH.esc(str)           safe HTML escaping
@@ -7,9 +7,7 @@
  *  - Active nav detection
  *  - Mobile burger menu
  *  - renderPriceTables()   renders [data-price-table] elements
- *  - Calculator engine     (#calculator)
- *  - Cookie banner         (#cookie-banner)
- *  - Language selector
+ *  - Language selector (tastaturbedienbar, auch im Mobilmenü)
  */
 (function (global) {
   "use strict";
@@ -42,6 +40,46 @@
   function vatSuffix(b) {
     if (b.kleinunternehmer || !b.vatId) return "";
     return " \u00b7 USt-IdNr.: " + esc(b.vatId);
+  }
+
+  /* ── Sprachumschalter ─────────────────────────────────────────────────
+     Die Optionen sind <button>-Elemente: nativ fokussierbar und mit
+     Enter/Leertaste bedienbar. Wird zweimal gerendert (Kopf + Mobilmenü),
+     deshalb bekommen die Instanzen eigene IDs. */
+  var LANG_NAMES = { de: "DE – Deutsch", en: "EN – English", it: "IT – Italiano", fr: "FR – Français" };
+  function langSwitcher(btnId, menuId, labelId) {
+    var opts = ["de", "en", "it", "fr"].map(function (code) {
+      return '<li><button type="button" class="lang-option" data-lang="' + code + '" lang="' + code + '">'
+           + esc(LANG_NAMES[code]) + '</button></li>';
+    }).join("");
+    return [
+      '      <div class="lang-dropdown" data-lang-switcher>',
+      '        <button type="button" class="lang-btn" aria-haspopup="true" aria-expanded="false"'
+        + ' aria-controls="' + menuId + '" id="' + btnId + '"'
+        + ' data-i18n="a11y.lang.choose" data-i18n-attr="aria-label" aria-label="Sprache wählen">',
+      '          <span class="lang-current" id="' + labelId + '">DE</span>',
+      '          <svg width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>',
+      '        </button>',
+      '        <ul class="lang-menu" id="' + menuId + '">',
+      '          ' + opts,
+      '        </ul>',
+      '      </div>',
+    ].join("\n");
+  }
+
+  /* Kompakte Sprachreihe fürs Mobilmenü: vier gleichrangige Schaltflächen,
+     kein Overlay – dadurch nichts, was der sticky Header abschneiden könnte. */
+  function langRow() {
+    var opts = ["de", "en", "it", "fr"].map(function (code) {
+      return '<button type="button" class="lang-pill" data-lang="' + code + '" lang="' + code + '">'
+           + code.toUpperCase() + '</button>';
+    }).join("");
+    return [
+      '    <div class="lang-row" data-lang-row role="group"'
+        + ' data-i18n="a11y.lang.choose" data-i18n-attr="aria-label" aria-label="Sprache wählen">',
+      '      ' + opts,
+      '    </div>',
+    ].join("\n");
   }
 
   /* ── Header template ──────────────────────────────────────────────────── */
@@ -89,44 +127,43 @@
       '    .header-flex .burger{align-self:center;margin-left:auto}',
       '    @media(max-width:1100px){.logo-img--header{height:120px}}',
       '    @media(max-width:900px){.header-slogan{display:none}}',
+      '    .lang-menu li{list-style:none;margin:0}',
+      '    .lang-menu .lang-option{display:block;width:100%;text-align:left;background:none;border:0;font-family:inherit;font-size:.85rem;line-height:inherit;cursor:pointer;border-radius:0}',
+      '    .lang-menu li:last-child .lang-option{border-radius:0 0 8px 8px}',
+      '    .mobile-nav .lang-dropdown{margin-top:.5rem}',
+      '    .mobile-nav .lang-btn{width:100%;justify-content:center}',
+      '    .lang-row{display:flex;gap:.4rem;margin-top:.75rem}',
+      '    .lang-pill{flex:1;padding:.55rem 0;border:1px solid #cbd5e1;border-radius:8px;background:#fff;',
+      '      font-family:inherit;font-size:.85rem;font-weight:600;color:#64748b;cursor:pointer}',
+      '    .lang-pill[aria-current="true"]{background:#1d4ed8;border-color:#1d4ed8;color:#fff}',
       '    @media(max-width:767px){.logo-img--header{height:96px}.header-right{display:none}}',
       '  </style>',
       '  <div class="container header-flex">',
-      '    <a href="' + esc(L("home")) + '" class="logo" aria-label="' + esc(b.name) + ' – Startseite" style="display:flex;align-items:center;text-decoration:none">',
-      '      <img src="/img/logo-full.png" class="logo-img logo-img--header" alt="PrepCenter Germany FBA">',
+      '    <a href="' + esc(L("home")) + '" class="logo" data-i18n="a11y.logo.home" data-i18n-attr="aria-label" aria-label="' + esc(b.name) + ' – Startseite" style="display:flex;align-items:center;text-decoration:none">',
+      '      <img src="/img/logo-full.png" class="logo-img logo-img--header" width="600" height="420" alt="PrepCenter FBA">',
       '    </a>',
       '    <div class="header-right">',
       '      <span class="header-slogan" aria-hidden="false"><span data-i18n="sl.s1">Auf </span><b data-i18n="sl.b1">Vertrauen</b><span data-i18n="sl.s2"> gebaut. Durch </span><b data-i18n="sl.b2">Qualität</b><span data-i18n="sl.s3"> gesichert. Von </span><b data-i18n="sl.b3">Integrität</b><span data-i18n="sl.s4"> geprägt.</span></span>',
       '      <div class="header-navrow">',
-      '        <nav class="main-nav" role="navigation" aria-label="Hauptnavigation">',
+      '        <nav class="main-nav" role="navigation" data-i18n="a11y.nav.main" data-i18n-attr="aria-label" aria-label="Hauptnavigation">',
       '          ' + navLinks,
       '        </nav>',
       '        <div class="header-actions">',
-      '      <div class="lang-dropdown" role="navigation" aria-label="Sprachauswahl">',
-      '        <button class="lang-btn" aria-haspopup="listbox" aria-expanded="false" id="lang-btn" aria-label="Sprache wählen">',
-      '          <span class="lang-current" id="lang-current">DE</span>',
-      '          <svg width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>',
-      '        </button>',
-      '        <ul class="lang-menu" role="listbox" id="lang-menu" aria-label="Sprachen">',
-      '          <li role="option" data-lang="de" class="lang-option lang-option--active">DE – Deutsch</li>',
-      '          <li role="option" data-lang="en" class="lang-option">EN – English</li>',
-      '          <li role="option" data-lang="it" class="lang-option">IT – Italiano</li>',
-      '          <li role="option" data-lang="fr" class="lang-option">FR – Français</li>',
-      '        </ul>',
-      '      </div>',
+      langSwitcher("lang-btn", "lang-menu", "lang-current"),
       '      <a href="' + esc(L("contact")) + '" class="btn btn--primary btn--sm" data-i18n="nav.cta">Jetzt anfragen</a>',
       waHeaderBtn,
       '        </div>',
       '      </div>',
       '    </div>',
-      '    <button class="burger" id="burger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="main-nav-mobile">',
+      '    <button class="burger" id="burger" data-i18n="a11y.menu.open" data-i18n-attr="aria-label" aria-label="Menü öffnen" aria-expanded="false" aria-controls="main-nav-mobile">',
       '      <span></span><span></span><span></span>',
       '    </button>',
       '  </div>',
-      '  <nav class="mobile-nav" id="main-nav-mobile" aria-label="Mobile Navigation" hidden>',
+      '  <nav class="mobile-nav" id="main-nav-mobile" data-i18n="a11y.nav.mobile" data-i18n-attr="aria-label" aria-label="Mobile Navigation" hidden>',
       '    ' + navLinks,
       '    <a href="' + esc(L("contact")) + '" class="btn btn--primary" data-i18n="nav.cta">Jetzt anfragen</a>',
       waMobileBtn,
+      langRow(),
       '  </nav>',
       '</header>',
     ].join("\n");
@@ -141,14 +178,14 @@
       '  <div class="container footer-grid">',
       '    <div class="footer-col footer-col--brand">',
       '      <div class="logo logo--light" style="display:inline-block;background:#fff;border-radius:12px;padding:10px 14px">',
-      '        <img src="/img/logo-full.png" class="logo-img" alt="PrepCenter Germany FBA" style="height:88px;width:auto;display:block;filter:none">',
+      '        <img src="/img/logo-full.png" class="logo-img" width="600" height="420" alt="PrepCenter FBA" style="height:88px;width:auto;display:block;filter:none">',
       '      </div>',
       '      <p class="footer-legalname">' + esc(b.legalName) + '</p>',
-      '      <p data-i18n="footer.tagline">Ihr zuverlässiger FBA Prep Partner in Deutschland. Schnell, transparent, zertifiziert.</p>',
+      '      <p data-i18n="footer.tagline">Ihr FBA Prep Partner in Deutschland. Schnell, transparent, zuverlässig.</p>',
       '      <address>',
       '        <span data-i18n="footer.address">' + esc(b.street) + ', ' + esc(b.zip) + ' ' + esc(b.city) + '</span><br>',
       '        <a href="mailto:' + esc(b.email) + '">' + esc(b.email) + '</a><br>',
-      '        <a href="tel:' + esc(b.phone.replace(/\s/g, "")) + '">' + esc(b.phone) + '</a>',
+      '        ' + (b.phone ? '<a href="tel:' + esc(b.phone.replace(/\s/g, "")) + '">' + esc(b.phone) + '</a>' : ''),
       '        ' + (PH_CONFIG.WHATSAPP && PH_CONFIG.WHATSAPP.number
         ? '<br><a href="https://wa.me/' + esc(PH_CONFIG.WHATSAPP.number) + '?text=' + encodeURIComponent(PH_CONFIG.WHATSAPP.message || "") + '" target="_blank" rel="noopener" style="color:#25D366;font-weight:600" data-i18n="wa.footer">WhatsApp Chat</a>'
         : ''),
@@ -234,52 +271,103 @@
     var burger = document.getElementById("burger");
     var mobileNav = document.getElementById("main-nav-mobile");
     if (!burger || !mobileNav) return;
-    burger.addEventListener("click", function () {
-      var open = mobileNav.hidden === false;
-      mobileNav.hidden = open;
-      burger.setAttribute("aria-expanded", String(!open));
-      burger.setAttribute("aria-label", open ? "Menü öffnen" : "Menü schließen");
+
+    function ti(key, fallback) {
+      var v = global.PH_I18N ? PH_I18N.t(key) : key;
+      return (v === key) ? fallback : v;
+    }
+    function setOpen(open) {
+      mobileNav.hidden = !open;
+      burger.setAttribute("aria-expanded", String(open));
+      burger.setAttribute("aria-label", open ? ti("a11y.menu.close", "Menü schließen")
+                                             : ti("a11y.menu.open",  "Menü öffnen"));
+      if (open) {
+        var first = mobileNav.querySelector("a, button");
+        if (first) first.focus();
+      }
+    }
+    burger.addEventListener("click", function () { setOpen(mobileNav.hidden); });
+    // Escape schließt das Menü und gibt den Fokus zurück
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && !mobileNav.hidden) { setOpen(false); burger.focus(); }
     });
   }
 
-  /* ── Language selector ─────────────────────────────────────────────────── */
+  /* ── Language selector ─────────────────────────────────────────────────
+     Bedient beide Instanzen (Kopfzeile + Mobilmenü). Die Optionen sind
+     Buttons, also von Haus aus per Tab/Enter/Leertaste erreichbar. */
   function initLangSelector() {
-    var btn   = document.getElementById("lang-btn");
-    var menu  = document.getElementById("lang-menu");
-    var label = document.getElementById("lang-current");
-    if (!btn || !menu) return;
+    document.querySelectorAll("[data-lang-switcher]").forEach(function (root) {
+      var btn   = root.querySelector(".lang-btn");
+      var menu  = root.querySelector(".lang-menu");
+      var label = root.querySelector(".lang-current");
+      if (!btn || !menu) return;
 
-    btn.addEventListener("click", function (e) {
-      e.stopPropagation();
-      var open = menu.classList.toggle("lang-menu--open");
-      btn.setAttribute("aria-expanded", String(open));
-    });
-
-    menu.querySelectorAll(".lang-option").forEach(function (opt) {
-      opt.addEventListener("click", function () {
-        var code = opt.getAttribute("data-lang");
-        PH_I18N.setLang(code);
-        renderPriceTables();
-        renderPriceCards();
-        if (label) label.textContent = code.toUpperCase();
-        menu.querySelectorAll(".lang-option").forEach(function (o) {
-          o.classList.toggle("lang-option--active", o === opt);
-        });
+      function close() {
         menu.classList.remove("lang-menu--open");
         btn.setAttribute("aria-expanded", "false");
+      }
+
+      btn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        var open = menu.classList.toggle("lang-menu--open");
+        btn.setAttribute("aria-expanded", String(open));
+        if (open) {
+          var first = menu.querySelector(".lang-option");
+          if (first) first.focus();
+        }
+      });
+
+      menu.querySelectorAll(".lang-option").forEach(function (opt) {
+        opt.addEventListener("click", function () {
+          close();
+          PH_I18N.setLang(opt.getAttribute("data-lang"));
+          // Ohne eigene URL für diese Sprache bleiben wir auf der Seite:
+          renderPriceTables();
+          renderPriceCards();
+          syncLangUI();
+        });
+      });
+
+      root.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && menu.classList.contains("lang-menu--open")) {
+          e.stopPropagation();
+          close();
+          btn.focus();
+        }
+      });
+
+      document.addEventListener("click", function (e) {
+        if (!root.contains(e.target)) close();
       });
     });
-
-    document.addEventListener("click", function () {
-      menu.classList.remove("lang-menu--open");
-      btn.setAttribute("aria-expanded", "false");
+    document.querySelectorAll("[data-lang-row] .lang-pill").forEach(function (pill) {
+      pill.addEventListener("click", function () {
+        PH_I18N.setLang(pill.getAttribute("data-lang"));
+        renderPriceTables();
+        renderPriceCards();
+        syncLangUI();
+      });
     });
+    syncLangUI();
+  }
 
-    // Reflect stored language
-    var cur = PH_I18N.getLang().toUpperCase();
-    if (label) label.textContent = cur;
-    menu.querySelectorAll(".lang-option").forEach(function (o) {
-      o.classList.toggle("lang-option--active", o.getAttribute("data-lang") === PH_I18N.getLang());
+  /* Aktive Sprache in allen Umschalter-Instanzen markieren. */
+  function syncLangUI() {
+    var cur = global.PH_I18N ? PH_I18N.getLang() : "de";
+    document.querySelectorAll("[data-lang-row] .lang-pill").forEach(function (pill) {
+      if (pill.getAttribute("data-lang") === cur) pill.setAttribute("aria-current", "true");
+      else pill.removeAttribute("aria-current");
+    });
+    document.querySelectorAll("[data-lang-switcher]").forEach(function (root) {
+      var label = root.querySelector(".lang-current");
+      if (label) label.textContent = cur.toUpperCase();
+      root.querySelectorAll(".lang-option").forEach(function (o) {
+        var active = o.getAttribute("data-lang") === cur;
+        o.classList.toggle("lang-option--active", active);
+        if (active) o.setAttribute("aria-current", "true");
+        else o.removeAttribute("aria-current");
+      });
     });
   }
 
@@ -299,12 +387,13 @@
       var rows  = prices.filter(function (p) { return p.group === group; });
       if (!rows.length) return;
 
+      var groupTitle = ti("price.group." + group, group);
       var html = [
-        '<table class="price-table" aria-label="' + esc(colSvc) + ' – ' + esc(group) + '">',
+        '<table class="price-table" aria-label="' + esc(groupTitle) + '">',
         '<thead><tr>',
-        '  <th scope="col">' + colSvc + '</th>',
-        '  <th scope="col">' + colUnit + '</th>',
-        '  <th scope="col" class="text-right">' + colPrice + '</th>',
+        '  <th scope="col">' + esc(colSvc) + '</th>',
+        '  <th scope="col">' + esc(colUnit) + '</th>',
+        '  <th scope="col" class="text-right">' + esc(colPrice) + '</th>',
         '</tr></thead>',
         '<tbody>',
       ];
@@ -367,171 +456,6 @@
     container.innerHTML = html;
   }
 
-  /* ── Calculator ────────────────────────────────────────────────────────── */
-  function initCalculator() {
-    var calc = document.getElementById("calculator");
-    if (!calc) return;
-
-    var prices = PH_CONFIG.getPrices();
-    function price(key) {
-      var p = prices.find(function (x) { return x.key === key; });
-      return p ? p.price : 0;
-    }
-
-    function val(id) {
-      var el = document.getElementById(id);
-      return el ? (parseFloat(el.value) || 0) : 0;
-    }
-    function checked(id) {
-      var el = document.getElementById(id);
-      return el ? el.checked : false;
-    }
-
-    function update() {
-      var units    = val("calc-units");
-      var cartons  = val("calc-cartons");
-      var pallets  = val("calc-pallets");
-      var sPallets = val("calc-storage-pallets");
-      var sMths    = val("calc-storage-months");
-
-      var receiving = cartons * price("recv_carton") + pallets * price("recv_pallet");
-
-      var prepCost = 0;
-      if (checked("calc-fnsku"))      prepCost += units * price("fnsku");
-      if (checked("calc-inspection")) prepCost += units * price("inspection");
-      if (checked("calc-polybag"))    prepCost += units * price("polybag");
-      if (checked("calc-bubblewrap")) prepCost += units * price("bubblewrap");
-      if (checked("calc-repack"))     prepCost += units * price("repack");
-      // Bundling is priced per SET, not per unit — use the dedicated set count
-      var bundles = val("calc-bundles");
-      prepCost += bundles * price("bundling");
-
-      var storage  = sPallets * sMths * price("storage_pallet");
-
-      // Discount: volume tiers (if configured) + new-customer discount select
-      var discount = PH_CONFIG.getVolumeDiscount(units);
-      var ncSel = document.getElementById("calc-newcustomer");
-      var ncRate = ncSel ? (parseFloat(ncSel.value) || 0) : 0;
-      discount = Math.min(discount + ncRate, 0.9);
-
-      var prepNet  = prepCost * (1 - discount);
-      var minFee   = price("min_order");
-
-      // if total is below min fee, add the difference
-      var subTotal = receiving + prepNet + storage;
-      var minAdj   = (subTotal > 0 && subTotal < minFee) ? (minFee - subTotal) : 0;
-      var total    = subTotal + minAdj;
-
-      function set(id, v) {
-        var el = document.getElementById(id);
-        if (el) el.textContent = PH_CONFIG.fmtEUR(v);
-      }
-
-      set("result-receiving", receiving);
-      set("result-prep",      prepCost);
-      set("result-discount",  prepCost * discount);
-      set("result-storage",   storage);
-      set("result-minfee",    minAdj);
-      set("result-total",     total);
-
-      var discRow = document.getElementById("result-row-discount");
-      if (discRow) discRow.style.display = discount > 0 ? "" : "none";
-
-      var minRow = document.getElementById("result-row-minfee");
-      if (minRow) minRow.style.display = minAdj > 0 ? "" : "none";
-
-      // show live unit price on checkboxes
-      [
-        ["calc-fnsku",      "fnsku"],
-        ["calc-inspection", "inspection"],
-        ["calc-polybag",    "polybag"],
-        ["calc-bubblewrap", "bubblewrap"],
-        ["calc-bundles",    "bundling"],
-        ["calc-repack",     "repack"],
-      ].forEach(function (pair) {
-        var badge = document.getElementById(pair[0] + "-price");
-        if (badge) {
-          var per = pair[1] === "bundling" ? " / Set" : " / Einheit";
-          badge.textContent = PH_CONFIG.fmtEUR(price(pair[1])) + per;
-        }
-      });
-
-      // discount label
-      var dlabel = document.getElementById("discount-tier-label");
-      if (dlabel) {
-        if (discount > 0) {
-          dlabel.textContent = "Rabatt: " + (discount * 100).toFixed(0) + " %";
-          dlabel.style.display = "";
-        } else {
-          dlabel.style.display = "none";
-        }
-      }
-    }
-
-    calc.querySelectorAll("input, select").forEach(function (el) {
-      el.addEventListener("input", update);
-      el.addEventListener("change", update);
-    });
-    update();
-  }
-
-  /* ── Cookie banner ─────────────────────────────────────────────────────── */
-  var COOKIE_KEY = "ph_cookie_consent";
-
-  function initCookieBanner() {
-    var banner = document.getElementById("cookie-banner");
-    if (!banner) return;
-
-    var stored = localStorage.getItem(COOKIE_KEY);
-    if (stored) { banner.hidden = true; return; }
-
-    banner.hidden = false;
-
-    var btnNec = document.getElementById("cookie-necessary");
-    var btnAll = document.getElementById("cookie-all");
-
-    function decide(value) {
-      try { localStorage.setItem(COOKIE_KEY, value); } catch (_) {}
-      banner.hidden = true;
-      try { global.dispatchEvent(new CustomEvent("ph:consent", { detail: value })); } catch (_) {}
-    }
-    if (btnNec) btnNec.addEventListener("click", function () { decide("necessary"); });
-    if (btnAll) btnAll.addEventListener("click", function () { decide("all"); });
-  }
-
-  /* ── Contact form → mailto ─────────────────────────────────────────────── */
-  function initContactForm() {
-    var form = document.getElementById("contact-form");
-    if (!form) return;
-
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      var name    = (form.elements.name    ? form.elements.name.value.trim()    : "");
-      var email   = (form.elements.email   ? form.elements.email.value.trim()   : "");
-      var service = (form.elements.service ? form.elements.service.value.trim() : "");
-      var message = (form.elements.message ? form.elements.message.value.trim() : "");
-
-      // Basic HTML5 validation
-      if (!form.checkValidity()) {
-        form.reportValidity();
-        return;
-      }
-
-      var subject = "Angebotsanfrage – PrepCenter FBA";
-      var body =
-        "Name: " + name + "\n" +
-        "E-Mail: " + email + "\n" +
-        "Leistung: " + (service || "Nicht angegeben") + "\n\n" +
-        "Nachricht:\n" + message;
-
-      window.location.href =
-        "mailto:b2b@prepcenterfba.eu" +
-        "?subject=" + encodeURIComponent(subject) +
-        "&body="    + encodeURIComponent(body);
-    });
-  }
-
   /* ── Floating WhatsApp button ─────────────────────────────────────────── */
   function initWhatsApp() {
     var wa = PH_CONFIG.WHATSAPP;
@@ -558,11 +482,9 @@
     initLangSelector();
     renderPriceTables();
     renderPriceCards();
-    initCalculator();
-    initCookieBanner();
-    initContactForm();
     initWhatsApp();
     PH_I18N.apply();
+    syncLangUI();
   }
 
   if (document.readyState === "loading") {

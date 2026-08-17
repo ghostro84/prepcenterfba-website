@@ -1,5 +1,5 @@
 /**
- * js/i18n.js — Lightweight i18n engine for PrepHub Germany.
+ * js/i18n.js — Lightweight i18n engine für PrepCenter FBA.
  *
  * Global: PH_I18N
  *
@@ -103,6 +103,8 @@
    * If no translation exists the element is left untouched.
    */
   function apply() {
+    // <html lang> immer der aktiven Sprache angleichen (Screenreader-Aussprache)
+    try { document.documentElement.setAttribute("lang", _lang); } catch (_) {}
     var nodes = document.querySelectorAll("[data-i18n]");
     nodes.forEach(function (el) {
       var key = el.getAttribute("data-i18n");

@@ -1,19 +1,23 @@
 /**
  * js/analytics.js — Einwilligungsgesteuertes Tracking.
  *
- * Standard: KEIN Tracking. Erst wenn im Cookie-Banner „Alle akzeptieren"
- * geklickt wurde (localStorage ph_cookie_consent === "all"), wird das
- * konfigurierte Analyse-Skript nachgeladen. Ohne Einwilligung wird kein
- * Drittanbieter-Request ausgelöst – das ist die Voraussetzung dafür, dass
- * die Angaben in der Datenschutzerklärung stimmen (§ 25 TDDG / Art. 6 DSGVO).
+ * ►►► DIESE DATEI IST DERZEIT NICHT EINGEBUNDEN.
  *
- * ►►► EINRICHTEN:
- *   1. PROVIDER auf "ga4", "plausible" oder "none" setzen.
- *   2. Die passende ID bzw. Domain eintragen.
- *   3. Bei GA4 zusätzlich in der Datenschutzerklärung den Abschnitt
- *      „Webanalyse" ergänzen (Anbieter, Zweck, Speicherdauer, Drittlandtransfer).
- *      Plausible ist datenschutzfreundlicher: keine Cookies, EU-Hosting,
- *      keine personenbezogenen Daten – dann genügt ein kurzer Hinweis.
+ * Die Website setzt aktuell KEIN Tracking ein (PROVIDER = "none") und zeigt
+ * deshalb bewusst auch kein Cookie-Banner: Es werden ausschließlich technisch
+ * notwendige localStorage-Schlüssel verwendet, für die nach § 25 Abs. 2 TDDDG
+ * keine Einwilligung erforderlich ist. Ein Banner, das eine Einwilligung für
+ * eine nicht stattfindende Verarbeitung einholt, wäre eine unrichtige Angabe.
+ *
+ * ►►► VOR AKTIVIERUNG VON ANALYTICS SIND DREI SCHRITTE NÖTIG:
+ *   1. PROVIDER auf "plausible" (empfohlen: EU-Hosting, cookiefrei) oder
+ *      "ga4" setzen und die passende ID bzw. Domain eintragen.
+ *   2. Ein Consent-Banner wieder einbauen, das localStorage["ph_cookie_consent"]
+ *      auf "all" setzt und das Event "ph:consent" auslöst — mit gleichwertigem
+ *      Ablehnen-Button und einem jederzeit erreichbaren Widerrufslink.
+ *   3. Diese Datei auf allen Seiten wieder als <script defer> einbinden und
+ *      die Datenschutzerklärung um den Abschnitt „Webanalyse" ergänzen
+ *      (Anbieter, Zweck, Speicherdauer, Drittlandtransfer).
  */
 (function (global) {
   "use strict";
