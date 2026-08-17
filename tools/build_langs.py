@@ -24,6 +24,7 @@ def load_dict(lang):
 def link_map(lang):
     m = {}
     keymap = {"index.html":"home","services.html":"services","pricing.html":"pricing",
+              "kalkulator.html":"calculator",
               "ueber-uns.html":"about","faq.html":"faq","kontakt.html":"contact",
               "fba-prep-center-deutschland.html":"pillar","fnsku-etikettierung.html":"labeling",
               "fba-lagerung-deutschland.html":"storage","versand-an-amazon.html":"shipping",

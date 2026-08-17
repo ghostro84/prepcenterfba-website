@@ -62,7 +62,6 @@ ORG = {
   "url": DOMAIN + "/",
   "email": "b2b@prepcenterfba.eu",
   "vatID": "DE360335852",
-  "founder": {"@type": "Person", "name": "Valentin Zbranca"},
   "address": {"@type": "PostalAddress", "streetAddress": "Lindenstraße 21",
               "postalCode": "83395", "addressLocality": "Freilassing",
               "addressRegion": "Bayern", "addressCountry": "DE"},
