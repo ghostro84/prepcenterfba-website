@@ -9,20 +9,24 @@
 
   /* ─── Brand ──────────────────────────────────────────────────────────── */
   const BRAND = {
-    name:              "PrepCenter FBA",            // brand / trade name shown on the site
-    legalName:         "MTZ World",                // legal company name (Impressum, footer, AGB)
-    legalForm:         "",                         // add legal form here if applicable (GmbH / UG / e.K. …)
-    street:            "Lindenstraße 21",
-    zip:               "83395",
-    city:              "Freilassing",
-    country:           "Deutschland",
-    email:             "info@prepcenterfba.eu",
-    phone:             "+49 8654 000000",          // [PLACEHOLDER]
-    vatId:             "DE000000000",              // [PLACEHOLDER] Umsatzsteuer-ID
-    registerCourt:     "",                         // [PLACEHOLDER] Registergericht (falls eingetragen)
-    registerNumber:    "",                         // [PLACEHOLDER] Handelsregisternummer (falls eingetragen)
-    geschaeftsfuehrer: "",                         // [PLACEHOLDER] Inhaber / Geschäftsführer
+    name:        "PrepCenter FBA",        // Geschäftsbezeichnung / Marke
+    legalName:   "Zbranca MTZ World",     // Firmierung des Einzelunternehmens
+    legalForm:   "",                      // Einzelunternehmen → bleibt leer
+    owner:       "Valentin Zbranca",      // Inhaber (§ 5 DDG)
+    street:      "Lindenstraße 21",
+    zip:         "83395",
+    city:        "Freilassing",
+    region:      "Bayern",
+    country:     "Deutschland",
+    countryCode: "DE",
+    email:       "b2b@prepcenterfba.eu",
+    phone:       "",                      // bewusst keine öffentliche Telefonnummer
+    vatId:       "DE360335852",           // USt-IdNr. § 27a UStG
+    kleinunternehmer: false,
+    domain:      "https://prepcenterfba.eu",
+    // Steuernummer wird bewusst NICHT veröffentlicht – die USt-IdNr. genügt.
   };
+
 
   /* ─── WhatsApp contact ───────────────────────────────────────────────── */
   // Set the number in international format WITHOUT "+" or spaces,

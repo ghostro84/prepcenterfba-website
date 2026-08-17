@@ -24,14 +24,36 @@
       .replace(/'/g, "&#39;");
   }
 
+  /* ── Interne Links ─────────────────────────────────────────────────────
+     Deutsche Seiten liegen im Root, die Sprachversionen unter /en/, /it/
+     und /fr/ mit eigenen Slugs. Vorgerenderte Seiten setzen window.PH_LINKS,
+     damit dieselbe Navigation mit ihren URLs erzeugt wird. */
+  var DEFAULT_LINKS = {
+    home: "./index.html", services: "./services.html", pricing: "./pricing.html",
+    calculator: "./kalkulator.html", about: "./ueber-uns.html", faq: "./faq.html",
+    contact: "./kontakt.html", pillar: "./fba-prep-center-deutschland.html",
+    labeling: "./fnsku-etikettierung.html", storage: "./fba-lagerung-deutschland.html",
+    shipping: "./versand-an-amazon.html", returns: "./amazon-retouren-deutschland.html",
+    imprint: "/impressum.html", privacy: "/datenschutz.html", terms: "/agb.html"
+  };
+  function L(key) { var o = global.PH_LINKS || {}; return o[key] || DEFAULT_LINKS[key]; }
+
+  /* USt-Hinweis für den Footer: USt-IdNr. nur zeigen, wenn gepflegt. */
+  function vatSuffix(b) {
+    if (b.kleinunternehmer || !b.vatId) return "";
+    return " \u00b7 USt-IdNr.: " + esc(b.vatId);
+  }
+
   /* ── Header template ──────────────────────────────────────────────────── */
   function buildHeader() {
     var b = PH_CONFIG.BRAND;
     var pages = [
-      { href: "./index.html",      label: "Startseite",  key: "nav.home"       },
-      { href: "./services.html",   label: "Leistungen",  key: "nav.services"   },
-      { href: "./pricing.html",    label: "Preise",      key: "nav.pricing"    },
-      { href: "./kalkulator.html", label: "Kalkulator",  key: "nav.calculator" },
+      { href: L("home"),       label: "Startseite", key: "nav.home"       },
+      { href: L("services"),   label: "Leistungen", key: "nav.services"   },
+      { href: L("pricing"),    label: "Preise",     key: "nav.pricing"    },
+      { href: L("calculator"), label: "Kalkulator", key: "nav.calculator" },
+      { href: L("about"),      label: "Über uns",   key: "nav.about"      },
+      { href: L("faq"),        label: "FAQ",        key: "nav.faq"        },
     ];
 
     var navLinks = pages.map(function (p) {
@@ -70,8 +92,8 @@
       '    @media(max-width:767px){.logo-img--header{height:96px}.header-right{display:none}}',
       '  </style>',
       '  <div class="container header-flex">',
-      '    <a href="./index.html" class="logo" aria-label="' + esc(b.name) + ' – Startseite" style="display:flex;align-items:center;text-decoration:none">',
-      '      <img src="./img/logo-full.png" class="logo-img logo-img--header" alt="PrepCenter Germany FBA">',
+      '    <a href="' + esc(L("home")) + '" class="logo" aria-label="' + esc(b.name) + ' – Startseite" style="display:flex;align-items:center;text-decoration:none">',
+      '      <img src="/img/logo-full.png" class="logo-img logo-img--header" alt="PrepCenter Germany FBA">',
       '    </a>',
       '    <div class="header-right">',
       '      <span class="header-slogan" aria-hidden="false"><span data-i18n="sl.s1">Auf </span><b data-i18n="sl.b1">Vertrauen</b><span data-i18n="sl.s2"> gebaut. Durch </span><b data-i18n="sl.b2">Qualität</b><span data-i18n="sl.s3"> gesichert. Von </span><b data-i18n="sl.b3">Integrität</b><span data-i18n="sl.s4"> geprägt.</span></span>',
@@ -92,7 +114,7 @@
       '          <li role="option" data-lang="fr" class="lang-option">FR – Français</li>',
       '        </ul>',
       '      </div>',
-      '      <a href="./kontakt.html" class="btn btn--primary btn--sm" data-i18n="nav.cta">Jetzt anfragen</a>',
+      '      <a href="' + esc(L("contact")) + '" class="btn btn--primary btn--sm" data-i18n="nav.cta">Jetzt anfragen</a>',
       waHeaderBtn,
       '        </div>',
       '      </div>',
@@ -103,7 +125,7 @@
       '  </div>',
       '  <nav class="mobile-nav" id="main-nav-mobile" aria-label="Mobile Navigation" hidden>',
       '    ' + navLinks,
-      '    <a href="./kontakt.html" class="btn btn--primary" data-i18n="nav.cta">Jetzt anfragen</a>',
+      '    <a href="' + esc(L("contact")) + '" class="btn btn--primary" data-i18n="nav.cta">Jetzt anfragen</a>',
       waMobileBtn,
       '  </nav>',
       '</header>',
@@ -119,8 +141,9 @@
       '  <div class="container footer-grid">',
       '    <div class="footer-col footer-col--brand">',
       '      <div class="logo logo--light" style="display:inline-block;background:#fff;border-radius:12px;padding:10px 14px">',
-      '        <img src="./img/logo-full.png" class="logo-img" alt="PrepCenter Germany FBA" style="height:88px;width:auto;display:block;filter:none">',
+      '        <img src="/img/logo-full.png" class="logo-img" alt="PrepCenter Germany FBA" style="height:88px;width:auto;display:block;filter:none">',
       '      </div>',
+      '      <p class="footer-legalname">' + esc(b.legalName) + ' &middot; Inhaber: ' + esc(b.owner) + '</p>',
       '      <p data-i18n="footer.tagline">Ihr zuverlässiger FBA Prep Partner in Deutschland. Schnell, transparent, zertifiziert.</p>',
       '      <address>',
       '        <span data-i18n="footer.address">' + esc(b.street) + ', ' + esc(b.zip) + ' ' + esc(b.city) + '</span><br>',
@@ -134,36 +157,40 @@
       '    <div class="footer-col">',
       '      <h3 data-i18n="footer.nav.title">Navigation</h3>',
       '      <ul>',
-      '        <li><a href="./index.html" data-i18n="nav.home">Startseite</a></li>',
-      '        <li><a href="./services.html" data-i18n="nav.services">Leistungen</a></li>',
-      '        <li><a href="./pricing.html" data-i18n="nav.pricing">Preise</a></li>',
-      '        <li><a href="./kalkulator.html" data-i18n="nav.calculator">Kalkulator</a></li>',
+      '        <li><a href="' + esc(L("home")) + '" data-i18n="nav.home">Startseite</a></li>',
+      '        <li><a href="' + esc(L("services")) + '" data-i18n="nav.services">Leistungen</a></li>',
+      '        <li><a href="' + esc(L("pricing")) + '" data-i18n="nav.pricing">Preise</a></li>',
+      '        <li><a href="' + esc(L("calculator")) + '" data-i18n="nav.calculator">Kalkulator</a></li>',
+      '        <li><a href="' + esc(L("about")) + '" data-i18n="nav.about">Über uns</a></li>',
+      '        <li><a href="' + esc(L("faq")) + '" data-i18n="nav.faq">FAQ</a></li>',
+      '        <li><a href="' + esc(L("contact")) + '" data-i18n="nav.contact">Kontakt</a></li>',
       '      </ul>',
       '    </div>',
       '    <div class="footer-col">',
       '      <h3 data-i18n="footer.services.title">Leistungen</h3>',
       '      <ul>',
-      '        <li><a href="./services.html#receiving" data-i18n="service.receiving">Wareneingang</a></li>',
-      '        <li><a href="./services.html#inspection" data-i18n="service.inspection">Qualitätskontrolle</a></li>',
-      '        <li><a href="./services.html#labeling" data-i18n="service.labeling">FNSKU-Etikettierung</a></li>',
-      '        <li><a href="./services.html#packaging" data-i18n="service.packaging">Verpackung &amp; Prep</a></li>',
-      '        <li><a href="./services.html#bundling" data-i18n="service.bundling">Bundling</a></li>',
-      '        <li><a href="./services.html#forwarding" data-i18n="service.forwarding">Einlieferung FBA</a></li>',
+      '        <li><a href="' + esc(L("pillar")) + '" data-i18n="nav.pillar">FBA Prep Center Deutschland</a></li>',
+      '        <li><a href="' + esc(L("labeling")) + '" data-i18n="service.labeling">FNSKU-Etikettierung</a></li>',
+      '        <li><a href="' + esc(L("storage")) + '" data-i18n="service.storage">Lagerung</a></li>',
+      '        <li><a href="' + esc(L("shipping")) + '" data-i18n="service.forwarding">Einlieferung FBA</a></li>',
+      '        <li><a href="' + esc(L("returns")) + '" data-i18n="service.returns">Retourenbearbeitung</a></li>',
+      '        <li><a href="' + esc(L("services")) + '" data-i18n="nav.allservices">Alle Leistungen</a></li>',
       '      </ul>',
       '    </div>',
       '    <div class="footer-col">',
       '      <h3 data-i18n="footer.legal.title">Rechtliches</h3>',
       '      <ul>',
-      '        <li><a href="./impressum.html" data-i18n="footer.legal.imprint">Impressum</a></li>',
-      '        <li><a href="./datenschutz.html" data-i18n="footer.legal.privacy">Datenschutzerklärung</a></li>',
-      '        <li><a href="./agb.html" data-i18n="footer.legal.terms">AGB</a></li>',
+      '        <li><a href="' + esc(L("imprint")) + '" data-i18n="footer.legal.imprint">Impressum</a></li>',
+      '        <li><a href="' + esc(L("privacy")) + '" data-i18n="footer.legal.privacy">Datenschutzerklärung</a></li>',
+      '        <li><a href="' + esc(L("terms")) + '" data-i18n="footer.legal.terms">AGB</a></li>',
       '      </ul>',
-      '      <p class="vat-note" data-i18n="footer.vat">Alle Preise netto zzgl. gesetzlicher USt. · USt-ID: ' + esc(b.vatId) + '</p>',
+      '      <p class="vat-note"><span data-i18n="footer.vat">Alle Preise netto zzgl. gesetzlicher USt.</span>' + vatSuffix(b) + '</p>',
       '    </div>',
       '  </div>',
       '  <div class="footer-bottom">',
       '    <div class="container">',
-      '      <span>&copy; ' + year + ' ' + esc((b.legalName || b.name) + (b.legalForm ? " " + b.legalForm : "")) + ' · ' + esc(b.country) + '</span>',
+      '      <p class="footer-disclaimer" data-i18n="footer.disclaimer">Rechtlicher Hinweis: PrepCenter FBA (Zbranca MTZ World) ist ein unabhängiger Dienstleister und steht in keiner geschäftlichen Verbindung zu Amazon. Wir sind kein Partner, Vertreter, Wiederverkäufer oder Beauftragter von Amazon und werden von Amazon weder gesponsert noch unterstützt oder in sonstiger Weise unterhalten. „Amazon", „Amazon FBA", „FNSKU" und alle zugehörigen Logos sind Marken der Amazon.com, Inc. oder ihrer verbundenen Unternehmen. Die Nennung dieser Marken erfolgt ausschließlich beschreibend, um die von uns angebotenen Dienstleistungen zu erläutern (nominative Markennennung).</p>',
+      '      <span>&copy; ' + year + ' ' + esc((b.legalName || b.name) + (b.legalForm ? " " + b.legalForm : "")) + ' · ' + esc(b.city) + ', ' + esc(b.country) + '</span>',
       '    </div>',
       '  </div>',
       '</footer>',
@@ -463,14 +490,13 @@
     var btnNec = document.getElementById("cookie-necessary");
     var btnAll = document.getElementById("cookie-all");
 
-    if (btnNec) btnNec.addEventListener("click", function () {
-      localStorage.setItem(COOKIE_KEY, "necessary");
+    function decide(value) {
+      try { localStorage.setItem(COOKIE_KEY, value); } catch (_) {}
       banner.hidden = true;
-    });
-    if (btnAll) btnAll.addEventListener("click", function () {
-      localStorage.setItem(COOKIE_KEY, "all");
-      banner.hidden = true;
-    });
+      try { global.dispatchEvent(new CustomEvent("ph:consent", { detail: value })); } catch (_) {}
+    }
+    if (btnNec) btnNec.addEventListener("click", function () { decide("necessary"); });
+    if (btnAll) btnAll.addEventListener("click", function () { decide("all"); });
   }
 
   /* ── Contact form → mailto ─────────────────────────────────────────────── */

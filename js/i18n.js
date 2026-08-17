@@ -26,6 +26,10 @@
   var _lang  = DEFAULT_LANG;
 
   function _loadStored() {
+    // Auf vorgerenderten Sprachversionen (/en/, /it/, /fr/) bestimmt die URL
+    // die Sprache – nicht localStorage.
+    var forced = global.PH_FORCE_LANG;
+    if (forced && SUPPORTED.indexOf(forced) !== -1) { _lang = forced; return; }
     try {
       var stored = localStorage.getItem(STORAGE_KEY);
       if (stored && SUPPORTED.indexOf(stored) !== -1) _lang = stored;
@@ -38,6 +42,13 @@
 
   function setLang(code) {
     if (SUPPORTED.indexOf(code) === -1) return;
+    // Existiert eine echte URL für diese Sprache, wird dorthin navigiert.
+    var urls = global.PH_LANG_URLS;
+    if (urls && urls[code] && code !== _lang) {
+      try { localStorage.setItem(STORAGE_KEY, code); } catch (_) {}
+      global.location.href = urls[code];
+      return;
+    }
     _lang = code;
     try { localStorage.setItem(STORAGE_KEY, code); } catch (_) {}
     apply();
