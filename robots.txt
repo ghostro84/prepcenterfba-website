@@ -1,2 +1,7 @@
 User-agent: *
 Allow: /
+
+# Keine Suchmaschinen-Indexierung interner Build-Dateien
+Disallow: /tools/
+
+Sitemap: https://prepcenterfba.eu/sitemap.xml
