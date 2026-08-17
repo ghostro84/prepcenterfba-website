@@ -67,6 +67,9 @@ def build(lang):
         soup = BeautifulSoup(open(de_file, encoding="utf-8").read(), "lxml")
 
         soup.html["lang"] = HTML_LANG[lang]
+        # Verweise auf rein deutsche Seiten gehoeren nicht in die Uebersetzungen
+        for el in soup.select("[data-de-only]"):
+            el.decompose()
         translate(soup, d)
         fix_paths(soup)
 

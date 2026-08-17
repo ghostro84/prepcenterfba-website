@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import sys, os, datetime
 sys.path.insert(0, os.path.dirname(__file__))
-from seo import DOMAIN, LANGS, PAGES, LEGAL, url
+from seo import DOMAIN, LANGS, PAGES, LEGAL, DE_ONLY, url
 
 TODAY = os.environ.get("BUILD_DATE") or datetime.date.today().isoformat()
 
@@ -28,6 +28,14 @@ for de_file, (slugs, prio, freq) in PAGES.items():
         out.append("    <changefreq>%s</changefreq>" % freq)
         out.append("    <priority>%s</priority>" % (prio if lang == "de" else "%.1f" % max(0.1, float(prio) - 0.2)))
         out.append("  </url>")
+
+for f, (prio, freq) in DE_ONLY.items():
+    out += ["  <url>", "    <loc>%s/%s</loc>" % (DOMAIN, f),
+            '    <xhtml:link rel="alternate" hreflang="de" href="%s/%s"/>' % (DOMAIN, f),
+            '    <xhtml:link rel="alternate" hreflang="x-default" href="%s/%s"/>' % (DOMAIN, f),
+            "    <lastmod>%s</lastmod>" % lastmod(f),
+            "    <changefreq>%s</changefreq>" % freq,
+            "    <priority>%s</priority>" % prio, "  </url>"]
 
 # Rechtstexte stehen bewusst NICHT in der Sitemap: sie tragen
 # <meta name="robots" content="noindex"> – beides zusammen wäre ein

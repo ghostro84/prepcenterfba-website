@@ -24,6 +24,13 @@ PAGES = {
 }
 LEGAL = ["impressum.html", "agb.html", "datenschutz.html"]
 
+# Seiten, die es bewusst nur auf Deutsch gibt (Zielgruppe spricht Deutsch).
+# Sie werden nicht uebersetzt, stehen aber in der Sitemap.
+DE_ONLY = {
+  "fba-prep-center-oesterreich.html": ("0.7", "monthly"),
+  "was-kostet-fba-prep.html":         ("0.8", "monthly"),
+}
+
 # Rechtstexte je Sprache. Quelle der Übersetzungen: src-legal/<lang>/<slug>.html
 LEGAL_SLUGS = {
   "impressum.html":   {"de":"impressum.html",   "en":"imprint.html", "it":"note-legali.html", "fr":"mentions-legales.html"},
