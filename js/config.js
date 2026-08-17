@@ -12,7 +12,7 @@
     name:        "PrepCenter FBA",        // Geschäftsbezeichnung / Marke
     legalName:   "Zbranca MTZ World",     // Firmierung des Einzelunternehmens
     legalForm:   "",                      // Einzelunternehmen → bleibt leer
-    owner:       "Valentin Zbranca",      // Inhaber (§ 5 DDG)
+    owner:       "Valentin Iulian Zbranca",   // nur fuer das Impressum (§ 5 DDG), nicht im Footer
     street:      "Lindenstraße 21",
     zip:         "83395",
     city:        "Freilassing",

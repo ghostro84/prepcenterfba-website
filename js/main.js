@@ -143,7 +143,7 @@
       '      <div class="logo logo--light" style="display:inline-block;background:#fff;border-radius:12px;padding:10px 14px">',
       '        <img src="/img/logo-full.png" class="logo-img" alt="PrepCenter Germany FBA" style="height:88px;width:auto;display:block;filter:none">',
       '      </div>',
-      '      <p class="footer-legalname">' + esc(b.legalName) + ' &middot; Inhaber: ' + esc(b.owner) + '</p>',
+      '      <p class="footer-legalname">' + esc(b.legalName) + '</p>',
       '      <p data-i18n="footer.tagline">Ihr zuverlässiger FBA Prep Partner in Deutschland. Schnell, transparent, zertifiziert.</p>',
       '      <address>',
       '        <span data-i18n="footer.address">' + esc(b.street) + ', ' + esc(b.zip) + ' ' + esc(b.city) + '</span><br>',
