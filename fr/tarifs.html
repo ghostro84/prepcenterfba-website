@@ -9,10 +9,11 @@
 <meta content="Tarifs FBA Prep et Calculateur de Coûts | PrepCenter FBA" property="og:title"/>
 <meta content="Tarifs transparents pour les services FBA prep en Allemagne : étiquetage FNSKU 0,39 €, prep FBA complet 0,79 €, réception, stockage, emballage. Remise nouveaux clients –10 %. Calculateur interactif." property="og:description"/>
 <meta content="website" property="og:type"/>
+<link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <link href="/favicon.ico" rel="icon" sizes="any"/>
 <link href="/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
 <link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
-<link crossorigin="" href="/assets/style-STZ1_Fzx.css" rel="stylesheet"/>
+<link href="/assets/style-STZ1_Fzx.css" rel="stylesheet"/>
 <!-- SEO -->
 <link href="https://prepcenterfba.eu/fr/tarifs.html" rel="canonical"/>
 <link href="https://prepcenterfba.eu/pricing.html" hreflang="de" rel="alternate"/>
@@ -74,59 +75,61 @@
 <section aria-labelledby="pricing-title" class="page-hero">
 <div class="container">
 <span class="badge badge--blue" data-i18n="pricing.badge">Liste de prix</span>
-<h1 data-i18n="pricing.title" id="pricing-title">Prix transparents sans coûts cachés</h1>
-<p class="lead" data-i18n="pricing.sub">Tous les prix hors taxe plus TVA légale. Valeur minimale de commande 25,00 €. Remise nouveau client : 1re livraison –10 %, 2e livraison –5 %. Prix valables immédiatement – les modifications sont annoncées 14 jours à l'avance.</p>
+<h1 data-i18n="pricing.title" id="pricing-title">Des prix transparents, sans coûts cachés</h1>
+<p class="lead" data-i18n="pricing.sub">Tous les prix s'entendent hors taxes, TVA légale en sus. Montant minimum de commande de 25,00 € par commande individuelle portant sur des prestations de prep. Remise nouveau client : 1re livraison –10 %, 2e livraison –5 %. Prix applicables immédiatement – toute modification est annoncée 14 jours à l'avance.</p>
+<p class="vat-notice" data-i18n="pricing.b2b" style="margin:.85rem 0 0">Notre offre s'adresse exclusivement aux professionnels au sens du § 14 BGB (code civil allemand). Aucun contrat n'est conclu avec des consommateurs.</p>
 </div>
 </section>
 <!-- ════ PREISTABELLEN ════ -->
 <section aria-labelledby="h-pricetables" class="section">
 <div class="container">
-<h2 data-i18n="pricing.tables.title" id="h-pricetables">Prix des services</h2>
-<p class="vat-notice" data-i18n="pricing.vat">Tous les prix hors taxe plus TVA légale · La valeur minimale de commande par livraison s'applique.</p>
+<h2 data-i18n="pricing.tables.title" id="h-pricetables">Prix des prestations</h2>
+<p class="vat-notice" data-i18n="pricing.vat">Tous les prix s'entendent hors taxes, TVA légale en sus · Montant minimum de commande de 25,00 € par commande individuelle portant sur des prestations de prep.</p>
+<p class="vat-notice" data-i18n="pricing.b2b">Notre offre s'adresse exclusivement aux professionnels au sens du § 14 BGB (code civil allemand). Aucun contrat n'est conclu avec des consommateurs.</p>
 <div class="notice-box notice-box--green" role="note">
 <strong>🎁 <span data-i18n="pnc.box.t">Remise nouveau client</span>:</strong>
 <span data-i18n="pnc.box.l1">1re livraison –10 % · 2e livraison –5 % · ensuite prix réguliers.</span>
-<span data-i18n="pnc.box.l2">Valable pour les services de prep jusqu'à 2 000 unités max. par livraison. Stockage, expédition et services spéciaux exclus.</span>
+<span data-i18n="pnc.box.l2">S'applique exclusivement aux prestations de prep facturées par unité, max. 2 000 unités par livraison. Les prestations complémentaires (bundling, étiquettes supplémentaires, photos), la réception des marchandises, le stockage, l'expédition sortante, les retours et les prestations de tiers sont exclus.</span>
 </div>
 <div class="notice-box" role="note">
 <strong data-i18n="pricing.notice.title">Remarque :</strong>
-<span data-i18n="pricing.notice.text"> La réception est gratuite lors de la réservation d'un service Prep. La réception de cartons sans Prep est facturée 1,50 €. Stockage intermédiaire pour FBA Prep : 14 premiers jours gratuits. Tous les prix hors taxe plus TVA légale.</span>
+<span data-i18n="pricing.notice.text">La réception des cartons est gratuite lorsqu'une prestation de prep est commandée. La réception d'une palette est toujours facturée 6,00 € par palette. La réception d'un carton sans prep est facturée 1,50 €. Stockage intermédiaire lorsqu'une prestation de prep FBA est commandée : les 14 premiers jours de stockage de cartons et de palettes sont gratuits. Tous les prix s'entendent hors taxes, TVA légale en sus.</span>
 </div>
 <!-- Wareneingang -->
-<h3 class="price-group-title" data-i18n="pricing.group.receiving" id="receiving">Réception marchandises</h3>
-<div aria-labelledby="receiving" aria-live="polite" data-price-table="receiving">
+<h3 class="price-group-title" data-i18n="pricing.group.receiving" id="receiving">Réception des marchandises</h3>
+<div aria-labelledby="receiving" aria-live="polite" data-price-table="receiving" role="region">
 <!-- injected by main.js renderPriceTables() -->
 </div>
 <!-- Prep & Etikettierung -->
 <h3 class="price-group-title" data-i18n="pricing.group.prep" id="prep">Prep et étiquetage</h3>
-<div aria-labelledby="prep" aria-live="polite" data-price-table="prep">
+<div aria-labelledby="prep" aria-live="polite" data-price-table="prep" role="region">
 <!-- injected by main.js -->
 </div>
 <!-- Lagerung -->
 <h3 class="price-group-title" data-i18n="pricing.group.storage" id="storage">Stockage</h3>
-<div aria-labelledby="storage" aria-live="polite" data-price-table="storage">
+<div aria-labelledby="storage" aria-live="polite" data-price-table="storage" role="region">
 <!-- injected by main.js -->
 </div>
 <!-- Auslieferung -->
-<h3 class="price-group-title" data-i18n="pricing.group.outbound" id="outbound">Sortie FBA</h3>
-<div aria-labelledby="outbound" aria-live="polite" data-price-table="outbound">
+<h3 class="price-group-title" data-i18n="pricing.group.outbound" id="outbound">Expédition sortante FBA</h3>
+<div aria-labelledby="outbound" aria-live="polite" data-price-table="outbound" role="region">
 <!-- injected by main.js -->
 </div>
 <!-- Retouren -->
 <h3 class="price-group-title" data-i18n="pricing.group.returns" id="returns">Retours</h3>
-<div aria-labelledby="returns" aria-live="polite" data-price-table="returns">
+<div aria-labelledby="returns" aria-live="polite" data-price-table="returns" role="region">
 <!-- injected by main.js -->
 </div>
 <!-- Gebühren -->
 <h3 class="price-group-title" data-i18n="pricing.group.fees" id="fees">Frais et forfaits</h3>
-<div aria-labelledby="fees" aria-live="polite" data-price-table="fees">
+<div aria-labelledby="fees" aria-live="polite" data-price-table="fees" role="region">
 <!-- injected by main.js -->
 </div>
 <hr class="divider"/>
 <!-- Neukundenrabatt -->
 <h2 data-i18n="pnc.h2">Remise nouveau client</h2>
-<p class="section-sub" data-i18n="pnc.sub" style="margin-bottom:1.25rem">La remise s'applique à tous les services de prep (hors stockage, expédition, frais tiers ou services spéciaux) et figure sur la facture. Max. 2 000 unités par livraison.</p>
-<div aria-label="Neukundenrabatt-Stufen" class="volume-tiers" role="list">
+<p class="section-sub" data-i18n="pnc.sub" style="margin-bottom:1.25rem">La remise s'applique exclusivement aux prestations de prep facturées par unité (prep complet, étiquetage FNSKU, contrôle qualité, mise en polybag, film à bulles, reconditionnement), et ce pour 2 000 unités au maximum par livraison. Les prestations complémentaires (bundling, étiquettes supplémentaires, photos de documentation et photos produit), la réception des marchandises, le stockage, l'expédition sortante, les retours et les frais de tiers en sont exclus. La remise est indiquée sur la facture.</p>
+<div aria-label="Paliers de la remise nouveau client" class="volume-tiers" data-i18n="a11y.nctiers" data-i18n-attr="aria-label" role="list">
 <div class="volume-tier" role="listitem">
 <span data-i18n="pnc.d1">1re livraison</span>
 <span class="volume-tier__discount" data-i18n="pnc.r1">–10 % de remise</span>
@@ -136,7 +139,7 @@
 <span class="volume-tier__discount" data-i18n="pnc.r2">–5 % de remise</span>
 </div>
 <div class="volume-tier" role="listitem">
-<span data-i18n="pnc.d3">Dès la 3e livraison</span>
+<span data-i18n="pnc.d3">À partir de la 3e livraison</span>
 <span class="volume-tier__discount" data-i18n="pnc.r3" style="color:var(--c-text-muted)">Prix réguliers</span>
 </div>
 </div>
@@ -144,9 +147,9 @@
 <!-- Enterprise -->
 <div class="service-card" style="max-width:600px">
 <div aria-hidden="true" class="service-card__icon">🏢</div>
-<h3 data-i18n="pricing.enterprise.title">Entreprise &amp; Grands comptes</h3>
-<p data-i18n="pricing.enterprise.desc">Pour des volumes de commandes supérieurs à 10 000 unités/mois, nous établissons des contrats-cadres individuels avec des délais de traitement garantis et des capacités dédiées. Contactez-nous.</p>
-<a class="btn btn--outline mt-2" data-i18n="pricing.enterprise.cta" href="mailto:b2b@prepcenterfba.eu">Demander un devis individuel</a>
+<h3 data-i18n="pricing.enterprise.title">Enterprise et grands comptes</h3>
+<p data-i18n="pricing.enterprise.desc">Pour des volumes de commande supérieurs à 10 000 unités par mois, nous établissons des contrats-cadres individuels avec des délais de traitement convenus et des capacités dédiées. Contactez-nous.</p>
+<a class="btn btn--outline mt-2" data-i18n="pricing.enterprise.cta" href="mailto:b2b@prepcenterfba.eu">Demander une offre personnalisée</a>
 </div>
 </div>
 </section>
@@ -156,9 +159,9 @@
 <div class="notice-box notice-box--green" role="note" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem">
 <div>
 <h2 data-i18n="calc.cta2.title" id="h-calc-cta" style="margin:0 0 .35rem">Calculateur de coûts sans engagement</h2>
-<p data-i18n="calc.cta2.sub" style="margin:0">Calculez vos coûts avec tous les services du tarif : réception, prep, stockage, expédition FBA et retours.</p>
+<p data-i18n="calc.cta2.sub" style="margin:0">Calculez vos coûts avec toutes les prestations de la liste de prix – réception des marchandises, prep, stockage, expédition sortante et retours.</p>
 </div>
-<a class="btn btn--primary btn--lg" data-i18n="calc.cta2.btn" href="./calculateur.html">Ouvrir le calculateur →</a>
+<a class="btn btn--primary btn--lg" data-i18n="calc.cta2.btn" href="./calculateur.html">Ouvrir le calculateur de coûts →</a>
 </div>
 </div>
 </section>
@@ -169,68 +172,30 @@
 <div class="contact-intro">
 <span class="contact-intro__label" data-i18n="ct.label">Contact</span>
 <h2 data-i18n="ct.title.pricing" id="pricing-contact-heading">Demander un devis ferme</h2>
-<p data-i18n="ct.intro.pricing">Envoyez-nous votre liste de produits et recevez un devis ferme à prix fixe sous 24 heures.</p>
+<p data-i18n="ct.intro.pricing">Envoyez-nous votre liste de produits et recevez un devis à prix ferme sous 24 heures les jours ouvrés.</p>
 <ul class="contact-trust-list" role="list">
-<li><svg aria-hidden="true" height="16" viewbox="0 0 16 16" width="16"><circle cx="8" cy="8" fill="none" r="7" stroke="#60a5fa" stroke-width="1.5"></circle><path d="M5 8l2 2 4-4" fill="none" stroke="#60a5fa" stroke-linecap="round" stroke-width="1.5"></path></svg> <span data-i18n="ct.t1">Réponse sous 24 heures</span></li>
+<li><svg aria-hidden="true" height="16" viewbox="0 0 16 16" width="16"><circle cx="8" cy="8" fill="none" r="7" stroke="#60a5fa" stroke-width="1.5"></circle><path d="M5 8l2 2 4-4" fill="none" stroke="#60a5fa" stroke-linecap="round" stroke-width="1.5"></path></svg> <span data-i18n="ct.t1">Réponse sous 24 heures les jours ouvrés</span></li>
 <li><svg aria-hidden="true" height="16" viewbox="0 0 16 16" width="16"><circle cx="8" cy="8" fill="none" r="7" stroke="#60a5fa" stroke-width="1.5"></circle><path d="M5 8l2 2 4-4" fill="none" stroke="#60a5fa" stroke-linecap="round" stroke-width="1.5"></path></svg> <span data-i18n="ct.t2">Sans engagement et gratuit</span></li>
 <li><svg aria-hidden="true" height="16" viewbox="0 0 16 16" width="16"><circle cx="8" cy="8" fill="none" r="7" stroke="#60a5fa" stroke-width="1.5"></circle><path d="M5 8l2 2 4-4" fill="none" stroke="#60a5fa" stroke-linecap="round" stroke-width="1.5"></path></svg> <span data-i18n="ct.t3b">Prix fixes, sans surprise</span></li>
 </ul>
 </div>
-<form class="contact-form" id="contact-form" novalidate="">
-<div class="form-row">
-<div class="form-field">
-<label data-i18n="ct.name" for="cf-name">Nom *</label>
-<input autocomplete="name" id="cf-name" name="name" placeholder="Max Mustermann" required="" type="text"/>
+<div class="contact-form">
+<p data-i18n="ct.cta.lead" style="color:#cbd5e1;line-height:1.6;margin:0">Envoyez-nous votre liste de produits – vous recevez votre devis sous 24 heures, les jours ouvrés.</p>
+<a class="btn btn--primary btn--lg contact-form__submit" data-i18n="ct.cta.btn" href="./contact.html">Demander un devis</a>
+<p class="contact-form__note">
+<span data-i18n="ct.cta.mail">Ou écrivez-nous directement :</span>
+<a href="mailto:b2b@prepcenterfba.eu" style="color:#93c5fd">b2b@prepcenterfba.eu</a>
+</p>
 </div>
-<div class="form-field">
-<label data-i18n="ct.email" for="cf-email">E-mail *</label>
-<input autocomplete="email" id="cf-email" name="email" placeholder="max@beispiel.de" required="" type="email"/>
-</div>
-</div>
-<div class="form-field">
-<label data-i18n="ct.services" for="cf-service">Services souhaités</label>
-<select id="cf-service" name="service">
-<option data-i18n="ct.choose" value="">Veuillez choisir …</option>
-<option data-i18n="ct.o1" value="FBA Komplett-Prep">Prep FBA complet</option>
-<option data-i18n="ct.o2" value="FNSKU-Etikettierung">Étiquetage FNSKU</option>
-<option data-i18n="ct.o3" value="Qualitätskontrolle">Contrôle qualité</option>
-<option data-i18n="ct.o4" value="Verpackung &amp; Prep">Emballage &amp; prep</option>
-<option data-i18n="ct.o5" value="Bundling &amp; Sets">Lots &amp; sets</option>
-<option data-i18n="ct.o6" value="Lagerung">Stockage</option>
-<option data-i18n="ct.o7" value="FBM-Versand">Expédition FBM</option>
-<option data-i18n="ct.o8" value="Mehrere Leistungen">Plusieurs services</option>
-</select>
-</div>
-<div class="form-field">
-<label data-i18n="ct.message" for="cf-message">Message *</label>
-<textarea data-i18n="ct.msgph" data-i18n-attr="placeholder" id="cf-message" name="message" placeholder="Décrivez brièvement vos produits et quantités …" required="" rows="4"></textarea>
-</div>
-<button class="btn btn--primary btn--lg contact-form__submit" data-i18n="ct.submit" type="submit">Demander un devis →</button>
-<p class="contact-form__note" data-i18n="ct.note">* Champs obligatoires. Le message est envoyé via votre client e-mail.</p>
-</form>
 </div>
 </div>
 </section>
 </main>
 <div id="site-footer"></div>
 <!-- Cookie banner -->
-<div aria-label="Cookie-Einstellungen" aria-live="polite" class="cookie-banner" hidden="" id="cookie-banner" role="alertdialog">
-<div class="cookie-banner__inner">
-<p data-i18n="cookie.text">Nous utilisons uniquement des cookies techniquement nécessaires et le stockage local pour le fonctionnement du site. Les cookies supplémentaires (analyse) ne sont déposés qu'avec votre consentement. <a data-i18n="cookie.more" href="/datenschutz.html">En savoir plus</a>.</p>
-<div class="cookie-actions">
-<button class="btn btn--primary btn--sm" data-i18n="cookie.necessary" id="cookie-necessary">Nécessaires uniquement</button>
-<button class="btn btn--outline-light btn--sm" data-i18n="cookie.all" id="cookie-all">Tout accepter</button>
-</div>
-</div>
-</div>
 
-<script>window.PH_FORCE_LANG="fr";window.PH_LINKS={"home": "./index.html", "services": "./services.html", "pricing": "./tarifs.html", "calculator": "./calculateur.html", "about": "./a-propos.html", "faq": "./faq.html", "contact": "./contact.html", "pillar": "./fba-prep-center-allemagne.html", "labeling": "./etiquetage-fnsku.html", "storage": "./stockage-fba-allemagne.html", "shipping": "./expedition-vers-amazon.html", "returns": "./retours-amazon-allemagne.html", "imprint": "/impressum.html", "privacy": "/datenschutz.html", "terms": "/agb.html"};window.PH_LANG_URLS={"de": "/pricing.html", "en": "/en/pricing.html", "it": "/it/prezzi.html", "fr": "/fr/tarifs.html"};</script><script src="/js/config.js"></script>
-<script src="/js/i18n.js"></script>
-<script src="/js/lang/en.js"></script>
-<script src="/js/lang/it.js"></script>
-<script src="/js/lang/fr.js"></script>
-<script src="/js/main.js"></script>
-<script src="/js/analytics.js"></script>
-<script src="/js/cms-client.js"></script>
+<script>window.PH_FORCE_LANG="fr";window.PH_LINKS={"home": "./index.html", "services": "./services.html", "pricing": "./tarifs.html", "calculator": "./calculateur.html", "about": "./a-propos.html", "faq": "./faq.html", "contact": "./contact.html", "pillar": "./fba-prep-center-allemagne.html", "labeling": "./etiquetage-fnsku.html", "storage": "./stockage-fba-allemagne.html", "shipping": "./expedition-vers-amazon.html", "returns": "./retours-amazon-allemagne.html", "imprint": "/fr/mentions-legales.html", "privacy": "/fr/confidentialite.html", "terms": "/fr/cgv.html"};window.PH_LANG_URLS={"de": "/pricing.html", "en": "/en/pricing.html", "it": "/it/prezzi.html", "fr": "/fr/tarifs.html"};</script><script defer="" src="/js/config.js"></script>
+<script defer="" src="/js/i18n.js"></script>
+<script defer="" src="/js/lang/fr.js"></script><script defer="" src="/js/main.js"></script>
 </body>
 </html>
