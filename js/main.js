@@ -74,7 +74,7 @@
       '      <img src="./img/logo-full.png" class="logo-img logo-img--header" alt="PrepCenter Germany FBA">',
       '    </a>',
       '    <div class="header-right">',
-      '      <span class="header-slogan" aria-hidden="false">Built on <b>Trust</b>. Backed by <b>Quality</b>. Defined by <b>Integrity</b>.</span>',
+      '      <span class="header-slogan" aria-hidden="false"><span data-i18n="sl.s1">Auf </span><b data-i18n="sl.b1">Vertrauen</b><span data-i18n="sl.s2"> gebaut. Durch </span><b data-i18n="sl.b2">Qualität</b><span data-i18n="sl.s3"> gesichert. Von </span><b data-i18n="sl.b3">Integrität</b><span data-i18n="sl.s4"> geprägt.</span></span>',
       '      <div class="header-navrow">',
       '        <nav class="main-nav" role="navigation" aria-label="Hauptnavigation">',
       '          ' + navLinks,
