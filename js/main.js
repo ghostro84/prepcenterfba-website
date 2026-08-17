@@ -55,7 +55,7 @@
       '  <style>',
       '    .header-flex{display:flex;align-items:stretch;gap:1.5rem;padding:8px 0}',
       '    .header-right{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:space-evenly;gap:10px;padding:6px 0}',
-      '    .header-slogan{max-width:100%;overflow:hidden;text-align:center;white-space:nowrap;font-size:clamp(1rem,2.2vw,1.9rem);font-style:italic;font-weight:600;color:#475569;line-height:1.2}',
+      '    .header-slogan{max-width:100%;overflow:hidden;text-align:center;white-space:nowrap;font-size:clamp(.95rem,1.75vw,1.6rem);font-style:italic;font-weight:600;color:#475569;line-height:1.2}',
       '    .header-slogan b{color:#f4721e;font-style:normal}',
       '    .logo-img--header{height:172px;width:auto;display:block}',
       '    .header-navrow{display:flex;align-items:center;justify-content:center;gap:1.25rem;flex-wrap:wrap}',
