@@ -13,6 +13,21 @@
   <link rel="icon" href="./favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="./apple-touch-icon.png">
   <link rel="stylesheet" crossorigin href="/assets/style-STZ1_Fzx.css">
+  <style>
+    /* Enlarged "Weg zum Profit" journey card */
+    .journey-card{max-width:600px;padding:1.9rem 1.4rem}
+    .journey-card__label{font-size:.95rem}
+    .journey-badge{font-size:.9rem;padding:.35rem .9rem}
+    .journey-step{min-width:61px}
+    .journey-step__icon{width:56px;height:56px;border-radius:14px}
+    .journey-step__icon svg{width:30px;height:30px}
+    .journey-step__name{font-size:.78rem;max-width:64px}
+    .journey-step--profit .journey-step__name{font-size:.88rem}
+    .journey-arrow{width:14px}
+    .journey-stat__icon{font-size:1.35rem}
+    .journey-stat__val{font-size:1.3rem}
+    .journey-stat__lbl{font-size:.85rem}
+  </style>
 </head>
 <body>
 
@@ -54,8 +69,8 @@
       <div class="journey-card">
 
         <div class="journey-card__head">
-          <span class="journey-card__label">Ihr Weg zum Profit</span>
-          <span class="journey-badge">✓ Amazon-konform</span>
+          <span class="journey-card__label" data-i18n="jr.title">Ihr Weg zum Profit</span>
+          <span class="journey-badge" data-i18n="jr.badge">✓ Amazon-konform</span>
         </div>
 
         <!-- Visual step flow -->
@@ -75,7 +90,7 @@
                 <rect x="18" y="26" width="4" height="3" rx="1" fill="#1d4ed8"/>
               </svg>
             </div>
-            <span class="journey-step__name">Wareneingang</span>
+            <span class="journey-step__name" data-i18n="jr.s1">Wareneingang</span>
           </div>
 
           <div class="journey-arrow" aria-hidden="true">
@@ -92,7 +107,7 @@
                 <path d="M11 14h6M14 11v6" stroke="#7c3aed" stroke-width="1.6" stroke-linecap="round"/>
               </svg>
             </div>
-            <span class="journey-step__name">Qualitäts&shy;kontrolle</span>
+            <span class="journey-step__name" data-i18n="jr.s2">Qualitäts&shy;kontrolle</span>
           </div>
 
           <div class="journey-arrow" aria-hidden="true">
@@ -110,7 +125,7 @@
                 <path d="M21 12l2 2-2 2" stroke="#d97706" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </div>
-            <span class="journey-step__name">FNSKU&shy;-Etikett</span>
+            <span class="journey-step__name" data-i18n="jr.s3">FNSKU&shy;-Etikett</span>
           </div>
 
           <div class="journey-arrow" aria-hidden="true">
@@ -125,7 +140,7 @@
                 <path d="M16 4v18M4 10l12 6 12-6" stroke="#0d9488" stroke-width="1.6" stroke-linecap="round"/>
               </svg>
             </div>
-            <span class="journey-step__name">Verpackung &amp; Prep</span>
+            <span class="journey-step__name" data-i18n="jr.s4">Verpackung &amp; Prep</span>
           </div>
 
           <div class="journey-arrow" aria-hidden="true">
@@ -142,7 +157,7 @@
                 <circle cx="22" cy="25" r="2.5" fill="#ea580c"/>
               </svg>
             </div>
-            <span class="journey-step__name">FBA&shy;-Einlieferung</span>
+            <span class="journey-step__name" data-i18n="jr.s5">FBA&shy;-Einlieferung</span>
           </div>
 
           <div class="journey-arrow journey-arrow--profit" aria-hidden="true">
@@ -159,7 +174,7 @@
                 <circle cx="24" cy="10" r="1.5" fill="#16a34a"/>
               </svg>
             </div>
-            <span class="journey-step__name">Ihr Profit!</span>
+            <span class="journey-step__name" data-i18n="jr.s6">Ihr Profit!</span>
           </div>
 
         </div><!-- /journey-flow -->
@@ -169,17 +184,17 @@
           <div class="journey-stat">
             <span class="journey-stat__icon">⚡</span>
             <span class="journey-stat__val">24–48h</span>
-            <span class="journey-stat__lbl">Durchlaufzeit</span>
+            <span class="journey-stat__lbl" data-i18n="jr.l1">Durchlaufzeit</span>
           </div>
           <div class="journey-stat">
             <span class="journey-stat__icon">✅</span>
             <span class="journey-stat__val">99,8%</span>
-            <span class="journey-stat__lbl">Fehlerfreiheit</span>
+            <span class="journey-stat__lbl" data-i18n="jr.l2">Fehlerfreiheit</span>
           </div>
           <div class="journey-stat">
             <span class="journey-stat__icon">🔒</span>
             <span class="journey-stat__val">0 €</span>
-            <span class="journey-stat__lbl">Versteckte Kosten</span>
+            <span class="journey-stat__lbl" data-i18n="jr.l3">Versteckte Kosten</span>
           </div>
         </div>
 
