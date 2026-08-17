@@ -573,4 +573,20 @@
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
+  <url>
+    <loc>https://prepcenterfba.eu/fba-prep-center-oesterreich.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://prepcenterfba.eu/fba-prep-center-oesterreich.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://prepcenterfba.eu/fba-prep-center-oesterreich.html"/>
+    <lastmod>2026-08-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://prepcenterfba.eu/was-kostet-fba-prep.html</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://prepcenterfba.eu/was-kostet-fba-prep.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://prepcenterfba.eu/was-kostet-fba-prep.html"/>
+    <lastmod>2026-08-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
