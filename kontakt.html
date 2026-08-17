@@ -94,6 +94,12 @@
       <strong>✅ <span data-i18n="kt.sent.t">Nachricht gesendet!</span></strong>
       <span data-i18n="kt.sent.d">Vielen Dank für Ihre Anfrage. Wir melden uns werktags innerhalb von 24 Stunden bei Ihnen.</span>
     </div>
+    <div id="kt-error" class="notice-box" role="alert" hidden style="margin-bottom:1.5rem;border-color:#dc2626">
+      <strong>⚠️ <span data-i18n="kt.err.t">Senden fehlgeschlagen</span></strong>
+      <span data-i18n="kt.err.d">Ihre Anfrage konnte nicht übermittelt werden. Bitte schreiben Sie uns direkt an</span>
+      <a href="mailto:b2b@prepcenterfba.eu">b2b@prepcenterfba.eu</a> –
+      <span data-i18n="kt.err.d2">wir kümmern uns umgehend darum.</span>
+    </div>
 
     <div class="contact-inner">
 
@@ -141,23 +147,19 @@
             <input type="email" id="cf-email" name="email" required placeholder="max@beispiel.de" data-i18n="ct.ph.email" data-i18n-attr="placeholder" autocomplete="email">
           </div>
           <div class="form-field">
-            <label for="cf-lucid" data-i18n="ct.lucid">LUCID-Registrierungsnummer (falls vorhanden)</label>
-            <input type="text" id="cf-lucid" name="lucid" placeholder="DE1234567890123" aria-describedby="cf-lucid-hint">
-            <small id="cf-lucid-hint" style="color:#94a3b8;font-size:.78rem;line-height:1.5" data-i18n="ct.lucid.hint">Wir sind nach § 7 Abs. 7 VerpackG verpflichtet, vor dem ersten Auftrag zu prüfen, ob Sie im Verpackungsregister LUCID registriert und systembeteiligt sind. Sie können die Nummer auch später nachreichen.</small>
+            <label for="cf-vat" data-i18n="ct.vat">USt-IdNr. (falls vorhanden)</label>
+            <input type="text" id="cf-vat" name="ust_id" placeholder="DE123456789" data-i18n="ct.ph.vat" data-i18n-attr="placeholder" aria-describedby="cf-vat-hint" autocomplete="off">
+            <small id="cf-vat-hint" style="color:#94a3b8;font-size:.78rem;line-height:1.5" data-i18n="ct.vat.hint">Für Auftraggeber aus dem EU-Ausland rechnen wir im Reverse-Charge-Verfahren ab – dafür benötigen wir Ihre Umsatzsteuer-Identifikationsnummer. Ohne USt-IdNr. erstellen wir Ihnen selbstverständlich trotzdem ein Angebot.</small>
           </div>
         </div>
         <div class="form-field">
           <label for="cf-service" data-i18n="ct.services">Gewünschte Leistungen</label>
           <select id="cf-service" name="service">
             <option value="" data-i18n="ct.choose">Bitte wählen …</option>
-            <option value="FBA Komplett-Prep" data-i18n="ct.o1">FBA Komplett-Prep</option>
-            <option value="FNSKU-Etikettierung" data-i18n="ct.o2">FNSKU-Etikettierung</option>
-            <option value="Qualitätskontrolle" data-i18n="ct.o3">Qualitätskontrolle</option>
-            <option value="Verpackung &amp; Prep" data-i18n="ct.o4">Verpackung &amp; Prep</option>
-            <option value="Bundling &amp; Sets" data-i18n="ct.o5">Bundling &amp; Sets</option>
-            <option value="Lagerung" data-i18n="ct.o6">Lagerung</option>
-            <option value="FBM-Versand" data-i18n="ct.o7">FBM-Versand</option>
-            <option value="Mehrere Leistungen" data-i18n="ct.o8">Mehrere Leistungen</option>
+            <option value="FBA Prep komplett" data-i18n="ct.o1">FBA Prep komplett</option>
+            <option value="FBM Prep" data-i18n="ct.o2">FBM Prep</option>
+            <option value="Lagerung &amp; Warenprüfung" data-i18n="ct.o3">Lagerung &amp; Warenprüfung</option>
+            <option value="Andere Leistungen" data-i18n="ct.o4">Andere Leistungen</option>
           </select>
         </div>
         <div class="form-field">
@@ -196,11 +198,53 @@
 <script defer src="./js/i18n.js"></script>
 <script defer src="./js/main.js"></script>
 <script>
-  // Show success banner after FormSubmit redirect (?sent=1)
-  if (new URLSearchParams(location.search).get("sent") === "1") {
-    var el = document.getElementById("kt-success");
-    if (el) { el.hidden = false; el.scrollIntoView({ block: "center" }); }
-  }
+  (function () {
+    "use strict";
+    var FORM_ENDPOINT = "https://formsubmit.co/ajax/b2b@prepcenterfba.eu";
+
+    function show(id) {
+      var el = document.getElementById(id);
+      if (el) { el.hidden = false; el.scrollIntoView({ block: "center", behavior: "smooth" }); }
+    }
+
+    // Fallback ohne JavaScript: FormSubmit leitet auf ?sent=1 zurück
+    if (new URLSearchParams(location.search).get("sent") === "1") show("kt-success");
+
+    var form = document.getElementById("kontakt-form");
+    if (!form || !window.fetch) return;   // ohne fetch bleibt der klassische POST
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+
+      var btn = form.querySelector('button[type="submit"]');
+      var label = btn ? btn.textContent : "";
+      if (btn) { btn.disabled = true; btn.textContent = "…"; }
+
+      var data = new FormData(form);
+      data.append("_captcha", "false");   // beim AJAX-Versand nicht darstellbar
+
+      fetch(FORM_ENDPOINT, {
+        method: "POST",
+        body: data,
+        headers: { "Accept": "application/json" }
+      })
+        .then(function (r) { return r.json().catch(function () { return {}; }); })
+        .then(function (res) {
+          if (res && String(res.success) === "true") {
+            form.hidden = true;
+            show("kt-success");
+          } else {
+            if (btn) { btn.disabled = false; btn.textContent = label; }
+            show("kt-error");
+          }
+        })
+        .catch(function () {
+          if (btn) { btn.disabled = false; btn.textContent = label; }
+          show("kt-error");
+        });
+    });
+  }());
 </script>
 </body>
 </html>
