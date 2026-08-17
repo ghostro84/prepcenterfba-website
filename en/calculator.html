@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FBA Prep Cost Calculator | PrepCenter FBA</title>
+<meta content="Work out your FBA prep costs in advance: enter units, cartons and pallets and see the price per service based on our published rate card. No registration required." name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="FBA Prep Cost Calculator | PrepCenter FBA" property="og:title"/>
+<meta content="Work out your FBA prep costs in advance: enter units, cartons and pallets and see the price per service based on our published rate card. No registration required." property="og:description"/>
+<meta content="website" property="og:type"/>
+<link href="/favicon.ico" rel="icon" sizes="any"/>
+<link href="/favicon-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
+<link crossorigin="" href="/assets/style-STZ1_Fzx.css" rel="stylesheet"/>
+<!-- SEO -->
+<link href="https://prepcenterfba.eu/en/calculator.html" rel="canonical"/>
+<link href="https://prepcenterfba.eu/kalkulator.html" hreflang="de" rel="alternate"/>
+<link href="https://prepcenterfba.eu/en/calculator.html" hreflang="en" rel="alternate"/>
+<link href="https://prepcenterfba.eu/it/calcolatore.html" hreflang="it" rel="alternate"/>
+<link href="https://prepcenterfba.eu/fr/calculateur.html" hreflang="fr" rel="alternate"/>
+<link href="https://prepcenterfba.eu/kalkulator.html" hreflang="x-default" rel="alternate"/>
+<meta content="https://prepcenterfba.eu/en/calculator.html" property="og:url"/>
+<meta content="https://prepcenterfba.eu/assets/hero-bg-De6VYLKg.jpg" property="og:image"/>
+<meta content="PrepCenter FBA" property="og:site_name"/>
+<meta content="en_GB" property="og:locale"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="FBA Prep Cost Calculator | PrepCenter FBA" name="twitter:title"/>
+<meta content="Work out your FBA prep costs in advance: enter units, cartons and pallets and see the price per service based on our published rate card. No registration required." name="twitter:description"/>
+<meta content="https://prepcenterfba.eu/assets/hero-bg-De6VYLKg.jpg" name="twitter:image"/>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://prepcenterfba.eu/en/calculator.html#webpage",
+      "url": "https://prepcenterfba.eu/en/calculator.html",
+      "name": "FBA Prep Cost Calculator | PrepCenter FBA",
+      "description": "Work out your FBA prep costs in advance: enter units, cartons and pallets and see the price per service based on our published rate card. No registration required.",
+      "inLanguage": "en-GB",
+      "isPartOf": {
+        "@id": "https://prepcenterfba.eu/#website"
+      },
+      "about": {
+        "@id": "https://prepcenterfba.eu/#organization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://prepcenterfba.eu/en/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "FBA Prep Cost Calculator",
+          "item": "https://prepcenterfba.eu/en/calculator.html"
+        }
+      ]
+    }
+  ]
+}</script>
+<!-- /SEO -->
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<div id="site-header"></div>
+<main id="main-content">
+<!-- Page Hero -->
+<section aria-labelledby="kalk-title" class="page-hero">
+<div class="container">
+<span class="badge badge--blue" data-i18n="kc.badge">Cost calculator</span>
+<h1 data-i18n="kc.title" id="kalk-title">FBA Prep Cost Calculator</h1>
+<p class="lead" data-i18n="kc.sub">Every service from our price list in one calculator: receiving, prep, extras, storage, FBA dispatch and returns. Non-binding estimate based on current list prices.</p>
+</div>
+</section>
+<section aria-labelledby="h-kalk" class="section section--surface" id="kalkulator">
+<div class="container">
+<h2 class="visually-hidden" data-i18n="kc.h2" id="h-kalk" style="position:absolute;left:-9999px">Calculator</h2>
+<div class="calculator-layout">
+<!-- ── Inputs ── -->
+<div>
+<!-- 1 · Wareneingang -->
+<div class="calc-section">
+<h4 data-i18n="kc.recv.title">1 · Goods receiving</h4>
+<div class="form-row">
+<div class="form-field">
+<label data-i18n="kc.recv.cartons" for="k-cartons">Incoming cartons</label>
+<input id="k-cartons" min="0" type="number" value="0"/>
+<small data-i18n="kc.recv.free" id="k-recv-note" style="color:#16a34a;display:none">Free with any booked prep service ✓</small>
+<small id="k-recv-note2" style="color:#6b7280;display:none"><span id="k-recv-price"></span> <span data-i18n="kc.recv.noprep">without a prep service</span></small>
+</div>
+<div class="form-field">
+<label data-i18n="kc.recv.pallets" for="k-pallets">Pallet receiving (count)</label>
+<input id="k-pallets" min="0" type="number" value="0"/>
+<small id="k-pallet-price" style="color:#6b7280"></small>
+</div>
+</div>
+</div>
+<!-- 2 · Prep pro Einheit -->
+<div class="calc-section">
+<h4 data-i18n="kc.prep.title">2 · Prep services (per unit)</h4>
+<div class="form-row">
+<div class="form-field">
+<label data-i18n="kc.prep.units" for="k-units">Number of units</label>
+<input id="k-units" min="0" type="number" value="0"/>
+</div>
+</div>
+<ul class="checkbox-list" role="list">
+<li>
+<label class="checkbox-item" role="listitem">
+<input id="k-fullprep" type="checkbox"/>
+<span class="checkbox-item__label"><span data-i18n="kc.svc.fullprep">FBA Complete Prep</span> <small data-i18n="kc.svc.fullprep.hint" style="color:#6b7280;display:block">Visual check + FNSKU + packaging + dispatch preparation</small></span>
+<span class="checkbox-item__price" id="k-fullprep-price"></span>
+</label>
+</li>
+<li>
+<label class="checkbox-item" role="listitem">
+<input data-solo="" id="k-fnsku" type="checkbox"/>
+<span class="checkbox-item__label" data-i18n="kc.svc.fnsku">FNSKU labeling</span>
+<span class="checkbox-item__price" id="k-fnsku-price"></span>
+</label>
+</li>
+<li>
+<label class="checkbox-item" role="listitem">
+<input data-solo="" id="k-inspection" type="checkbox"/>
+<span class="checkbox-item__label" data-i18n="kc.svc.inspection">Quality inspection</span>
+<span class="checkbox-item__price" id="k-inspection-price"></span>
+</label>
+</li>
+<li>
+<label class="checkbox-item" role="listitem">
+<input data-solo="" id="k-polybag" type="checkbox"/>
+<span class="checkbox-item__label" data-i18n="kc.svc.polybag">Poly bag packaging</span>
+<span class="checkbox-item__price" id="k-polybag-price"></span>
+</label>
+</li>
+<li>
+<label class="checkbox-item" role="listitem">
+<input data-solo="" id="k-bubblewrap" type="checkbox"/>
+<span class="checkbox-item__label" data-i18n="kc.svc.bubblewrap">Bubble wrap</span>
+<span class="checkbox-item__price" id="k-bubblewrap-price"></span>
+</label>
+</li>
+<li>
+<label class="checkbox-item" role="listitem">
+<input id="k-repack" type="checkbox"/>
+<span class="checkbox-item__label" data-i18n="kc.svc.repack">Repacking</span>
+<span class="checkbox-item__price" id="k-repack-price"></span>
+</label>
+</li>
+</ul>
+</div>
+<!-- 3 · Zusatzleistungen -->
+<div class="calc-section">
+<h4 data-i18n="kc.extra.title">3 · Additional services (quantity)</h4>
+<div class="form-row">
+<div class="form-field">
+<label data-i18n="kc.extra.bundles" for="k-bundles">Bundles / multipacks (sets)</label>
+<input id="k-bundles" min="0" type="number" value="0"/>
+<small id="k-bundles-price" style="color:#6b7280"></small>
+</div>
+<div class="form-field">
+<label data-i18n="kc.extra.labels" for="k-extralabels">Additional labels</label>
+<input id="k-extralabels" min="0" type="number" value="0"/>
+<small id="k-extralabels-price" style="color:#6b7280"></small>
+</div>
+</div>
+<div class="form-row">
+<div class="form-field">
+<label data-i18n="kc.extra.docphotos" for="k-docphotos">Documentation photos</label>
+<input id="k-docphotos" min="0" type="number" value="0"/>
+<small id="k-docphotos-price" style="color:#6b7280"></small>
+</div>
+<div class="form-field">
+<label data-i18n="kc.extra.photos" for="k-photos">Product photos (simple)</label>
+<input id="k-photos" min="0" type="number" value="0"/>
+<small id="k-photos-price" style="color:#6b7280"></small>
+</div>
+</div>
+</div>
+<!-- 4 · Lagerung -->
+<div class="calc-section">
+<h4 data-i18n="kc.stor.title">4 · Storage</h4>
+<p data-i18n="kc.stor.free" style="color:#16a34a;font-size:.85rem;margin:.25rem 0 .75rem">✓ First 14 days free with a booked FBA prep service</p>
+<div class="form-row">
+<div class="form-field">
+<label data-i18n="kc.stor.bins" for="k-storbins">Small-item slots</label>
+<input id="k-storbins" min="0" type="number" value="0"/>
+<small id="k-storbins-price" style="color:#6b7280"></small>
+</div>
+<div class="form-field">
+<label data-i18n="kc.stor.cartons" for="k-storcartons">Stored cartons</label>
+<input id="k-storcartons" min="0" type="number" value="0"/>
+<small id="k-storcartons-price" style="color:#6b7280"></small>
+</div>
+</div>
+<div class="form-row">
+<div class="form-field">
+<label data-i18n="kc.stor.pallets" for="k-storpallets">Stored pallets</label>
+<input id="k-storpallets" min="0" type="number" value="0"/>
+<small id="k-storpallets-price" style="color:#6b7280"></small>
+</div>
+<div class="form-field">
+<label data-i18n="kc.stor.months" for="k-stormonths">Storage duration (months)</label>
+<input id="k-stormonths" min="0" type="number" value="1"/>
+</div>
+</div>
+</div>
+<!-- 5 · FBA Auslieferung -->
+<div class="calc-section">
+<h4 data-i18n="kc.out.title">5 · FBA dispatch</h4>
+<div class="form-row">
+<div class="form-field">
+<label data-i18n="kc.out.cartons" for="k-outcartons">FBA cartons (handling)</label>
+<input id="k-outcartons" min="0" type="number" value="0"/>
+<small id="k-outcartons-price" style="color:#6b7280"></small>
+</div>
+<div class="form-field">
+<label data-i18n="kc.out.pallets" for="k-outpallets">FBA pallets (handling)</label>
+<input id="k-outpallets" min="0" type="number" value="0"/>
+<small id="k-outpallets-price" style="color:#6b7280"></small>
+</div>
+</div>
+<small data-i18n="kc.out.note" style="color:#6b7280">Carrier freight costs are billed separately based on actual cost.</small>
+</div>
+<!-- 6 · Retouren -->
+<div class="calc-section">
+<h4 data-i18n="kc.ret.title">6 · Returns</h4>
+<div class="form-row">
+<div class="form-field">
+<label data-i18n="kc.ret.units" for="k-retunits">Returns: receiving + inspection (units)</label>
+<input id="k-retunits" min="0" type="number" value="0"/>
+<small id="k-retunits-price" style="color:#6b7280"></small>
+</div>
+<div class="form-field">
+<label data-i18n="kc.ret.repack" for="k-retrepack">Returns repacking (units)</label>
+<input id="k-retrepack" min="0" type="number" value="0"/>
+<small id="k-retrepack-price" style="color:#6b7280"></small>
+</div>
+</div>
+<div class="form-row">
+<div class="form-field">
+<label data-i18n="kc.ret.disposal" for="k-retdisposal">Disposal (units)</label>
+<input id="k-retdisposal" min="0" type="number" value="0"/>
+<small id="k-retdisposal-price" style="color:#6b7280"></small>
+</div>
+</div>
+</div>
+<!-- 7 · Rabatt -->
+<div class="calc-section">
+<h4 data-i18n="kc.nc.title">7 · New-customer discount</h4>
+<div class="form-row">
+<div class="form-field">
+<select aria-label="Neukundenrabatt" id="k-newcustomer">
+<option data-i18n="kc.nc.none" value="0">No discount (existing customer)</option>
+<option data-i18n="kc.nc.first" value="0.10">1st delivery — 10 % off prep</option>
+<option data-i18n="kc.nc.second" value="0.05">2nd delivery — 5 % off prep</option>
+</select>
+<small data-i18n="kc.nc.hint" style="color:#6b7280">Applies to prep services, max. 2,000 units per delivery. Storage, shipping and third-party services excluded.</small>
+</div>
+</div>
+</div>
+</div><!-- /inputs -->
+<!-- ── Result panel ── -->
+<aside aria-label="Kostenübersicht" aria-live="polite" class="result-panel">
+<h3 data-i18n="kc.res.title">Your estimate</h3>
+<div class="result-rows">
+<div class="result-row result-row--sub">
+<span data-i18n="kc.res.recv">Goods receiving</span>
+<span class="result-row__val" id="kr-recv">0,00 €</span>
+</div>
+<div class="result-row result-row--sub">
+<span data-i18n="kc.res.prep">Prep services</span>
+<span class="result-row__val" id="kr-prep">0,00 €</span>
+</div>
+<div class="result-row result-row--sub">
+<span data-i18n="kc.res.extra">Additional services</span>
+<span class="result-row__val" id="kr-extra">0,00 €</span>
+</div>
+<div class="result-row result-row--sub result-row--green" id="kr-row-discount" style="display:none">
+<span data-i18n="kc.res.discount">New-customer discount</span>
+<span class="result-row__val" id="kr-discount">0,00 €</span>
+</div>
+<div class="result-row result-row--sub">
+<span data-i18n="kc.res.stor">Storage</span>
+<span class="result-row__val" id="kr-stor">0,00 €</span>
+</div>
+<div class="result-row result-row--sub">
+<span data-i18n="kc.res.out">FBA dispatch</span>
+<span class="result-row__val" id="kr-out">0,00 €</span>
+</div>
+<div class="result-row result-row--sub">
+<span data-i18n="kc.res.ret">Returns</span>
+<span class="result-row__val" id="kr-ret">0,00 €</span>
+</div>
+<div class="result-row result-row--sub" id="kr-row-minfee" style="display:none">
+<span data-i18n="kc.res.minfee">Minimum order surcharge</span>
+<span class="result-row__val" id="kr-minfee">0,00 €</span>
+</div>
+<div class="result-row result-row--total">
+<span data-i18n="kc.res.total">Estimated total</span>
+<span class="result-row__val" id="kr-total">0,00 €</span>
+</div>
+</div>
+<p class="result-note" data-i18n="kc.res.note">Non-binding estimate based on current list prices. All amounts net plus statutory VAT. Final prices after inspection of your shipment.</p>
+<a class="btn btn--primary" data-i18n="kc.res.cta" href="mailto:b2b@prepcenterfba.eu" style="width:100%;justify-content:center;margin-top:.75rem">Request a binding quote</a>
+</aside>
+</div><!-- /calculator-layout -->
+</div>
+</section>
+</main>
+<div id="site-footer"></div>
+<!-- Cookie banner -->
+<div aria-label="Cookie-Einstellungen" aria-live="polite" class="cookie-banner" hidden="" id="cookie-banner" role="alertdialog">
+<div class="cookie-banner__inner">
+<p data-i18n="cookie.text">We use only technically necessary cookies and local storage to operate this website. We set additional cookies (analytics) only with your consent. <a data-i18n="cookie.more" href="/datenschutz.html">Learn more</a>.</p>
+<div class="cookie-banner__actions">
+<button class="btn btn--primary btn--sm" data-i18n="cookie.necessary" id="cookie-necessary">Necessary only</button>
+<button class="btn btn--outline-light btn--sm" data-i18n="cookie.all" id="cookie-all">Accept all</button>
+</div>
+</div>
+</div>
+
+<script>window.PH_FORCE_LANG="en";window.PH_LINKS={"home": "./index.html", "services": "./services.html", "pricing": "./pricing.html", "about": "./about-us.html", "faq": "./faq.html", "contact": "./contact.html", "pillar": "./fba-prep-center-germany.html", "labeling": "./fnsku-labeling.html", "storage": "./fba-storage-germany.html", "shipping": "./shipping-to-amazon-germany.html", "returns": "./amazon-returns-germany.html", "imprint": "/impressum.html", "privacy": "/datenschutz.html", "terms": "/agb.html"};window.PH_LANG_URLS={"de": "/kalkulator.html", "en": "/en/calculator.html", "it": "/it/calcolatore.html", "fr": "/fr/calculateur.html"};</script><script src="/js/config.js"></script>
+<script src="/js/i18n.js"></script>
+<script src="/js/lang/en.js"></script>
+<script src="/js/lang/it.js"></script>
+<script src="/js/lang/fr.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/analytics.js"></script>
+<script src="/js/cms-client.js"></script>
+<script>
+/* ── Vollständiger Kostenrechner (alle Leistungen der Preisliste) ── */
+(function () {
+  "use strict";
+  function init() {
+    var root = document.getElementById("kalkulator");
+    if (!root) return;
+    var prices = PH_CONFIG.getPrices();
+    function price(key) {
+      var p = prices.find(function (x) { return x.key === key; });
+      return p ? p.price : 0;
+    }
+    function val(id) { var el = document.getElementById(id); return el ? Math.max(0, parseFloat(el.value) || 0) : 0; }
+    function chk(id) { var el = document.getElementById(id); return el ? el.checked : false; }
+    function fmt(id, v) { var el = document.getElementById(id); if (el) el.textContent = PH_CONFIG.fmtEUR(v); }
+    function badge(id, key, per) {
+      var el = document.getElementById(id);
+      if (el) el.textContent = PH_CONFIG.fmtEUR(price(key)) + " " + per;
+    }
+
+    /* live unit prices */
+    badge("k-fullprep-price",   "fba_prep",       "/ Einheit");
+    badge("k-fnsku-price",      "fnsku",          "/ Einheit");
+    badge("k-inspection-price", "inspection",     "/ Einheit");
+    badge("k-polybag-price",    "polybag",        "/ Einheit");
+    badge("k-bubblewrap-price", "bubblewrap",     "/ Einheit");
+    badge("k-repack-price",     "repack",         "/ Einheit");
+    badge("k-bundles-price",    "bundling",       "/ Set");
+    badge("k-extralabels-price","extra_label",    "/ Etikett");
+    badge("k-docphotos-price",  "doc_photo",      "/ Foto");
+    badge("k-photos-price",     "photo",          "/ Foto");
+    badge("k-pallet-price",     "recv_pallet",    "/ Palette");
+    badge("k-storbins-price",   "storage_bin",    "/ Monat");
+    badge("k-storcartons-price","storage_carton", "/ Karton·Monat");
+    badge("k-storpallets-price","storage_pallet", "/ Palette·Monat");
+    badge("k-outcartons-price", "out_carton",     "/ Karton");
+    badge("k-outpallets-price", "out_pallet",     "/ Palette");
+    badge("k-retunits-price",   "ret_inspect",    "/ Einheit");
+    badge("k-retrepack-price",  "ret_repack",     "/ Einheit");
+    badge("k-retdisposal-price","disposal",       "/ Einheit");
+    var rp = document.getElementById("k-recv-price");
+    if (rp) rp.textContent = PH_CONFIG.fmtEUR(price("recv_carton_no_prep")) + " / Karton";
+
+    /* Komplett-Prep beinhaltet Kontrolle, FNSKU & Verpackung → Einzelleistungen deaktivieren */
+    var full = document.getElementById("k-fullprep");
+    var solos = Array.prototype.slice.call(root.querySelectorAll("input[data-solo]"));
+    function syncSolo() {
+      solos.forEach(function (cb) {
+        cb.disabled = full.checked;
+        if (full.checked) cb.checked = false;
+        cb.parentElement.style.opacity = full.checked ? ".45" : "1";
+      });
+    }
+
+    function update() {
+      syncSolo();
+      var units = val("k-units");
+
+      /* per-unit prep */
+      var perUnit = 0;
+      if (chk("k-fullprep"))   perUnit += price("fba_prep");
+      if (chk("k-fnsku"))      perUnit += price("fnsku");
+      if (chk("k-inspection")) perUnit += price("inspection");
+      if (chk("k-polybag"))    perUnit += price("polybag");
+      if (chk("k-bubblewrap")) perUnit += price("bubblewrap");
+      if (chk("k-repack"))     perUnit += price("repack");
+      var prepUnits = units * perUnit;
+      var hasPrep = perUnit > 0 && units > 0;
+
+      /* Zusatzleistungen (Prep-Gruppe, stückbasiert) */
+      var extra = val("k-bundles")     * price("bundling")
+                + val("k-extralabels") * price("extra_label")
+                + val("k-docphotos")   * price("doc_photo")
+                + val("k-photos")      * price("photo");
+      if (extra > 0) hasPrep = true;
+
+      /* Wareneingang: Kartons kostenlos bei gebuchter Prep-Leistung */
+      var cartons = val("k-cartons");
+      var recvCartonPrice = hasPrep ? price("recv_carton") : price("recv_carton_no_prep");
+      var recv = cartons * recvCartonPrice + val("k-pallets") * price("recv_pallet");
+      var n1 = document.getElementById("k-recv-note"), n2 = document.getElementById("k-recv-note2");
+      if (n1 && n2) {
+        n1.style.display = (cartons > 0 && hasPrep) ? "block" : "none";
+        n2.style.display = (cartons > 0 && !hasPrep) ? "block" : "none";
+      }
+
+      /* Neukundenrabatt: nur Prep, max. 2.000 Einheiten */
+      var rate = parseFloat((document.getElementById("k-newcustomer") || {}).value) || 0;
+      var eligibleUnitPrep = units > 0 ? prepUnits * (Math.min(units, 2000) / units) : 0;
+      var discount = rate * (eligibleUnitPrep + extra);
+      var prepNet = prepUnits + extra - discount;
+
+      /* Lagerung */
+      var months = val("k-stormonths");
+      var stor = months * (val("k-storbins")    * price("storage_bin")
+                         + val("k-storcartons") * price("storage_carton")
+                         + val("k-storpallets") * price("storage_pallet"));
+
+      /* Auslieferung + Retouren */
+      var out = val("k-outcartons") * price("out_carton") + val("k-outpallets") * price("out_pallet");
+      var ret = val("k-retunits") * price("ret_inspect") + val("k-retrepack") * price("ret_repack") + val("k-retdisposal") * price("disposal");
+
+      /* Mindestauftragswert (nur wenn überhaupt etwas beauftragt ist) */
+      var subTotal = recv + prepNet + stor + out + ret;
+      var minFee = price("min_order");
+      var minAdj = (subTotal > 0 && subTotal < minFee) ? (minFee - subTotal) : 0;
+      var total = subTotal + minAdj;
+
+      fmt("kr-recv", recv);
+      fmt("kr-prep", prepUnits);
+      fmt("kr-extra", extra);
+      fmt("kr-discount", -discount);
+      fmt("kr-stor", stor);
+      fmt("kr-out", out);
+      fmt("kr-ret", ret);
+      fmt("kr-minfee", minAdj);
+      fmt("kr-total", total);
+      var dRow = document.getElementById("kr-row-discount");
+      if (dRow) dRow.style.display = discount > 0 ? "" : "none";
+      var mRow = document.getElementById("kr-row-minfee");
+      if (mRow) mRow.style.display = minAdj > 0 ? "" : "none";
+    }
+
+    root.querySelectorAll("input, select").forEach(function (el) {
+      el.addEventListener("input", update);
+      el.addEventListener("change", update);
+    });
+    update();
+  }
+
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
+})();
+</script>
+</body>
+</html>
