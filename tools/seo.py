@@ -24,6 +24,13 @@ PAGES = {
 }
 LEGAL = ["impressum.html", "agb.html", "datenschutz.html"]
 
+# Rechtstexte je Sprache. Quelle der Übersetzungen: src-legal/<lang>/<slug>.html
+LEGAL_SLUGS = {
+  "impressum.html":   {"de":"impressum.html",   "en":"imprint.html", "it":"note-legali.html", "fr":"mentions-legales.html"},
+  "datenschutz.html": {"de":"datenschutz.html", "en":"privacy.html", "it":"privacy.html",     "fr":"confidentialite.html"},
+  "agb.html":         {"de":"agb.html",         "en":"terms.html",   "it":"condizioni.html",  "fr":"cgv.html"},
+}
+
 def url(lang, slug):
     base = DOMAIN + ("/" if lang == "de" else "/%s/" % lang)
     return base if slug == "index.html" else base + slug
@@ -36,7 +43,13 @@ def head_block(de_file, lang="de"):
         alts = "\n".join(
             '  <link rel="alternate" hreflang="%s" href="%s">' % (l, url(l, slugs[l])) for l in LANGS)
         alts += '\n  <link rel="alternate" hreflang="x-default" href="%s">' % url("de", slugs["de"])
-    else:  # Rechtstexte: nur Deutsch
+    elif de_file in LEGAL_SLUGS:  # Rechtstexte: alle vier Sprachen
+        slugs = LEGAL_SLUGS[de_file]
+        canon = url(lang, slugs[lang])
+        alts = "\n".join(
+            '  <link rel="alternate" hreflang="%s" href="%s">' % (l, url(l, slugs[l])) for l in LANGS)
+        alts += '\n  <link rel="alternate" hreflang="x-default" href="%s">' % url("de", slugs["de"])
+    else:
         canon = DOMAIN + "/" + de_file
         alts = '  <link rel="alternate" hreflang="de" href="%s">' % canon
     return ('  <link rel="canonical" href="%s">\n%s\n'

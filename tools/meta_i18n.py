@@ -4,11 +4,11 @@
 META = {
 "index.html": {
  "en": ("FBA Prep Center Germany – Amazon Prep Services | PrepCenter FBA",
-        "PrepCenter FBA is your reliable FBA prep center in Germany. Receiving, FNSKU labelling, quality control and inbound shipping to Amazon FBA – fast, transparent and GDPR-compliant."),
+        "PrepCenter FBA is your reliable FBA prep center in Germany. Receiving, FNSKU labelling, quality control and inbound shipping to Amazon FBA – fast, transparent and reliable."),
  "it": ("FBA Prep Center Germania – Servizi Amazon Prep | PrepCenter FBA",
-        "PrepCenter FBA è il vostro prep center FBA affidabile in Germania. Ricezione merce, etichettatura FNSKU, controllo qualità e invio ad Amazon FBA – rapido, trasparente e conforme al GDPR."),
+        "PrepCenter FBA è il vostro prep center FBA affidabile in Germania. Ricezione merce, etichettatura FNSKU, controllo qualità e invio ad Amazon FBA – rapido, trasparente e affidabile."),
  "fr": ("FBA Prep Center Allemagne – Services Amazon Prep | PrepCenter FBA",
-        "PrepCenter FBA est votre prep center FBA fiable en Allemagne. Réception, étiquetage FNSKU, contrôle qualité et expédition vers Amazon FBA – rapide, transparent et conforme au RGPD."),
+        "PrepCenter FBA est votre prep center FBA fiable en Allemagne. Réception, étiquetage FNSKU, contrôle qualité et expédition vers Amazon FBA – rapide, transparent et fiable."),
 },
 "services.html": {
  "en": ("FBA Prep Services – Labelling, Packaging, Storage | PrepCenter FBA",
@@ -28,11 +28,11 @@ META = {
 },
 "fba-prep-center-deutschland.html": {
  "en": ("FBA Prep Center Germany – Full Amazon Prep Service | PrepCenter FBA",
-        "FBA prep center in Germany: receiving, FNSKU labelling, quality control, polybagging, bundling, storage and inbound shipping to Amazon FBA. Fixed prices from €0.39, 24–48 hour turnaround."),
+        "FBA prep center in Germany: receiving, FNSKU labelling, quality control, polybagging, bundling, storage and inbound shipping to Amazon FBA. Fixed prices from €0.39 for FNSKU labelling, 24–48 hour turnaround."),
  "it": ("FBA Prep Center Germania – Servizio Prep Completo | PrepCenter FBA",
-        "Prep center FBA in Germania: ricezione merce, etichettatura FNSKU, controllo qualità, polybag, bundling, stoccaggio e invio ad Amazon FBA. Prezzi fissi da 0,39 €, evasione in 24–48 ore."),
+        "Prep center FBA in Germania: ricezione merce, etichettatura FNSKU, controllo qualità, polybag, bundling, stoccaggio e invio ad Amazon FBA. Prezzi fissi da 0,39 € per l'etichettatura FNSKU, evasione in 24–48 ore."),
  "fr": ("FBA Prep Center Allemagne – Service Prep Complet | PrepCenter FBA",
-        "Prep center FBA en Allemagne : réception, étiquetage FNSKU, contrôle qualité, polybag, bundling, stockage et expédition vers Amazon FBA. Prix fixes dès 0,39 €, traitement en 24–48 heures."),
+        "Prep center FBA en Allemagne : réception, étiquetage FNSKU, contrôle qualité, polybag, bundling, stockage et expédition vers Amazon FBA. Prix fixes dès 0,39 € pour l'étiquetage FNSKU, traitement en 24–48 heures."),
 },
 "fnsku-etikettierung.html": {
  "en": ("FNSKU Labeling for Amazon FBA – €0.39 per Unit | PrepCenter FBA",
@@ -100,11 +100,11 @@ META = {
 },
 "kontakt.html": {
  "en": ("Contact – PrepCenter FBA | FBA Prep Center Freilassing",
-        "Contact PrepCenter FBA: address, email and delivery instructions for our FBA prep center in Freilassing. Enquiries answered within 24 hours."),
+        "Contact PrepCenter FBA: address, email and delivery instructions for our FBA prep center in Freilassing. Enquiries answered within 24 hours on working days."),
  "it": ("Contatti – PrepCenter FBA | Prep Center FBA Freilassing",
-        "Contatti di PrepCenter FBA: indirizzo, e-mail e istruzioni per la consegna al nostro prep center FBA di Freilassing. Risposta alle richieste entro 24 ore."),
+        "Contatti di PrepCenter FBA: indirizzo, e-mail e istruzioni per la consegna al nostro prep center FBA di Freilassing. Risposta alle richieste entro 24 ore nei giorni lavorativi."),
  "fr": ("Contact – PrepCenter FBA | Prep Center FBA Freilassing",
-        "Contacter PrepCenter FBA : adresse, e-mail et consignes de livraison pour notre prep center FBA à Freilassing. Réponse aux demandes sous 24 heures."),
+        "Contacter PrepCenter FBA : adresse, e-mail et consignes de livraison pour notre prep center FBA à Freilassing. Réponse aux demandes sous 24 heures les jours ouvrés."),
 },
 }
 

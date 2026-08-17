@@ -2,7 +2,7 @@
 """Rendert die deutschen Seiten als statische EN/IT/FR-Versionen unter /en/, /it/, /fr/."""
 import sys, os, re, json, shutil, subprocess
 sys.path.insert(0, os.path.dirname(__file__))
-from seo import DOMAIN, OG_IMAGE, LANGS, PAGES, LEGAL, url, ORG, WEBSITE, service_node, breadcrumbs, faq_node
+from seo import DOMAIN, OG_IMAGE, LANGS, PAGES, LEGAL, LEGAL_SLUGS, url, ORG, WEBSITE, service_node, breadcrumbs, faq_node
 from meta_i18n import META, SKIP_LINK
 from apply_seo import EXTRA, HOME
 from bs4 import BeautifulSoup
@@ -31,7 +31,9 @@ def link_map(lang):
               "amazon-retouren-deutschland.html":"returns"}
     for de_file, key in keymap.items():
         m[key] = "./" + PAGES[de_file][0][lang]
-    m.update({"imprint":"/impressum.html","privacy":"/datenschutz.html","terms":"/agb.html"})
+    legal_key = {"impressum.html":"imprint","datenschutz.html":"privacy","agb.html":"terms"}
+    for de_file, key in legal_key.items():
+        m[key] = rel(lang, LEGAL_SLUGS[de_file][lang])
     return m
 
 def translate(soup, d):
@@ -53,7 +55,7 @@ def fix_paths(soup):
     for tag, attr in (("script","src"),("link","href"),("img","src"),("a","href")):
         for el in soup.find_all(tag):
             v = el.get(attr)
-            if v and v.startswith("./") and not v.endswith(".html"):
+            if v and v.startswith("./") and not v.split("#")[0].endswith(".html"):
                 el[attr] = "/" + v[2:]
 
 def build(lang):
@@ -75,7 +77,14 @@ def build(lang):
             if h in PAGES:
                 a["href"] = "./" + PAGES[h][0][lang] + frag
             elif h in LEGAL:
-                a["href"] = "/" + h + frag
+                a["href"] = rel(lang, LEGAL_SLUGS[h][lang]) + frag
+
+        # FormSubmit: Weiterleitung und Betreff in der jeweiligen Sprache
+        for inp in soup.find_all("input", attrs={"name": "_next"}):
+            inp["value"] = url(lang, slugs[lang]) + "?sent=1"
+        for inp in soup.find_all("input", attrs={"name": "_subject"}):
+            if d.get("kt.form.subject"):
+                inp["value"] = d["kt.form.subject"]
 
         # Titel + Description
         title, desc = META[de_file][lang]
@@ -140,22 +149,82 @@ def build(lang):
         first = soup.find("script", src=True)
         first.insert_before(cfg)
 
+        # Genau ein Wörterbuch laden – das der eigenen Sprache
+        main_js = soup.find("script", src=lambda v: v and v.endswith("js/main.js"))
+        if main_js:
+            dict_tag = soup.new_tag("script", src="/js/lang/%s.js" % lang)
+            dict_tag["defer"] = ""
+            main_js.insert_before(dict_tag)
+
         open(os.path.join(outdir, slugs[lang]), "w", encoding="utf-8").write(str(soup))
     print("built /%s/ – %d pages" % (lang, len(PAGES)))
 
+def build_legal(lang):
+    """Übersetzte Rechtstexte aus src-legal/<lang>/ nach <lang>/ übernehmen und
+       die Laufzeit-Konfiguration (Sprache, Navigation, Sprach-URLs) einsetzen."""
+    links = link_map(lang)
+    built = 0
+    for de_file, slugs in LEGAL_SLUGS.items():
+        src = os.path.join("src-legal", lang, slugs[lang])
+        if not os.path.exists(src):
+            print("  ! fehlt:", src); continue
+        soup = BeautifulSoup(open(src, encoding="utf-8").read(), "lxml")
+        soup.html["lang"] = HTML_LANG[lang]
+        fix_paths(soup)
+
+        # canonical / og:url / og:locale / hreflang für diese Sprachfassung
+        page_url = url(lang, slugs[lang])
+        c = soup.find("link", rel="canonical")
+        if c: c["href"] = page_url
+        m = soup.find("meta", attrs={"property": "og:url"})
+        if m: m["content"] = page_url
+        m = soup.find("meta", attrs={"property": "og:locale"})
+        if m: m["content"] = OG_LOCALE[lang]
+        for alt in soup.find_all("link", rel="alternate"):
+            alt.decompose()
+        head = soup.find("head")
+        for l in LANGS:
+            t = soup.new_tag("link", rel="alternate", href=url(l, LEGAL_SLUGS[de_file][l]))
+            t["hreflang"] = l
+            head.append(t)
+        t = soup.new_tag("link", rel="alternate", href=url("de", LEGAL_SLUGS[de_file]["de"]))
+        t["hreflang"] = "x-default"
+        head.append(t)
+
+        for sc in soup.find_all("script"):
+            if not sc.get("src") and sc.string and ("PH_LANG_URLS" in sc.string or "PH_FORCE_LANG" in sc.string):
+                sc.decompose()
+        cfg = soup.new_tag("script")
+        cfg.string = ("window.PH_FORCE_LANG=%s;window.PH_LINKS=%s;window.PH_LANG_URLS=%s;"
+                      % (json.dumps(lang), json.dumps(links, ensure_ascii=False),
+                         json.dumps({l: rel(l, LEGAL_SLUGS[de_file][l]) for l in LANGS}, ensure_ascii=False)))
+        first = soup.find("script", src=True)
+        if first:
+            first.insert_before(cfg)
+            main_js = soup.find("script", src=lambda v: v and v.endswith("js/main.js"))
+            if main_js:
+                dict_tag = soup.new_tag("script", src="/js/lang/%s.js" % lang)
+                dict_tag["defer"] = ""
+                main_js.insert_before(dict_tag)
+        open(os.path.join(lang, slugs[lang]), "w", encoding="utf-8").write(str(soup))
+        built += 1
+    print("built /%s/ – %d Rechtstexte" % (lang, built))
+
 # Sprachumschalter auch auf den deutschen Seiten auf echte URLs zeigen lassen
 def annotate_de():
-    for de_file, (slugs, _p, _f) in PAGES.items():
+    targets = [(f, sl) for f, (sl, _p, _f) in PAGES.items()] + list(LEGAL_SLUGS.items())
+    for de_file, slugs in targets:
         s = open(de_file, encoding="utf-8").read()
-        s = re.sub(r'<script>window\.PH_LANG_URLS=.*?</script>\n', '', s, flags=re.S)
-        tag = ('<script>window.PH_LANG_URLS=%s;</script>\n'
+        s = re.sub(r'<script>window\.(PH_FORCE_LANG|PH_LANG_URLS)=.*?</script>\n', '', s, flags=re.S)
+        tag = ('<script>window.PH_FORCE_LANG="de";window.PH_LANG_URLS=%s;</script>\n'
                % json.dumps({l: rel(l, slugs[l]) for l in LANGS}, ensure_ascii=False))
-        s = s.replace('<script src="./js/config.js"></script>', tag + '<script src="./js/config.js"></script>', 1)
+        s = s.replace('<script defer src="./js/config.js"></script>', tag + '<script defer src="./js/config.js"></script>', 1)
         open(de_file, "w", encoding="utf-8").write(s)
-    print("german pages annotated with language URLs")
+    print("deutsche Seiten mit Sprach-URLs versehen (inkl. Rechtstexte)")
 
 if __name__ == "__main__":
     for l in ("en", "it", "fr"):
         shutil.rmtree(l, ignore_errors=True)
         build(l)
+        build_legal(l)
     annotate_de()
