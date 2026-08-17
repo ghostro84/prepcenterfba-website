@@ -9,10 +9,15 @@
   <meta property="og:title" content="FBA Prep Kostenrechner – PrepCenter FBA">
   <meta property="og:description" content="Berechnen Sie Ihre FBA Prep-Kosten mit allen Leistungen aus unserer Preisliste – unverbindlich und transparent.">
   <meta property="og:type" content="website">
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
   <link rel="icon" href="./favicon.ico" sizes="any">
   <link rel="icon" href="./favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="./apple-touch-icon.png">
-  <link rel="stylesheet" crossorigin href="/assets/style-STZ1_Fzx.css">
+  <link rel="stylesheet" href="/assets/style-STZ1_Fzx.css">
+  <style>
+    /* Überschriftenhierarchie korrigiert (h4 → h3); Optik bleibt identisch. */
+    .calc-section h3{font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--c-text-muted);margin-bottom:.75rem}
+  </style>
   <!-- SEO -->
   <link rel="canonical" href="https://prepcenterfba.eu/kalkulator.html">
   <link rel="alternate" hreflang="de" href="https://prepcenterfba.eu/kalkulator.html">
@@ -96,12 +101,12 @@
 
         <!-- 1 · Wareneingang -->
         <div class="calc-section">
-          <h4 data-i18n="kc.recv.title">1 · Wareneingang</h4>
+          <h3 data-i18n="kc.recv.title">1 · Wareneingang</h3>
           <div class="form-row">
             <div class="form-field">
               <label for="k-cartons" data-i18n="kc.recv.cartons">Eingehende Kartons</label>
               <input type="number" id="k-cartons" min="0" value="0">
-              <small id="k-recv-note" style="color:#16a34a;display:none" data-i18n="kc.recv.free">Kostenlos bei gebuchter Prep-Leistung ✓</small>
+              <small id="k-recv-note" style="color:#16a34a;display:none" data-i18n="kc.recv.free">Kostenlos bei gebuchter Prep- oder Bundling-Leistung ✓</small>
               <small id="k-recv-note2" style="color:#6b7280;display:none"><span id="k-recv-price"></span> <span data-i18n="kc.recv.noprep">ohne Prep-Leistung</span></small>
             </div>
             <div class="form-field">
@@ -114,7 +119,7 @@
 
         <!-- 2 · Prep pro Einheit -->
         <div class="calc-section">
-          <h4 data-i18n="kc.prep.title">2 · Prep-Leistungen (pro Einheit)</h4>
+          <h3 data-i18n="kc.prep.title">2 · Prep-Leistungen (pro Einheit)</h3>
           <div class="form-row">
             <div class="form-field">
               <label for="k-units" data-i18n="kc.prep.units">Anzahl Einheiten</label>
@@ -169,7 +174,7 @@
 
         <!-- 3 · Zusatzleistungen -->
         <div class="calc-section">
-          <h4 data-i18n="kc.extra.title">3 · Zusatzleistungen (Stückzahl)</h4>
+          <h3 data-i18n="kc.extra.title">3 · Zusatzleistungen (Stückzahl)</h3>
           <div class="form-row">
             <div class="form-field">
               <label for="k-bundles" data-i18n="kc.extra.bundles">Bundles / Multipacks (Sets)</label>
@@ -198,8 +203,8 @@
 
         <!-- 4 · Lagerung -->
         <div class="calc-section">
-          <h4 data-i18n="kc.stor.title">4 · Lagerung</h4>
-          <p style="color:#16a34a;font-size:.85rem;margin:.25rem 0 .75rem" data-i18n="kc.stor.free">✓ Erste 14 Tage kostenlos bei gebuchter FBA-Prep-Leistung</p>
+          <h3 data-i18n="kc.stor.title">4 · Lagerung</h3>
+          <p style="color:#16a34a;font-size:.85rem;margin:.25rem 0 .75rem" data-i18n="kc.stor.free">✓ Bei gebuchter Prep- oder Bundling-Leistung sind die ersten 14 Tage Karton- und Palettenlagerung kostenfrei: Der erste Monat wird mit 16 von 30 Tagen berechnet, danach volle Monate. Kleinmengen-Plätze sind davon ausgenommen.</p>
           <div class="form-row">
             <div class="form-field">
               <label for="k-storbins" data-i18n="kc.stor.bins">Kleinmengen-Plätze</label>
@@ -227,7 +232,7 @@
 
         <!-- 5 · FBA Auslieferung -->
         <div class="calc-section">
-          <h4 data-i18n="kc.out.title">5 · FBA Auslieferung</h4>
+          <h3 data-i18n="kc.out.title">5 · FBA Auslieferung</h3>
           <div class="form-row">
             <div class="form-field">
               <label for="k-outcartons" data-i18n="kc.out.cartons">FBA Kartons (Handling)</label>
@@ -245,7 +250,7 @@
 
         <!-- 6 · Retouren -->
         <div class="calc-section">
-          <h4 data-i18n="kc.ret.title">6 · Retouren</h4>
+          <h3 data-i18n="kc.ret.title">6 · Retouren</h3>
           <div class="form-row">
             <div class="form-field">
               <label for="k-retunits" data-i18n="kc.ret.units">Retouren: Annahme + Inspektion (Einheiten)</label>
@@ -269,15 +274,15 @@
 
         <!-- 7 · Rabatt -->
         <div class="calc-section">
-          <h4 data-i18n="kc.nc.title">7 · Neukundenrabatt</h4>
+          <h3 data-i18n="kc.nc.title">7 · Neukundenrabatt</h3>
           <div class="form-row">
             <div class="form-field">
-              <select id="k-newcustomer" aria-label="Neukundenrabatt">
+              <select id="k-newcustomer" aria-label="Neukundenrabatt" data-i18n="kc.nc.aria" data-i18n-attr="aria-label">
                 <option value="0" data-i18n="kc.nc.none">Kein Rabatt (Bestandskunde)</option>
                 <option value="0.10" data-i18n="kc.nc.first">1. Lieferung — 10 % auf Prep</option>
                 <option value="0.05" data-i18n="kc.nc.second">2. Lieferung — 5 % auf Prep</option>
               </select>
-              <small style="color:#6b7280" data-i18n="kc.nc.hint">Gilt für Prep-Leistungen, max. 2.000 Einheiten pro Lieferung. Lagerung, Versand und Fremdleistungen ausgenommen.</small>
+              <small style="color:#6b7280" data-i18n="kc.nc.hint">Gilt ausschließlich für Prep-Leistungen je Einheit (Abschnitt 2), max. 2.000 Einheiten pro Lieferung. Zusatzleistungen (Bundling, zusätzliche Etiketten, Fotos), Wareneingang, Lagerung, Auslieferung, Retouren und Fremdleistungen sind ausgenommen.</small>
             </div>
           </div>
         </div>
@@ -285,7 +290,7 @@
       </div><!-- /inputs -->
 
       <!-- ── Result panel ── -->
-      <aside class="result-panel" aria-label="Kostenübersicht" aria-live="polite">
+      <aside class="result-panel" aria-label="Kostenübersicht" data-i18n="kc.res.aria" data-i18n-attr="aria-label" aria-live="polite">
         <h3 data-i18n="kc.res.title">Ihre Schätzung</h3>
         <div class="result-rows">
           <div class="result-row result-row--sub">
@@ -342,25 +347,11 @@
 <div id="site-footer"></div>
 
 <!-- Cookie banner -->
-<div id="cookie-banner" class="cookie-banner" role="alertdialog" aria-label="Cookie-Einstellungen" aria-live="polite" hidden>
-  <div class="cookie-banner__inner">
-    <p data-i18n="cookie.text">Wir verwenden notwendige Cookies für den Betrieb dieser Website. Weitere Cookies setzen wir nur mit Ihrer Zustimmung ein. <a href="/datenschutz.html" data-i18n="cookie.more">Mehr erfahren</a>.</p>
-    <div class="cookie-banner__actions">
-      <button id="cookie-necessary" class="btn btn--primary btn--sm" data-i18n="cookie.necessary">Nur notwendige</button>
-      <button id="cookie-all" class="btn btn--outline-light btn--sm" data-i18n="cookie.all">Alle akzeptieren</button>
-    </div>
-  </div>
-</div>
 
-<script>window.PH_LANG_URLS={"de": "/kalkulator.html", "en": "/en/calculator.html", "it": "/it/calcolatore.html", "fr": "/fr/calculateur.html"};</script>
-<script src="./js/config.js"></script>
-<script src="./js/i18n.js"></script>
-<script src="./js/lang/en.js"></script>
-<script src="./js/lang/it.js"></script>
-<script src="./js/lang/fr.js"></script>
-<script src="./js/main.js"></script>
-<script src="./js/analytics.js"></script>
-<script src="./js/cms-client.js"></script>
+<script>window.PH_FORCE_LANG="de";window.PH_LANG_URLS={"de": "/kalkulator.html", "en": "/en/calculator.html", "it": "/it/calcolatore.html", "fr": "/fr/calculateur.html"};</script>
+<script defer src="./js/config.js"></script>
+<script defer src="./js/i18n.js"></script>
+<script defer src="./js/main.js"></script>
 
 <script>
 /* ── Vollständiger Kostenrechner (alle Leistungen der Preisliste) ── */
@@ -370,40 +361,59 @@
     var root = document.getElementById("kalkulator");
     if (!root) return;
     var prices = PH_CONFIG.getPrices();
+
+    /* Kappungen und Fristen der Preisliste (js/config.js, AGB § 4) */
+    var DISCOUNT_UNIT_CAP  = 2000;  // Neukundenrabatt: max. Einheiten je Lieferung
+    var FREE_STORAGE_DAYS  = 14;    // Zwischenlagerung frei bei gebuchter Prep-Leistung
+    var STORAGE_MONTH_DAYS = 30;    // Abrechnungsmonat der Lagerung
+
+    function priceItem(key) {
+      return prices.find(function (x) { return x.key === key; }) || null;
+    }
     function price(key) {
-      var p = prices.find(function (x) { return x.key === key; });
+      var p = priceItem(key);
       return p ? p.price : 0;
     }
+    /* Übersetzung mit deutschem Fallback (dieselben Keys wie die Preistabellen) */
+    function ti(key, fallback) {
+      var v = (typeof PH_I18N !== "undefined" && PH_I18N) ? PH_I18N.t(key) : key;
+      return (v === key || v === undefined || v === null || v === "") ? fallback : v;
+    }
+    function unitLabel(key) {
+      var p = priceItem(key);
+      return ti("price.unit." + key, (p && p.unit) ? p.unit : "");
+    }
+    /* Jede Zeile wird auf Cent gerundet, bevor sie summiert wird. */
+    function round2(x) { return Math.round(x * 100) / 100; }
     function val(id) { var el = document.getElementById(id); return el ? Math.max(0, parseFloat(el.value) || 0) : 0; }
     function chk(id) { var el = document.getElementById(id); return el ? el.checked : false; }
     function fmt(id, v) { var el = document.getElementById(id); if (el) el.textContent = PH_CONFIG.fmtEUR(v); }
-    function badge(id, key, per) {
+    function badge(id, key) {
       var el = document.getElementById(id);
-      if (el) el.textContent = PH_CONFIG.fmtEUR(price(key)) + " " + per;
+      if (el) el.textContent = PH_CONFIG.fmtEUR(price(key)) + " " + unitLabel(key);
     }
 
     /* live unit prices */
-    badge("k-fullprep-price",   "fba_prep",       "/ Einheit");
-    badge("k-fnsku-price",      "fnsku",          "/ Einheit");
-    badge("k-inspection-price", "inspection",     "/ Einheit");
-    badge("k-polybag-price",    "polybag",        "/ Einheit");
-    badge("k-bubblewrap-price", "bubblewrap",     "/ Einheit");
-    badge("k-repack-price",     "repack",         "/ Einheit");
-    badge("k-bundles-price",    "bundling",       "/ Set");
-    badge("k-extralabels-price","extra_label",    "/ Etikett");
-    badge("k-docphotos-price",  "doc_photo",      "/ Foto");
-    badge("k-photos-price",     "photo",          "/ Foto");
-    badge("k-pallet-price",     "recv_pallet",    "/ Palette");
-    badge("k-storbins-price",   "storage_bin",    "/ Monat");
-    badge("k-storcartons-price","storage_carton", "/ Karton·Monat");
-    badge("k-storpallets-price","storage_pallet", "/ Palette·Monat");
-    badge("k-outcartons-price", "out_carton",     "/ Karton");
-    badge("k-outpallets-price", "out_pallet",     "/ Palette");
-    badge("k-retunits-price",   "ret_inspect",    "/ Einheit");
-    badge("k-retrepack-price",  "ret_repack",     "/ Einheit");
-    badge("k-retdisposal-price","disposal",       "/ Einheit");
-    var rp = document.getElementById("k-recv-price");
-    if (rp) rp.textContent = PH_CONFIG.fmtEUR(price("recv_carton_no_prep")) + " / Karton";
+    badge("k-fullprep-price",   "fba_prep");
+    badge("k-fnsku-price",      "fnsku");
+    badge("k-inspection-price", "inspection");
+    badge("k-polybag-price",    "polybag");
+    badge("k-bubblewrap-price", "bubblewrap");
+    badge("k-repack-price",     "repack");
+    badge("k-bundles-price",    "bundling");
+    badge("k-extralabels-price","extra_label");
+    badge("k-docphotos-price",  "doc_photo");
+    badge("k-photos-price",     "photo");
+    badge("k-pallet-price",     "recv_pallet");
+    badge("k-storbins-price",   "storage_bin");
+    badge("k-storcartons-price","storage_carton");
+    badge("k-storpallets-price","storage_pallet");
+    badge("k-outcartons-price", "out_carton");
+    badge("k-outpallets-price", "out_pallet");
+    badge("k-retunits-price",   "ret_inspect");
+    badge("k-retrepack-price",  "ret_repack");
+    badge("k-retdisposal-price","disposal");
+    badge("k-recv-price",       "recv_carton_no_prep");
 
     /* Komplett-Prep beinhaltet Kontrolle, FNSKU & Verpackung → Einzelleistungen deaktivieren */
     var full = document.getElementById("k-fullprep");
@@ -428,52 +438,70 @@
       if (chk("k-polybag"))    perUnit += price("polybag");
       if (chk("k-bubblewrap")) perUnit += price("bubblewrap");
       if (chk("k-repack"))     perUnit += price("repack");
-      var prepUnits = units * perUnit;
-      var hasPrep = perUnit > 0 && units > 0;
+      var prepUnits = round2(units * perUnit);
 
-      /* Zusatzleistungen (Prep-Gruppe, stückbasiert) */
-      var extra = val("k-bundles")     * price("bundling")
-                + val("k-extralabels") * price("extra_label")
-                + val("k-docphotos")   * price("doc_photo")
-                + val("k-photos")      * price("photo");
-      if (extra > 0) hasPrep = true;
+      /* Zusatzleistungen (stückbasiert, nicht rabattfähig) */
+      var extra = round2(val("k-bundles")     * price("bundling")
+                       + val("k-extralabels") * price("extra_label")
+                       + val("k-docphotos")   * price("doc_photo")
+                       + val("k-photos")      * price("photo"));
 
-      /* Wareneingang: Kartons kostenlos bei gebuchter Prep-Leistung */
+      // Freier Kartoneingang und die 14 Freitage Lagerung hängen an echter
+      // Bearbeitung der Ware (Prep je Einheit oder Bundling) – nicht daran,
+      // dass ein einzelnes Foto oder Etikett mitbeauftragt wurde.
+      var bundlesNet = round2(val("k-bundles") * price("bundling"));
+      var hasPrep = prepUnits > 0 || bundlesNet > 0;
+
+      /* Wareneingang: Kartons kostenlos bei gebuchter Prep-Leistung,
+         Palettenannahme immer kostenpflichtig */
       var cartons = val("k-cartons");
       var recvCartonPrice = hasPrep ? price("recv_carton") : price("recv_carton_no_prep");
-      var recv = cartons * recvCartonPrice + val("k-pallets") * price("recv_pallet");
+      var recv = round2(cartons * recvCartonPrice + val("k-pallets") * price("recv_pallet"));
       var n1 = document.getElementById("k-recv-note"), n2 = document.getElementById("k-recv-note2");
       if (n1 && n2) {
         n1.style.display = (cartons > 0 && hasPrep) ? "block" : "none";
         n2.style.display = (cartons > 0 && !hasPrep) ? "block" : "none";
       }
 
-      /* Neukundenrabatt: nur Prep, max. 2.000 Einheiten */
+      /* Neukundenrabatt: nur Prep-Leistungen je Einheit, max. 2.000 Einheiten.
+         Zusatzleistungen, Wareneingang, Lagerung, Versand und Retouren sind ausgenommen. */
       var rate = parseFloat((document.getElementById("k-newcustomer") || {}).value) || 0;
-      var eligibleUnitPrep = units > 0 ? prepUnits * (Math.min(units, 2000) / units) : 0;
-      var discount = rate * (eligibleUnitPrep + extra);
-      var prepNet = prepUnits + extra - discount;
+      var discountBase = round2(Math.min(units, DISCOUNT_UNIT_CAP) * perUnit);
+      var discount = round2(rate * discountBase);
+      // Bemessungsgrundlage des Mindestauftragswerts: die eigentlichen
+      // Prep-Leistungen (je Einheit) und Bundling – dieselbe Abgrenzung, die
+      // auch über kostenlosen Kartoneingang und die 14 Freitage entscheidet.
+      // Fotos und Zusatzetiketten sind Zusatzleistungen und lösen für sich
+      // genommen keinen Mindestauftragszuschlag aus.
+      var prepNet = round2(prepUnits + bundlesNet - discount);
 
-      /* Lagerung */
+      /* Lagerung: bei gebuchter Prep-Leistung sind die ersten 14 Tage der
+         Karton-/Palettenlagerung frei (erster Monat 16/30, danach volle Monate).
+         Kleinmengen-Plätze (storage_bin) sind ein eigenes Produkt ohne Freitage. */
       var months = val("k-stormonths");
-      var stor = months * (val("k-storbins")    * price("storage_bin")
-                         + val("k-storcartons") * price("storage_carton")
-                         + val("k-storpallets") * price("storage_pallet"));
+      var billedMonths = hasPrep
+        ? Math.max(0, months - FREE_STORAGE_DAYS / STORAGE_MONTH_DAYS)
+        : months;
+      var storBins    = round2(months       * val("k-storbins")    * price("storage_bin"));
+      var storCartons = round2(billedMonths * val("k-storcartons") * price("storage_carton"));
+      var storPallets = round2(billedMonths * val("k-storpallets") * price("storage_pallet"));
+      var stor = round2(storBins + storCartons + storPallets);
 
       /* Auslieferung + Retouren */
-      var out = val("k-outcartons") * price("out_carton") + val("k-outpallets") * price("out_pallet");
-      var ret = val("k-retunits") * price("ret_inspect") + val("k-retrepack") * price("ret_repack") + val("k-retdisposal") * price("disposal");
+      var out = round2(val("k-outcartons") * price("out_carton") + val("k-outpallets") * price("out_pallet"));
+      var ret = round2(val("k-retunits") * price("ret_inspect") + val("k-retrepack") * price("ret_repack") + val("k-retdisposal") * price("disposal"));
 
-      /* Mindestauftragswert (nur wenn überhaupt etwas beauftragt ist) */
-      var subTotal = recv + prepNet + stor + out + ret;
+      /* Mindestauftragswert: gilt je Einzelauftrag ausschließlich für
+         Prep-Leistungen (AGB § 4 Abs. 3). Reine Lager-, Wareneingangs-,
+         Auslieferungs- und Retourenaufträge lösen keinen Zuschlag aus. */
       var minFee = price("min_order");
-      var minAdj = (subTotal > 0 && subTotal < minFee) ? (minFee - subTotal) : 0;
-      var total = subTotal + minAdj;
+      var minAdj = (prepNet > 0 && prepNet < minFee) ? round2(minFee - prepNet) : 0;
+      var total = round2(recv + prepUnits + extra - discount + stor + out + ret + minAdj);
 
       fmt("kr-recv", recv);
       fmt("kr-prep", prepUnits);
       fmt("kr-extra", extra);
-      fmt("kr-discount", -discount);
+      fmt("kr-discount", discount > 0 ? -discount : 0);
       fmt("kr-stor", stor);
       fmt("kr-out", out);
       fmt("kr-ret", ret);

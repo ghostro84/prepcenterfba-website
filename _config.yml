@@ -1,0 +1,12 @@
+# GitHub Pages / Jekyll — interne Dateien nicht veröffentlichen.
+# Ohne diesen Ausschluss sind Build-Skripte und interne Dokumentation
+# unter https://prepcenterfba.eu/tools/… öffentlich abrufbar.
+# Wichtig: KEINE .nojekyll-Datei anlegen – die würde Jekyll abschalten
+# und damit auch diesen Ausschluss unwirksam machen.
+exclude:
+  - tools
+  - src-legal
+  - README-DEPLOY.md
+  - SEO-SETUP.md
+  - Gemfile
+  - Gemfile.lock

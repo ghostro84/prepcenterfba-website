@@ -10,7 +10,7 @@ actualizează singur** (în ~1 minut).
 1. Intră pe [github.com](https://github.com) → **New repository**.
 2. Nume: `prepcenterfba-website` · vizibilitate: **Private** sau Public · fără README.
 3. Urcă fișierele: pe pagina repo-ului → **uploading an existing file** → trage
-   TOATE fișierele din acest folder (inclusiv `CNAME` și `.nojekyll`) → **Commit changes**.
+   TOATE fișierele din acest folder (inclusiv `CNAME` și `_config.yml`) → **Commit changes**.
    - Alternativ, din terminal:
      ```bash
      cd acest-folder
@@ -76,3 +76,39 @@ La fiecare push, GitHub urcă automat fișierele prin FTP în `public_html`.
   parolele se pun doar în GitHub → Settings → Secrets).
 - Dacă repo-ul e public, oricine îi vede conținutul — pentru un site de
   prezentare e OK, dar verifică să nu existe date sensibile în el.
+
+---
+
+## Notă importantă despre `_config.yml` (nu șterge fișierul)
+
+GitHub Pages rulează Jekyll. Fișierul `_config.yml` din rădăcină exclude din
+publicare folderele interne: `tools/`, `src-legal/`, `README-DEPLOY.md` și
+`SEO-SETUP.md`. Fără el, scripturile de build și documentația internă sunt
+public accesibile la `https://prepcenterfba.eu/tools/…`.
+
+**Nu adăuga un fișier `.nojekyll`** — acesta dezactivează Jekyll și odată cu el
+și excluderile de mai sus.
+
+## Fluxul de build (rulează după orice modificare de conținut)
+
+Paginile germane din rădăcină sunt SURSA. Versiunile `/en/`, `/it/`, `/fr/` sunt
+generate — orice modificare făcută direct în ele se pierde la următorul build.
+
+```bash
+pip install beautifulsoup4 lxml    # o singură dată
+python3 tools/build_langs.py       # regenerează /en/ /it/ /fr/ (inclusiv textele juridice)
+python3 tools/gen_sitemap.py       # regenerează sitemap.xml și robots.txt
+```
+
+Ce se editează unde:
+
+| Vrei să schimbi | Editează |
+|---|---|
+| Text german | pagina germană din rădăcină |
+| Traducere EN/IT/FR | `js/lang/en.js` · `it.js` · `fr.js` |
+| Preț | `js/config.js` (sursă unică) |
+| Text juridic german | `impressum.html` · `datenschutz.html` · `agb.html` |
+| Text juridic tradus | `src-legal/<limbă>/…` |
+| Titlu/description traduse | `tools/meta_i18n.py` |
+
+Nu există workflow GitHub Actions — build-ul se rulează local, înainte de push.

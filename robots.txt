@@ -1,7 +1,9 @@
 User-agent: *
 Allow: /
 
-# Keine Suchmaschinen-Indexierung interner Build-Dateien
+# Interne Build-Dateien (werden zusätzlich per _config.yml vom Deploy ausgeschlossen)
 Disallow: /tools/
+Disallow: /README-DEPLOY.md
+Disallow: /SEO-SETUP.md
 
 Sitemap: https://prepcenterfba.eu/sitemap.xml

@@ -13,7 +13,7 @@ werden muss. Alles andere ist bereits im Repository erledigt.
 | `hreflang` DE / EN / IT / FR + `x-default` | ✅ |
 | OpenGraph + Twitter Cards (inkl. Bild) | ✅ |
 | JSON-LD: `ProfessionalService`, `WebSite`, `WebPage`, `Service`, `BreadcrumbList`, `FAQPage` | ✅ |
-| `sitemap.xml` mit allen 51 URLs und hreflang-Alternates | ✅ |
+| `sitemap.xml` mit allen 52 URLs (Rechtstexte tragen noindex und stehen bewusst nicht darin) und hreflang-Alternates | ✅ |
 | `robots.txt` mit Sitemap-Verweis | ✅ |
 | Statische Sprachversionen unter `/en/`, `/it/`, `/fr/` mit eigenen Slugs | ✅ |
 | Interne Verlinkung (Themen-Hub auf der Startseite, „Weiterführende Seiten“ je Landingpage) | ✅ |
@@ -102,7 +102,7 @@ python3 tools/gen_sitemap.py    # sitemap.xml + robots.txt
 ```
 
 Wer das nicht lokal ausführen möchte: Der GitHub-Workflow
-`.github/workflows/build-i18n.yml` erledigt genau diese drei Schritte bei
+`tools/build_langs.py (lokal ausführen – es gibt bewusst keinen GitHub-Actions-Workflow)
 jedem Push automatisch und committet das Ergebnis zurück.
 
 ---

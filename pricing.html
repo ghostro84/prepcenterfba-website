@@ -9,10 +9,11 @@
   <meta property="og:title" content="FBA Prep Preise &amp; Kostenrechner – PrepCenter FBA">
   <meta property="og:description" content="Klare Preise für jeden FBA Prep Service. Kostenrechner für individuelle Schätzungen. Neukundenrabatt für die ersten beiden Lieferungen. Alle Preise netto zzgl. USt.">
   <meta property="og:type" content="website">
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
   <link rel="icon" href="./favicon.ico" sizes="any">
   <link rel="icon" href="./favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="./apple-touch-icon.png">
-  <link rel="stylesheet" crossorigin href="/assets/style-STZ1_Fzx.css">
+  <link rel="stylesheet" href="/assets/style-STZ1_Fzx.css">
   <!-- SEO -->
   <link rel="canonical" href="https://prepcenterfba.eu/pricing.html">
   <link rel="alternate" hreflang="de" href="https://prepcenterfba.eu/pricing.html">
@@ -81,7 +82,8 @@
   <div class="container">
     <span class="badge badge--blue" data-i18n="pricing.badge">Preisliste</span>
     <h1 id="pricing-title" data-i18n="pricing.title">Transparente Preise ohne versteckte Kosten</h1>
-    <p class="lead" data-i18n="pricing.sub">Alle Preise netto zzgl. gesetzlicher Mehrwertsteuer. Mindestauftragswert 25,00 €. Neukundenrabatt: 1. Lieferung –10 %, 2. Lieferung –5 %. Preise gültig ab sofort – Änderungen werden 14 Tage im Voraus angekündigt.</p>
+    <p class="lead" data-i18n="pricing.sub">Alle Preise netto zzgl. gesetzlicher Mehrwertsteuer. Mindestauftragswert 25,00 € je Einzelauftrag für Prep-Leistungen. Neukundenrabatt: 1. Lieferung –10 %, 2. Lieferung –5 %. Preise gültig ab sofort – Änderungen werden 14 Tage im Voraus angekündigt.</p>
+    <p class="vat-notice" style="margin:.85rem 0 0" data-i18n="pricing.b2b">Unser Angebot richtet sich ausschließlich an Unternehmer im Sinne des § 14 BGB. Ein Vertragsschluss mit Verbrauchern erfolgt nicht.</p>
   </div>
 </section>
 
@@ -89,52 +91,53 @@
 <section class="section" aria-labelledby="h-pricetables">
   <div class="container">
     <h2 id="h-pricetables" data-i18n="pricing.tables.title">Leistungspreise</h2>
-    <p class="vat-notice" data-i18n="pricing.vat">Alle Preise netto zzgl. gesetzlicher USt. · Mindestauftragswert je Lieferung beachten.</p>
+    <p class="vat-notice" data-i18n="pricing.vat">Alle Preise netto zzgl. gesetzlicher USt. · Mindestauftragswert 25,00 € je Einzelauftrag für Prep-Leistungen.</p>
+    <p class="vat-notice" data-i18n="pricing.b2b">Unser Angebot richtet sich ausschließlich an Unternehmer im Sinne des § 14 BGB. Ein Vertragsschluss mit Verbrauchern erfolgt nicht.</p>
 
     <div class="notice-box notice-box--green" role="note">
       <strong>🎁 <span data-i18n="pnc.box.t">Neukundenrabatt</span>:</strong>
       <span data-i18n="pnc.box.l1">1. Lieferung –10 % · 2. Lieferung –5 % · danach reguläre Preise.</span>
-      <span data-i18n="pnc.box.l2">Gilt für Prep-Leistungen bis max. 2.000 Einheiten pro Lieferung. Lagerung, Versand und Sonderleistungen ausgeschlossen.</span>
+      <span data-i18n="pnc.box.l2">Gilt ausschließlich für Prep-Leistungen je Einheit, max. 2.000 Einheiten pro Lieferung. Zusatzleistungen (Bundling, zusätzliche Etiketten, Fotos), Wareneingang, Lagerung, Auslieferung, Retouren und Fremdleistungen sind ausgeschlossen.</span>
     </div>
 
     <div class="notice-box" role="note">
       <strong data-i18n="pricing.notice.title">Hinweis:</strong>
-      <span data-i18n="pricing.notice.text"> Wareneingang ist kostenlos bei gebuchter Prep-Leistung. Kartoneingang ohne Prep wird mit 1,50 € berechnet. Zwischenlagerung bei FBA-Prep: erste 14 Tage kostenlos. Alle Preise netto zzgl. gesetzlicher USt.</span>
+      <span data-i18n="pricing.notice.text"> Der Kartoneingang ist kostenlos bei gebuchter Prep-Leistung. Die Palettenannahme wird immer mit 6,00 € je Palette berechnet. Kartoneingang ohne Prep wird mit 1,50 € berechnet. Zwischenlagerung bei gebuchter FBA-Prep-Leistung: erste 14 Tage der Karton- und Palettenlagerung kostenlos. Alle Preise netto zzgl. gesetzlicher USt.</span>
     </div>
 
     <!-- Wareneingang -->
     <h3 id="receiving" class="price-group-title" data-i18n="pricing.group.receiving">Wareneingang</h3>
-    <div data-price-table="receiving" aria-labelledby="receiving" aria-live="polite">
+    <div data-price-table="receiving" role="region" aria-labelledby="receiving" aria-live="polite">
       <!-- injected by main.js renderPriceTables() -->
     </div>
 
     <!-- Prep & Etikettierung -->
     <h3 id="prep" class="price-group-title" data-i18n="pricing.group.prep">Prep &amp; Etikettierung</h3>
-    <div data-price-table="prep" aria-labelledby="prep" aria-live="polite">
+    <div data-price-table="prep" role="region" aria-labelledby="prep" aria-live="polite">
       <!-- injected by main.js -->
     </div>
 
     <!-- Lagerung -->
     <h3 id="storage" class="price-group-title" data-i18n="pricing.group.storage">Lagerung</h3>
-    <div data-price-table="storage" aria-labelledby="storage" aria-live="polite">
+    <div data-price-table="storage" role="region" aria-labelledby="storage" aria-live="polite">
       <!-- injected by main.js -->
     </div>
 
     <!-- Auslieferung -->
     <h3 id="outbound" class="price-group-title" data-i18n="pricing.group.outbound">Auslieferung FBA</h3>
-    <div data-price-table="outbound" aria-labelledby="outbound" aria-live="polite">
+    <div data-price-table="outbound" role="region" aria-labelledby="outbound" aria-live="polite">
       <!-- injected by main.js -->
     </div>
 
     <!-- Retouren -->
     <h3 id="returns" class="price-group-title" data-i18n="pricing.group.returns">Retouren</h3>
-    <div data-price-table="returns" aria-labelledby="returns" aria-live="polite">
+    <div data-price-table="returns" role="region" aria-labelledby="returns" aria-live="polite">
       <!-- injected by main.js -->
     </div>
 
     <!-- Gebühren -->
     <h3 id="fees" class="price-group-title" data-i18n="pricing.group.fees">Gebühren &amp; Pauschalen</h3>
-    <div data-price-table="fees" aria-labelledby="fees" aria-live="polite">
+    <div data-price-table="fees" role="region" aria-labelledby="fees" aria-live="polite">
       <!-- injected by main.js -->
     </div>
 
@@ -142,8 +145,8 @@
 
     <!-- Neukundenrabatt -->
     <h2 data-i18n="pnc.h2">Neukundenrabatt</h2>
-    <p class="section-sub" style="margin-bottom:1.25rem" data-i18n="pnc.sub">Der Rabatt gilt auf alle Prep-Leistungen (nicht auf Lagerung, Versand, Fremdkosten oder Sonderleistungen) und wird auf der Rechnung ausgewiesen. Max. 2.000 Einheiten pro Lieferung.</p>
-    <div class="volume-tiers" role="list" aria-label="Neukundenrabatt-Stufen">
+    <p class="section-sub" style="margin-bottom:1.25rem" data-i18n="pnc.sub">Der Rabatt gilt ausschließlich auf Prep-Leistungen, die je Einheit berechnet werden (Komplett-Prep, FNSKU-Etikettierung, Qualitätskontrolle, Polybag, Luftpolsterfolie, Umverpackung), und zwar für maximal 2.000 Einheiten je Lieferung. Zusatzleistungen (Bundling, zusätzliche Etiketten, Dokumentations- und Produktfotos), Wareneingang, Lagerung, Auslieferung, Retouren und Fremdkosten sind ausgenommen. Der Rabatt wird auf der Rechnung ausgewiesen.</p>
+    <div class="volume-tiers" role="list" data-i18n="a11y.nctiers" data-i18n-attr="aria-label" aria-label="Neukundenrabatt-Stufen">
       <div class="volume-tier" role="listitem">
         <span data-i18n="pnc.d1">1. Lieferung</span>
         <span class="volume-tier__discount" data-i18n="pnc.r1">–10&thinsp;% Rabatt</span>
@@ -164,7 +167,7 @@
     <div class="service-card" style="max-width:600px">
       <div class="service-card__icon" aria-hidden="true">🏢</div>
       <h3 data-i18n="pricing.enterprise.title">Enterprise &amp; Großkunden</h3>
-      <p data-i18n="pricing.enterprise.desc">Für Auftragsvolumen über 10.000 Einheiten / Monat erstellen wir individuelle Rahmenverträge mit garantierten Durchlaufzeiten und dedizierten Kapazitäten. Sprechen Sie uns an.</p>
+      <p data-i18n="pricing.enterprise.desc">Für Auftragsvolumen über 10.000 Einheiten / Monat erstellen wir individuelle Rahmenverträge mit vereinbarten Durchlaufzeiten und dedizierten Kapazitäten. Sprechen Sie uns an.</p>
       <a href="mailto:b2b@prepcenterfba.eu" class="btn btn--outline mt-2" data-i18n="pricing.enterprise.cta">Individuelles Angebot anfragen</a>
     </div>
 
@@ -192,46 +195,22 @@
       <div class="contact-intro">
         <span class="contact-intro__label" data-i18n="ct.label">Kontakt</span>
         <h2 id="pricing-contact-heading" data-i18n="ct.title.pricing">Verbindliches Angebot anfragen</h2>
-        <p data-i18n="ct.intro.pricing">Senden Sie uns Ihre Produktliste und erhalten Sie innerhalb von 24 Stunden ein verbindliches Angebot zu Fixpreisen.</p>
+        <p data-i18n="ct.intro.pricing">Senden Sie uns Ihre Produktliste und erhalten Sie werktags innerhalb von 24 Stunden ein Festpreisangebot.</p>
         <ul class="contact-trust-list" role="list">
-          <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="#60a5fa" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="#60a5fa" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg> <span data-i18n="ct.t1">Antwort innerhalb von 24 Stunden</span></li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="#60a5fa" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="#60a5fa" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg> <span data-i18n="ct.t1">Antwort werktags innerhalb von 24 Stunden</span></li>
           <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="#60a5fa" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="#60a5fa" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg> <span data-i18n="ct.t2">Unverbindlich &amp; kostenlos</span></li>
           <li><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="7" fill="none" stroke="#60a5fa" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="#60a5fa" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg> <span data-i18n="ct.t3b">Feste Preise, keine Überraschungen</span></li>
         </ul>
       </div>
 
-      <form class="contact-form" id="contact-form" novalidate>
-        <div class="form-row">
-          <div class="form-field">
-            <label for="cf-name" data-i18n="ct.name">Name *</label>
-            <input type="text" id="cf-name" name="name" required placeholder="Max Mustermann" autocomplete="name">
-          </div>
-          <div class="form-field">
-            <label for="cf-email" data-i18n="ct.email">E-Mail *</label>
-            <input type="email" id="cf-email" name="email" required placeholder="max@beispiel.de" autocomplete="email">
-          </div>
-        </div>
-        <div class="form-field">
-          <label for="cf-service" data-i18n="ct.services">Gewünschte Leistungen</label>
-          <select id="cf-service" name="service">
-            <option value="" data-i18n="ct.choose">Bitte wählen …</option>
-            <option value="FBA Komplett-Prep" data-i18n="ct.o1">FBA Komplett-Prep</option>
-            <option value="FNSKU-Etikettierung" data-i18n="ct.o2">FNSKU-Etikettierung</option>
-            <option value="Qualitätskontrolle" data-i18n="ct.o3">Qualitätskontrolle</option>
-            <option value="Verpackung &amp; Prep" data-i18n="ct.o4">Verpackung &amp; Prep</option>
-            <option value="Bundling &amp; Sets" data-i18n="ct.o5">Bundling &amp; Sets</option>
-            <option value="Lagerung" data-i18n="ct.o6">Lagerung</option>
-            <option value="FBM-Versand" data-i18n="ct.o7">FBM-Versand</option>
-            <option value="Mehrere Leistungen" data-i18n="ct.o8">Mehrere Leistungen</option>
-          </select>
-        </div>
-        <div class="form-field">
-          <label for="cf-message" data-i18n="ct.message">Nachricht *</label>
-          <textarea id="cf-message" name="message" required rows="4" placeholder="Beschreiben Sie kurz Ihre Produkte und Mengen …" data-i18n="ct.msgph" data-i18n-attr="placeholder"></textarea>
-        </div>
-        <button type="submit" class="btn btn--primary btn--lg contact-form__submit" data-i18n="ct.submit">Angebot anfragen →</button>
-        <p class="contact-form__note" data-i18n="ct.note">* Pflichtfelder. Die Nachricht wird über Ihren E-Mail-Client gesendet.</p>
-      </form>
+      <div class="contact-form">
+        <p style="color:#cbd5e1;line-height:1.6;margin:0" data-i18n="ct.cta.lead">Schicken Sie uns Ihre Produktliste – Sie erhalten Ihr Angebot werktags innerhalb von 24 Stunden.</p>
+        <a href="./kontakt.html" class="btn btn--primary btn--lg contact-form__submit" data-i18n="ct.cta.btn">Angebot anfragen</a>
+        <p class="contact-form__note">
+          <span data-i18n="ct.cta.mail">Oder schreiben Sie uns direkt:</span>
+          <a href="mailto:b2b@prepcenterfba.eu" style="color:#93c5fd">b2b@prepcenterfba.eu</a>
+        </p>
+      </div>
 
     </div>
   </div>
@@ -242,24 +221,10 @@
 <div id="site-footer"></div>
 
 <!-- Cookie banner -->
-<div id="cookie-banner" class="cookie-banner" role="alertdialog" aria-label="Cookie-Einstellungen" aria-live="polite" hidden>
-  <div class="cookie-banner__inner">
-    <p data-i18n="cookie.text">Wir verwenden notwendige Cookies für den Betrieb dieser Website. Weitere Cookies setzen wir nur mit Ihrer Zustimmung ein. <a href="/datenschutz.html" data-i18n="cookie.more">Mehr erfahren</a>.</p>
-    <div class="cookie-actions">
-      <button id="cookie-necessary" class="btn btn--primary btn--sm" data-i18n="cookie.necessary">Nur notwendige</button>
-      <button id="cookie-all" class="btn btn--outline-light btn--sm" data-i18n="cookie.all">Alle akzeptieren</button>
-    </div>
-  </div>
-</div>
 
-<script>window.PH_LANG_URLS={"de": "/pricing.html", "en": "/en/pricing.html", "it": "/it/prezzi.html", "fr": "/fr/tarifs.html"};</script>
-<script src="./js/config.js"></script>
-<script src="./js/i18n.js"></script>
-<script src="./js/lang/en.js"></script>
-<script src="./js/lang/it.js"></script>
-<script src="./js/lang/fr.js"></script>
-<script src="./js/main.js"></script>
-<script src="./js/analytics.js"></script>
-<script src="./js/cms-client.js"></script>
+<script>window.PH_FORCE_LANG="de";window.PH_LANG_URLS={"de": "/pricing.html", "en": "/en/pricing.html", "it": "/it/prezzi.html", "fr": "/fr/tarifs.html"};</script>
+<script defer src="./js/config.js"></script>
+<script defer src="./js/i18n.js"></script>
+<script defer src="./js/main.js"></script>
 </body>
 </html>
