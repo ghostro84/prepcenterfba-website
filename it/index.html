@@ -497,11 +497,11 @@
 <span class="section-label" data-i18n="process.label">Il processo</span>
 <h2 class="section-title" data-i18n="process.title" id="process-heading">Come funziona – in 7 fasi</h2>
 <p class="section-sub" data-i18n="process.sub">Strutturato in modo chiaro, senza sorprese. Mantenete sempre il quadro completo.</p>
-<div class="pstep-grid">
-<!-- 1 Onboarding -->
-<div class="pstep pstep--blue">
-<div class="pstep__pic">
-<svg aria-hidden="true" fill="none" viewbox="0 0 64 64">
+    <div class="flow" role="list">
+      <div class="flow__step flow__step--blue" role="listitem">
+        <div class="flow__head">
+          <span class="flow__num" aria-hidden="true">1</span>
+          <div class="flow__icon"><svg aria-hidden="true" fill="none" viewbox="0 0 64 64">
 <circle cx="32" cy="32" fill="#1d4ed8" opacity=".08" r="28"></circle>
 <!-- two people shaking hands -->
 <path d="M20 38c0-3 2-5 5-5h3l4-4 4 4h3c3 0 5 2 5 5v4H20v-4z" fill="#1d4ed8" opacity=".18" stroke="#1d4ed8" stroke-linejoin="round" stroke-width="1.8"></path>
@@ -511,18 +511,18 @@
 <rect fill="#1d4ed8" height="10" opacity=".15" rx="3" stroke="#1d4ed8" stroke-width="1.5" width="14" x="38" y="14"></rect>
 <path d="M41 22l-3 3v-3" fill="#1d4ed8" stroke="#1d4ed8" stroke-linejoin="round" stroke-width="1"></path>
 <path d="M41 18h6M41 20.5h4" stroke="#1d4ed8" stroke-linecap="round" stroke-width="1.3"></path>
-</svg>
-<span class="pstep__num">1</span>
-</div>
-<div class="pstep__body">
-<h3 data-i18n="process.1.title">Onboarding e definizione dei prezzi</h3>
-<p data-i18n="process.1.desc">Breve colloquio iniziale, descrizione dei prodotti e preparazione di un'offerta individuale sulla base del nostro listino prezzi.</p>
-</div>
-</div>
-<!-- 2 Lieferanweisung -->
-<div class="pstep pstep--violet">
-<div class="pstep__pic">
-<svg aria-hidden="true" fill="none" viewbox="0 0 64 64">
+</svg></div>
+        </div>
+        <div class="flow__body">
+          <h3 data-i18n="process.1.title">Onboarding e definizione dei prezzi</h3>
+          <p data-i18n="process.1.desc">Breve colloquio iniziale, descrizione dei prodotti e preparazione di un'offerta individuale sulla base del nostro listino prezzi.</p>
+        </div>
+      </div>
+      <div class="flow__arrow" aria-hidden="true"><svg viewBox="0 0 24 14" fill="none"><path d="M1 7h19M15 1.5L21.5 7 15 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="flow__step flow__step--violet" role="listitem">
+        <div class="flow__head">
+          <span class="flow__num" aria-hidden="true">2</span>
+          <div class="flow__icon"><svg aria-hidden="true" fill="none" viewbox="0 0 64 64">
 <circle cx="32" cy="32" fill="#7c3aed" opacity=".08" r="28"></circle>
 <!-- map pin -->
 <path d="M32 14c-6.6 0-12 5.4-12 12 0 8.4 12 24 12 24s12-15.6 12-24c0-6.6-5.4-12-12-12z" fill="#7c3aed" opacity=".18" stroke="#7c3aed" stroke-width="1.8"></path>
@@ -531,18 +531,18 @@
 <rect fill="#7c3aed" height="8" opacity=".15" rx="1.5" stroke="#7c3aed" stroke-width="1.5" width="10" x="20" y="44"></rect>
 <rect fill="#7c3aed" height="8" opacity=".15" rx="1.5" stroke="#7c3aed" stroke-width="1.5" width="10" x="34" y="44"></rect>
 <path d="M22 44v-2h8v2M36 44v-2h8v2" stroke="#7c3aed" stroke-width="1.3"></path>
-</svg>
-<span class="pstep__num">2</span>
-</div>
-<div class="pstep__body">
-<h3 data-i18n="process.2.title">Istruzioni di consegna</h3>
-<p data-i18n="process.2.desc">Ricevete il nostro indirizzo di consegna e gli orari di accettazione. Il vostro fornitore spedisce direttamente al nostro magazzino.</p>
-</div>
-</div>
-<!-- 3 Wareneingang -->
-<div class="pstep pstep--teal">
-<div class="pstep__pic">
-<svg aria-hidden="true" fill="none" viewbox="0 0 64 64">
+</svg></div>
+        </div>
+        <div class="flow__body">
+          <h3 data-i18n="process.2.title">Istruzioni di consegna</h3>
+          <p data-i18n="process.2.desc">Ricevete il nostro indirizzo di consegna e gli orari di accettazione. Il vostro fornitore spedisce direttamente al nostro magazzino.</p>
+        </div>
+      </div>
+      <div class="flow__arrow" aria-hidden="true"><svg viewBox="0 0 24 14" fill="none"><path d="M1 7h19M15 1.5L21.5 7 15 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="flow__step flow__step--teal" role="listitem">
+        <div class="flow__head">
+          <span class="flow__num" aria-hidden="true">3</span>
+          <div class="flow__icon"><svg aria-hidden="true" fill="none" viewbox="0 0 64 64">
 <circle cx="32" cy="32" fill="#0d9488" opacity=".08" r="28"></circle>
 <!-- pallet -->
 <rect fill="#0d9488" height="6" opacity=".2" rx="2" stroke="#0d9488" stroke-width="1.8" width="36" x="14" y="40"></rect>
@@ -553,36 +553,36 @@
 <rect fill="#0d9488" height="6" opacity=".12" rx="1.5" stroke="#0d9488" stroke-width="1.4" width="10" x="38" y="18"></rect>
 <!-- barcode lines -->
 <path d="M40 19.5v3M42 19.5v3M44 19.5v3M46 19.5v3" stroke="#0d9488" stroke-linecap="round" stroke-width="1"></path>
-</svg>
-<span class="pstep__num">3</span>
-</div>
-<div class="pstep__body">
-<h3 data-i18n="process.3.title">Ricezione merce e controllo</h3>
-<p data-i18n="process.3.desc">Accettazione, conteggio e controllo visivo in entrata. Notifica immediata in caso di discrepanze.</p>
-</div>
-</div>
-<!-- 4 Qualitätskontrolle -->
-<div class="pstep pstep--amber">
-<div class="pstep__pic">
-<svg aria-hidden="true" fill="none" viewbox="0 0 64 64">
+</svg></div>
+        </div>
+        <div class="flow__body">
+          <h3 data-i18n="process.3.title">Ricezione merce e controllo</h3>
+          <p data-i18n="process.3.desc">Accettazione, conteggio e controllo visivo in entrata. Notifica immediata in caso di discrepanze.</p>
+        </div>
+      </div>
+      <div class="flow__turn" aria-hidden="true"><svg viewBox="0 0 14 26" fill="none"><path d="M7 1v19M1.5 14.5L7 21l5.5-6.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="flow__step flow__step--amber" role="listitem">
+        <div class="flow__head">
+          <span class="flow__num" aria-hidden="true">4</span>
+          <div class="flow__icon"><svg aria-hidden="true" fill="none" viewbox="0 0 64 64">
 <circle cx="32" cy="32" fill="#d97706" opacity=".08" r="28"></circle>
 <!-- magnifier -->
 <circle cx="28" cy="28" fill="#d97706" opacity=".12" r="12" stroke="#d97706" stroke-width="2"></circle>
 <path d="M37 37l10 10" stroke="#d97706" stroke-linecap="round" stroke-width="2.5"></path>
 <!-- checkmark inside -->
 <path d="M23 28l3 3 6-6" stroke="#d97706" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-</svg>
-<span class="pstep__num">4</span>
-</div>
-<div class="pstep__body">
-<h3 data-i18n="process.4.title">Controllo qualità</h3>
-<p data-i18n="process.4.desc">Ispezione secondo il vostro protocollo: quantità, aspetto, funzionamento. Foto e rapporto li ricevete via e-mail.</p>
-</div>
-</div>
-<!-- 5 Prep & Etikettierung -->
-<div class="pstep pstep--orange">
-<div class="pstep__pic">
-<svg aria-hidden="true" fill="none" viewbox="0 0 64 64">
+</svg></div>
+        </div>
+        <div class="flow__body">
+          <h3 data-i18n="process.4.title">Controllo qualità</h3>
+          <p data-i18n="process.4.desc">Ispezione secondo il vostro protocollo: quantità, aspetto, funzionamento. Foto e rapporto li ricevete via e-mail.</p>
+        </div>
+      </div>
+      <div class="flow__arrow" aria-hidden="true"><svg viewBox="0 0 24 14" fill="none"><path d="M1 7h19M15 1.5L21.5 7 15 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="flow__step flow__step--orange" role="listitem">
+        <div class="flow__head">
+          <span class="flow__num" aria-hidden="true">5</span>
+          <div class="flow__icon"><svg aria-hidden="true" fill="none" viewbox="0 0 64 64">
 <circle cx="32" cy="32" fill="#ea580c" opacity=".08" r="28"></circle>
 <!-- label dispenser -->
 <rect fill="#ea580c" height="28" opacity=".12" rx="3" stroke="#ea580c" stroke-width="1.8" width="22" x="16" y="22"></rect>
@@ -594,18 +594,18 @@
 <!-- applicator arm -->
 <path d="M38 26l8-6" stroke="#ea580c" stroke-linecap="round" stroke-width="1.8"></path>
 <circle cx="46" cy="20" fill="#ea580c" opacity=".3" r="3" stroke="#ea580c" stroke-width="1.5"></circle>
-</svg>
-<span class="pstep__num">5</span>
-</div>
-<div class="pstep__body">
-<h3 data-i18n="process.5.title">Prep ed etichettatura</h3>
-<p data-i18n="process.5.desc">Stampa FNSKU, imballaggio, bundling – secondo il vostro ordine e le attuali linee guida Amazon.</p>
-</div>
-</div>
-<!-- 6 Shipment -->
-<div class="pstep pstep--indigo">
-<div class="pstep__pic">
-<svg aria-hidden="true" fill="none" viewbox="0 0 64 64">
+</svg></div>
+        </div>
+        <div class="flow__body">
+          <h3 data-i18n="process.5.title">Prep ed etichettatura</h3>
+          <p data-i18n="process.5.desc">Stampa FNSKU, imballaggio, bundling – secondo il vostro ordine e le attuali linee guida Amazon.</p>
+        </div>
+      </div>
+      <div class="flow__arrow" aria-hidden="true"><svg viewBox="0 0 24 14" fill="none"><path d="M1 7h19M15 1.5L21.5 7 15 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="flow__step flow__step--indigo" role="listitem">
+        <div class="flow__head">
+          <span class="flow__num" aria-hidden="true">6</span>
+          <div class="flow__icon"><svg aria-hidden="true" fill="none" viewbox="0 0 64 64">
 <circle cx="32" cy="32" fill="#4f46e5" opacity=".08" r="28"></circle>
 <!-- truck -->
 <rect fill="#4f46e5" height="20" opacity=".15" rx="2.5" stroke="#4f46e5" stroke-width="1.8" width="28" x="10" y="26"></rect>
@@ -615,18 +615,18 @@
 <!-- document on truck -->
 <rect fill="#fff" height="12" rx="1.5" stroke="#4f46e5" stroke-width="1.2" width="10" x="16" y="30"></rect>
 <path d="M18 33h6M18 35.5h6M18 38h4" stroke="#4f46e5" stroke-linecap="round" stroke-width="1"></path>
-</svg>
-<span class="pstep__num">6</span>
-</div>
-<div class="pstep__body">
-<h3 data-i18n="process.6.title">Allestimento e consegna</h3>
-<p data-i18n="process.6.desc">Create lo shipping plan nel vostro Seller Central. Con il vostro shipment ID e le vostre etichette di spedizione allestiamo la spedizione, etichettiamo i cartoni e consegniamo allo spedizioniere.</p>
-</div>
-</div>
-<!-- 7 Rechnung -->
-<div class="pstep pstep--green">
-<div class="pstep__pic">
-<svg aria-hidden="true" fill="none" viewbox="0 0 64 64">
+</svg></div>
+        </div>
+        <div class="flow__body">
+          <h3 data-i18n="process.6.title">Allestimento e consegna</h3>
+          <p data-i18n="process.6.desc">Create lo shipping plan nel vostro Seller Central. Con il vostro shipment ID e le vostre etichette di spedizione allestiamo la spedizione, etichettiamo i cartoni e consegniamo allo spedizioniere.</p>
+        </div>
+      </div>
+      <div class="flow__turn" aria-hidden="true"><svg viewBox="0 0 14 26" fill="none"><path d="M7 1v19M1.5 14.5L7 21l5.5-6.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="flow__step flow__step--green flow__step--final" role="listitem">
+        <div class="flow__head">
+          <span class="flow__num" aria-hidden="true">7</span>
+          <div class="flow__icon"><svg aria-hidden="true" fill="none" viewbox="0 0 64 64">
 <circle cx="32" cy="32" fill="#16a34a" opacity=".08" r="28"></circle>
 <!-- invoice -->
 <rect fill="#16a34a" height="36" opacity=".1" rx="3" stroke="#16a34a" stroke-width="1.8" width="28" x="18" y="14"></rect>
@@ -635,15 +635,14 @@
 <circle cx="41" cy="43" fill="#16a34a" opacity=".2" r="7"></circle>
 <circle cx="41" cy="43" r="7" stroke="#16a34a" stroke-width="1.8"></circle>
 <path d="M37.5 43l2.5 2.5 4.5-5" stroke="#16a34a" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-</svg>
-<span class="pstep__num">7</span>
-</div>
-<div class="pstep__body">
-<h3 data-i18n="process.7.title">Fattura e conclusione</h3>
-<p data-i18n="process.7.desc">Fattura trasparente in base ai servizi prestati. Tutte le attestazioni le ricevete via e-mail.</p>
-</div>
-</div>
-</div><!-- /pstep-grid -->
+</svg></div>
+        </div>
+        <div class="flow__body">
+          <h3 data-i18n="process.7.title">Fattura e conclusione</h3>
+          <p data-i18n="process.7.desc">Fattura trasparente in base ai servizi prestati. Tutte le attestazioni le ricevete via e-mail.</p>
+        </div>
+      </div>
+    </div><!-- /flow -->
 </div>
 </section>
 <!-- ════════════════ WARUM PREPHUB ════════════════ -->
