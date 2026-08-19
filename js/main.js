@@ -32,9 +32,14 @@
     contact: "./kontakt.html", pillar: "./fba-prep-center-deutschland.html",
     labeling: "./fnsku-etikettierung.html", storage: "./fba-lagerung-deutschland.html",
     shipping: "./versand-an-amazon.html", returns: "./amazon-retouren-deutschland.html",
-    imprint: "/impressum.html", privacy: "/datenschutz.html", terms: "/agb.html"
+    imprint: "/impressum.html", privacy: "/datenschutz.html", terms: "/agb.html",
+    blog: "/blog/"
   };
   function L(key) { var o = global.PH_LINKS || {}; return o[key] || DEFAULT_LINKS[key]; }
+
+  /* Den Ratgeber gibt es bewusst nur auf Deutsch (siehe DE_ONLY in tools/seo.py),
+     deshalb erscheint der Navigationspunkt nur auf den deutschen Seiten. */
+  function isDe() { var f = global.PH_FORCE_LANG; return !f || f === "de"; }
 
   /* USt-Hinweis für den Footer: USt-IdNr. nur zeigen, wenn gepflegt. */
   function vatSuffix(b) {
@@ -93,6 +98,7 @@
       { href: L("about"),      label: "Über uns",   key: "nav.about"      },
       { href: L("faq"),        label: "FAQ",        key: "nav.faq"        },
     ];
+    if (isDe()) pages.push({ href: L("blog"), label: "Ratgeber", key: "nav.blog" });
 
     var navLinks = pages.map(function (p) {
       return '<a href="' + esc(p.href) + '" class="nav-link" data-i18n="' + esc(p.key) + '">' + esc(p.label) + '</a>';
@@ -200,6 +206,7 @@
       '        <li><a href="' + esc(L("calculator")) + '" data-i18n="nav.calculator">Kalkulator</a></li>',
       '        <li><a href="' + esc(L("about")) + '" data-i18n="nav.about">Über uns</a></li>',
       '        <li><a href="' + esc(L("faq")) + '" data-i18n="nav.faq">FAQ</a></li>',
+      (isDe() ? '        <li><a href="' + esc(L("blog")) + '" data-i18n="nav.blog">Ratgeber</a></li>' : ""),
       '        <li><a href="' + esc(L("contact")) + '" data-i18n="nav.contact">Kontakt</a></li>',
       '      </ul>',
       '    </div>',
@@ -256,10 +263,16 @@
 
   /* ── Active nav ────────────────────────────────────────────────────────── */
   function markActiveNav() {
-    var path = location.pathname.split("/").pop() || "index.html";
+    // Ganze Pfade vergleichen, nicht nur Dateinamen: sonst waere "/blog/"
+    // auf der Startseite aktiv (beide enden auf index.html).
+    function norm(p) { return p.replace(/index\.html$/, "") || "/"; }
+    var here = norm(location.pathname);
     document.querySelectorAll(".nav-link").forEach(function (a) {
-      var href = a.getAttribute("href").split("/").pop() || "index.html";
-      if (href === path) {
+      var there;
+      try { there = norm(new URL(a.getAttribute("href"), location.href).pathname); }
+      catch (e) { return; }
+      // Beitragsseiten markieren ebenfalls den Ratgeber-Eintrag.
+      if (there === here || (there === "/blog/" && here.indexOf("/blog/") === 0)) {
         a.classList.add("nav-link--active");
         a.setAttribute("aria-current", "page");
       }
