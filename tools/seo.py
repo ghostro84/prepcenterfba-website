@@ -29,7 +29,16 @@ LEGAL = ["impressum.html", "agb.html", "datenschutz.html"]
 DE_ONLY = {
   "fba-prep-center-oesterreich.html": ("0.7", "monthly"),
   "was-kostet-fba-prep.html":         ("0.8", "monthly"),
+  "blog/":                            ("0.7", "weekly"),
 }
+
+# Ratgeber-Beitraege erzeugt tools/gen_blog.py. Damit ein neuer Beitrag nicht
+# an zwei Stellen gepflegt werden muss, liest die Sitemap das Verzeichnis
+# direkt aus. Laeuft ein Skript ausserhalb des Projekt-Roots, bleibt die
+# Liste einfach leer.
+for _f in sorted(glob.glob(os.path.join("blog", "*.html"))):
+    if os.path.basename(_f) != "index.html":
+        DE_ONLY[_f.replace(os.sep, "/")] = ("0.6", "monthly")
 
 # Rechtstexte je Sprache. Quelle der Übersetzungen: src-legal/<lang>/<slug>.html
 LEGAL_SLUGS = {
